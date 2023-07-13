@@ -893,7 +893,10 @@ padding: 0;
 }
 /*-----contact-----------*/
 div#contact{
-	background: url(../images/bg3.png) #ECF0F1 100% 100%;
+	background-blend-mode: multiply;
+	background-image: url(../images/1.png);
+	background-color:#808080;
+	
 	background-size:cover;
 	-webkit-background-size:cover;
 	-o-background-size:cover;
