@@ -2089,7 +2089,7 @@ form{
 }
 
 .post > p {
-	font-size: 16px;
+	font-size: 1.2em;
 	border: 3px dashed #0f3d5a8a;
 	border-radius: 16px;
 	padding: 5px;
@@ -2099,6 +2099,7 @@ form{
 	display: flex;
 	justify-content: end;
 	font-size: 20px;
+	font-weight: 600;
 }
 
 .post div p {
@@ -2111,6 +2112,12 @@ form{
 	text-decoration: inherit;
 }
 
+.container2 {
+	position: absolute;
+	left: 50%;
+	right: 50%;
+	transform: translate(-50%, 0%);
+}
 @media (min-width: 768px) {
 	.container2 {
 		width: 700px;
@@ -2134,4 +2141,13 @@ form{
 .b-wrapper:hover .m_4,
 .b-wrapper:focus .m_4 {
 	visibility: visible;
+}
+#filters {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+}
+#filters span {
+	display: flex !important;
+	align-items: center;
 }
