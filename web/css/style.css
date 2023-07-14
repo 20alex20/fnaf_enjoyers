@@ -246,7 +246,9 @@ i.icon3{
 }
 /*------portfolio----------*/
 div#portfolio{
-background: url(../images/bg.png) #ECF0F1 100% 100%;
+	background-blend-mode: multiply;
+	background-image: url(../images/2.png);
+	background-color:#696969;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-o-background-size:cover;
@@ -1443,7 +1445,7 @@ form{
 	}
 	div#portfolio {
 	min-height: 640px;
-	background: url(../images/bg.png) #ECF0F1 no-repeat;
+	background: url(../images/2.png) #ECF0F1 no-repeat;
 	background-size: 100% 100%;
 	}
 	#portfoliolist .portfolio {
