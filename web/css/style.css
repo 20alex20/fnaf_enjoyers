@@ -13,10 +13,6 @@ body{
 	background: rgba(15, 61, 90, 0.54);
 	padding: 0.5em 0;
 }
-.logo{
-	float: left;
-	margin-top:0.5em;
-}
 span.menu{
 	display:none;
 }
@@ -294,6 +290,7 @@ background: url(../images/bg.png) #ECF0F1 100% 100%;
 	text-align:center;
 	color:#ffffff;
 	overflow:hidden;
+	border-radius: 25px;
 }
 .b-link-stripe .b-line{
 	position:absolute;
@@ -457,12 +454,12 @@ ul#filters {
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		-o-box-sizing: border-box;
-		width: 30%;
+		width: 100%;
 		display:none;
 		float:left;
 		overflow:hidden;
-		margin:0 1% 1% 0;
 		 border-radius: 0;
+		margin-bottom: 15px;
 	}
 	div#portfoliolist {
 		padding:0px 0px;
@@ -1268,16 +1265,8 @@ form{
 	.portfolio img {
 	max-width:64%;
 	}
-	.b-link-stripe .b-wrapper {
-	position: absolute;
-	width: 64%;
-	height: 100%;
-	top: 0;
-	left: 18%;
-	}
 	#portfoliolist .portfolio {
-	width: 35%;
-	margin: 0px -13% 2% 5%;
+	width: 100%;
 	border-radius: 0;
 	}
 	.b-animate img {
@@ -1443,18 +1432,11 @@ form{
 	background-size: 100% 100%;
 	}
 	#portfoliolist .portfolio {
-	width: 35%;
-	margin: 0px -13% 2% 4%;
+	width: 100%;
 	border-radius: 0;
 	}
 	.portfolio img {
 	max-width:70%;
-	}
-	.b-link-stripe .b-wrapper {
-	width: 70%;
-	height: 100%;
-	top: 0;
-	left: 15%;
 	}
 	span.m_4 {
 	font-size: 22px;
@@ -1641,12 +1623,6 @@ form{
 	.portfolio img {
 		max-width: 46%;
 	}
-	.b-link-stripe .b-wrapper {
-	width: 46%;
-	height: 100%;
-	top: 0;
-	left: 27%;
-	}
 	.b-animate img {
 		margin-top: 17%;
 	}
@@ -1699,18 +1675,11 @@ form{
 	width: 95%;
 	}
 	#portfoliolist .portfolio {
-	width: 51%;
-	margin: 0px -13% 2% 4%;
+	width: 100%;
 	border-radius: 0;
 	}
 	.portfolio img {
 	max-width: 78%;
-	}
-	.b-link-stripe .b-wrapper {
-	width: 78%;
-	height: 100%;
-	top: 0;
-	left: 11%;
 	}
 	.b-animate img {
 		margin-top: 29%;
@@ -2110,4 +2079,59 @@ form{
 	margin-left: 8%;
 	display: none;
 	}
+}
+
+.post  {
+	background-color: #ecf0f1;
+	border: 5px solid #2980b9;
+	border-radius: 25px;
+	padding: 4px;
+}
+
+.post > p {
+	font-size: 16px;
+	border: 3px dashed #0f3d5a8a;
+	border-radius: 16px;
+	padding: 5px;
+}
+
+.post div {
+	display: flex;
+	justify-content: end;
+	font-size: 20px;
+}
+
+.post div p {
+	margin: 10px;
+}
+
+.portfolio-wrapper a:hover,
+.portfolio-wrapper a:focus {
+	color: inherit;
+	text-decoration: inherit;
+}
+
+@media (min-width: 768px) {
+	.container2 {
+		width: 700px;
+	}
+}
+@media (min-width: 992px) {
+	.container2 {
+		width: 800px;
+	}
+}
+@media (min-width: 1200px) {
+	.container2 {
+		width: 800px;
+	}
+}
+
+.b-wrapper .m_4 {
+	visibility: hidden;
+}
+
+.b-wrapper:hover .m_4,
+.b-wrapper:focus .m_4 {
+	visibility: visible;
 }
