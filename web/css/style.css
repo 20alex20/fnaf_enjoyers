@@ -242,9 +242,9 @@ i.icon3{
 }
 /*------portfolio----------*/
 div#portfolio{
-	background-blend-mode: multiply;
+	background-position: bottom;
 	background-image: url(../images/2.png);
-	background-color:#696969;
+	background-color:#ECF0F1;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-o-background-size:cover;
@@ -539,6 +539,7 @@ ul#filters {
 	-o-transition: 0.5s all;
 	-moz-transition: 0.5s all;
 	-ms-transition: 0.5s all;
+	border-radius: 25px;
 	
 }
 .portfolio {
@@ -894,8 +895,8 @@ padding: 0;
 div#contact{
 	background-blend-mode: multiply;
 	background-image: url(../images/1.png);
-	background-color:#808080;
-
+	background-color:#ECF0F1;
+	background-position: bottom;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-o-background-size:cover;
