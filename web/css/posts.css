@@ -22,6 +22,9 @@
     border-radius: 5px;
     border-width: 2px;
 }
+.filter_sort p {
+    color: #ecf0f1;
+}
 .read > div {
     margin-top: 20px;
 }
@@ -32,6 +35,9 @@
 .read a:focus {
     text-decoration: none;
     color: #1B242F;
+}
+.footer a {
+    color: #ecf0f1;
 }
 
 .pagination-outer{ text-align: center; }
@@ -60,13 +66,13 @@
 .pagination li.active a.page-link,
 .pagination li a.page-link:hover,
 .pagination li.active a.page-link:hover{
-    color: #fff;
+    color: #ecf0f1;
     background-color: transparent;
     text-shadow: 0 0 2px #777;
 }
 .pagination li:first-child a.page-link,
 .pagination li:last-child a.page-link{
-    background-color: rgba(0,0,0,0.05);
+    background-color: rgba(0,0,0,0.2);
 }
 .pagination li a.page-link:before{
     content: "";
