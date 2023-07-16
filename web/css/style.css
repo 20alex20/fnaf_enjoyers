@@ -295,6 +295,7 @@ div#portfolio{
 	text-align:center;
 	color:#ffffff;
 	overflow:hidden;
+	border-radius: 25px;
 }
 .b-link-stripe .b-line{
 	position:absolute;
@@ -928,7 +929,7 @@ div#contact{
 	width: 9%;
 }
 .contact-content {
-	padding: 3em 0;
+	padding: 2em 0;
 }
 ul.contact-grids li i.icon11{
 	width: 43px;
@@ -2089,6 +2090,7 @@ form{
 	}
 }
 
+
 .post  {
 	background-color: #ecf0f1;
 	border: 5px solid #2980b9;
@@ -2160,34 +2162,3 @@ form{
 	align-items: center;
 }
 
-.auth h4 {
-	font-size: 1.5em !important;
-}
-.auth form {
-	display: none;
-}
-.auth .active {
-	display: block;
-}
-div#authorization {
-	background-blend-mode: multiply;
-	background: url(../images/mgtu2.jpg);
-	background-color: #ECF0F1;
-	background-position: bottom;
-	background-size:cover;
-	-webkit-background-size:cover;
-	-o-background-size:cover;
-	-moz-background-size:cover;
-	min-height:780px;
-}
-
-@media (max-width: 1280px) {
-	div#authorization {
-		min-height: 750px;
-	}
-}
-@media (max-width: 1024px) {
-div#authorization {
-	min-height: 650px;
-}
-}

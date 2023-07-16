@@ -1,0 +1,31 @@
+.auth h4 {
+    font-size: 1.5em !important;
+}
+.auth form {
+    display: none;
+}
+.auth .active {
+    display: block;
+}
+div#authorization {
+    background-blend-mode: multiply;
+    background: url(../images/mgtu2.jpg);
+    background-color: #ECF0F1;
+    background-position: bottom;
+    background-size:cover;
+    -webkit-background-size:cover;
+    -o-background-size:cover;
+    -moz-background-size:cover;
+    min-height:780px;
+}
+
+@media (max-width: 1280px) {
+    div#authorization {
+        min-height: 750px;
+    }
+}
+@media (max-width: 1024px) {
+    div#authorization {
+        min-height: 650px;
+    }
+}

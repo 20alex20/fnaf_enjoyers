@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="css/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <link href="css/style.css" rel='stylesheet' type='text/css'/>
+    <link href="css/posts.css" rel='stylesheet' type='text/css'/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic'
+          rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+</head>
+<body style="background-color: #ecf0f1;">
+<div class="header-top" style="background: rgb(15 61 90 / 67%);">
+    <div class="container">
+        <div style="float: left;margin-top:0.5em;">
+            <a href="index.html"><img src="images/head-logo.png"/></a>
+        </div>
+        <!--top-nav-->
+        <div class="top-nav">
+            <span class="menu"> </span>
+            <ul>
+                <li><a href="categories.html">Категории</a></li>
+                <li><a href="news.html">Новости</a></li>
+                <li><a href="about_us.html">О нас</a></li>
+                <li><a href="index.html#contact" class="scroll">Контакты</a></li>
+                <li><a href="authorization.html">Регистрация/Вход</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="container" style="display: flex; margin-top: 20px;">
+    <div class="categories" style="background-color: red; width: 300px; height: 600px; min-width: 300px;"></div>
+    <div class="posts">
+        <form class="filter_sort">
+            <div>
+            <p>Фильтр:</p>
+            <select name="filter">
+                <option selected value="Без фильтра">Без фильтра</option>
+                <option value="Смешные">Смешные</option>
+                <option value="Поучительные">Поучительные</option>
+                <option value="Осуждающие">Осуждающие</option>
+            </select>
+            </div>
+            <div>
+            <p>Сортировка:</p>
+            <select name="sort">
+                <option selected value="По дате">По дате</option>
+                <option value="По просмотрам">По просмотрам</option>
+                <option value="По лайкам">По лайкам</option>
+            </select>
+            </div>
+        </form>
+        <div class="read">
+            <div>
+                <a href="#small-dialog" class="b-link-stripe b-animate-go">
+                    <div class="post">
+                        <p>Lorem ipsum dolor sit amet, dolores interesset cu sea, eum et eruditi sententiae.
+                            Assum scripta mandamus cu quo, dicant maiestatis consetetur sea no, eum aperiam
+                            molestiae eu. Cu sea error congue partem. Ipsum postulant dissentias ad pro. Doming
+                            adipisci partiendo per te, eos id quem noluisse patrioque, mei congue tation ne. Te
+                            his falli tibique iracundia, adversarium vituperatoribus ei pri, ne vel falli
+                            nostrud. At ius falli quando imperdiet, agam tibique vituperata quo id.
+                            Vidisse...</p>
+                        <div><p style="margin-right: auto;">10.01.2023</p>
+                            <img src="images/icons8-удивление-64.png" width="40px" height="40px"/>
+                            <p>500</p>
+                            <img src="images/icons8-палец-вверх-64.png" width="40px" height="40px"/>
+                            <p>200</p>
+                        </div>
+                    </div>
+                    <div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img
+                            src="images/icon-eye.png" alt="" style="top: 0px; margin-top: 5%;"></h2>
+                        <p class="b-animate b-from-right  b-delay03 "><span class="m_4">Читать дальше</span></p>
+                    </div>
+                </a>
+            </div>
+            <div>
+            <a href="#small-dialog" class="b-link-stripe b-animate-go">
+                <div class="post">
+                    <p>Lorem ipsum dolor sit amet, dolores interesset cu sea, eum et eruditi sententiae.
+                        Assum scripta mandamus cu quo, dicant maiestatis consetetur sea no, eum aperiam
+                        molestiae eu. Cu sea error congue partem. Ipsum postulant dissentias ad pro. Doming
+                        adipisci partiendo per te, eos id quem noluisse patrioque, mei congue tation ne. Te
+                        his falli tibique iracundia, adversarium vituperatoribus ei pri, ne vel falli
+                        nostrud. At ius falli quando imperdiet, agam tibique vituperata quo id.
+                        Vidisse...</p>
+                    <div><p style="margin-right: auto;">10.01.2023</p>
+                        <img src="images/icons8-удивление-64.png" width="40px" height="40px"/>
+                        <p>500</p>
+                        <img src="images/icons8-палец-вверх-64.png" width="40px" height="40px"/>
+                        <p>200</p>
+                    </div>
+                </div>
+                <div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img
+                        src="images/icon-eye.png" alt="" style="top: 0px; margin-top: 5%;"></h2>
+                    <p class="b-animate b-from-right  b-delay03 "><span class="m_4">Читать дальше</span></p>
+                </div>
+            </a>
+        </div>
+            <div>
+            <a href="#small-dialog" class="b-link-stripe b-animate-go">
+                <div class="post">
+                    <p>Lorem ipsum dolor sit amet, dolores interesset cu sea, eum et eruditi sententiae.
+                        Assum scripta mandamus cu quo, dicant maiestatis consetetur sea no, eum aperiam
+                        molestiae eu. Cu sea error congue partem. Ipsum postulant dissentias ad pro. Doming
+                        adipisci partiendo per te, eos id quem noluisse patrioque, mei congue tation ne. Te
+                        his falli tibique iracundia, adversarium vituperatoribus ei pri, ne vel falli
+                        nostrud. At ius falli quando imperdiet, agam tibique vituperata quo id.
+                        Vidisse...</p>
+                    <div><p style="margin-right: auto;">10.01.2023</p>
+                        <img src="images/icons8-удивление-64.png" width="40px" height="40px"/>
+                        <p>500</p>
+                        <img src="images/icons8-палец-вверх-64.png" width="40px" height="40px"/>
+                        <p>200</p>
+                    </div>
+                </div>
+                <div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img
+                        src="images/icon-eye.png" alt="" style="top: 0px; margin-top: 5%;"></h2>
+                    <p class="b-animate b-from-right  b-delay03 "><span class="m_4">Читать дальше</span></p>
+                </div>
+            </a>
+        </div>
+            <div>
+            <a href="#small-dialog" class="b-link-stripe b-animate-go">
+                <div class="post">
+                    <p>Lorem ipsum dolor sit amet, dolores interesset cu sea, eum et eruditi sententiae.
+                        Assum scripta mandamus cu quo, dicant maiestatis consetetur sea no, eum aperiam
+                        molestiae eu. Cu sea error congue partem. Ipsum postulant dissentias ad pro. Doming
+                        adipisci partiendo per te, eos id quem noluisse patrioque, mei congue tation ne. Te
+                        his falli tibique iracundia, adversarium vituperatoribus ei pri, ne vel falli
+                        nostrud. At ius falli quando imperdiet, agam tibique vituperata quo id.
+                        Vidisse...</p>
+                    <div><p style="margin-right: auto;">10.01.2023</p>
+                        <img src="images/icons8-удивление-64.png" width="40px" height="40px"/>
+                        <p>500</p>
+                        <img src="images/icons8-палец-вверх-64.png" width="40px" height="40px"/>
+                        <p>200</p>
+                    </div>
+                </div>
+                <div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img
+                        src="images/icon-eye.png" alt="" style="top: 0px; margin-top: 5%;"></h2>
+                    <p class="b-animate b-from-right  b-delay03 "><span class="m_4">Читать дальше</span></p>
+                </div>
+            </a>
+        </div>
+            <div>
+            <a href="#small-dialog" class="b-link-stripe b-animate-go">
+                <div class="post">
+                    <p>Lorem ipsum dolor sit amet, dolores interesset cu sea, eum et eruditi sententiae.
+                        Assum scripta mandamus cu quo, dicant maiestatis consetetur sea no, eum aperiam
+                        molestiae eu. Cu sea error congue partem. Ipsum postulant dissentias ad pro. Doming
+                        adipisci partiendo per te, eos id quem noluisse patrioque, mei congue tation ne. Te
+                        his falli tibique iracundia, adversarium vituperatoribus ei pri, ne vel falli
+                        nostrud. At ius falli quando imperdiet, agam tibique vituperata quo id.
+                        Vidisse...</p>
+                    <div><p style="margin-right: auto;">10.01.2023</p>
+                        <img src="images/icons8-удивление-64.png" width="40px" height="40px"/>
+                        <p>500</p>
+                        <img src="images/icons8-палец-вверх-64.png" width="40px" height="40px"/>
+                        <p>200</p>
+                    </div>
+                </div>
+                <div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img
+                        src="images/icon-eye.png" alt="" style="top: 0px; margin-top: 5%;"></h2>
+                    <p class="b-animate b-from-right  b-delay03 "><span class="m_4">Читать дальше</span></p>
+                </div>
+            </a>
+        </div>
+            <div>
+            <a href="#small-dialog" class="b-link-stripe b-animate-go">
+                <div class="post">
+                    <p>Lorem ipsum dolor sit amet, dolores interesset cu sea, eum et eruditi sententiae.
+                        Assum scripta mandamus cu quo, dicant maiestatis consetetur sea no, eum aperiam
+                        molestiae eu. Cu sea error congue partem. Ipsum postulant dissentias ad pro. Doming
+                        adipisci partiendo per te, eos id quem noluisse patrioque, mei congue tation ne. Te
+                        his falli tibique iracundia, adversarium vituperatoribus ei pri, ne vel falli
+                        nostrud. At ius falli quando imperdiet, agam tibique vituperata quo id.
+                        Vidisse...</p>
+                    <div><p style="margin-right: auto;">10.01.2023</p>
+                        <img src="images/icons8-удивление-64.png" width="40px" height="40px"/>
+                        <p>500</p>
+                        <img src="images/icons8-палец-вверх-64.png" width="40px" height="40px"/>
+                        <p>200</p>
+                    </div>
+                </div>
+                <div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img
+                        src="images/icon-eye.png" alt="" style="top: 0px; margin-top: 5%;"></h2>
+                    <p class="b-animate b-from-right  b-delay03 "><span class="m_4">Читать дальше</span></p>
+                </div>
+            </a>
+        </div>
+            <div>
+            <a href="#small-dialog" class="b-link-stripe b-animate-go">
+                <div class="post">
+                    <p>Lorem ipsum dolor sit amet, dolores interesset cu sea, eum et eruditi sententiae.
+                        Assum scripta mandamus cu quo, dicant maiestatis consetetur sea no, eum aperiam
+                        molestiae eu. Cu sea error congue partem. Ipsum postulant dissentias ad pro. Doming
+                        adipisci partiendo per te, eos id quem noluisse patrioque, mei congue tation ne. Te
+                        his falli tibique iracundia, adversarium vituperatoribus ei pri, ne vel falli
+                        nostrud. At ius falli quando imperdiet, agam tibique vituperata quo id.
+                        Vidisse...</p>
+                    <div><p style="margin-right: auto;">10.01.2023</p>
+                        <img src="images/icons8-удивление-64.png" width="40px" height="40px"/>
+                        <p>500</p>
+                        <img src="images/icons8-палец-вверх-64.png" width="40px" height="40px"/>
+                        <p>200</p>
+                    </div>
+                </div>
+                <div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img
+                        src="images/icon-eye.png" alt="" style="top: 0px; margin-top: 5%;"></h2>
+                    <p class="b-animate b-from-right  b-delay03 "><span class="m_4">Читать дальше</span></p>
+                </div>
+            </a>
+        </div>
+            <div>
+            <a href="#small-dialog" class="b-link-stripe b-animate-go">
+                <div class="post">
+                    <p>Lorem ipsum dolor sit amet, dolores interesset cu sea, eum et eruditi sententiae.
+                        Assum scripta mandamus cu quo, dicant maiestatis consetetur sea no, eum aperiam
+                        molestiae eu. Cu sea error congue partem. Ipsum postulant dissentias ad pro. Doming
+                        adipisci partiendo per te, eos id quem noluisse patrioque, mei congue tation ne. Te
+                        his falli tibique iracundia, adversarium vituperatoribus ei pri, ne vel falli
+                        nostrud. At ius falli quando imperdiet, agam tibique vituperata quo id.
+                        Vidisse...</p>
+                    <div><p style="margin-right: auto;">10.01.2023</p>
+                        <img src="images/icons8-удивление-64.png" width="40px" height="40px"/>
+                        <p>500</p>
+                        <img src="images/icons8-палец-вверх-64.png" width="40px" height="40px"/>
+                        <p>200</p>
+                    </div>
+                </div>
+                <div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img
+                        src="images/icon-eye.png" alt="" style="top: 0px; margin-top: 5%;"></h2>
+                    <p class="b-animate b-from-right  b-delay03 "><span class="m_4">Читать дальше</span></p>
+                </div>
+            </a>
+        </div>
+            <div>
+            <a href="#small-dialog" class="b-link-stripe b-animate-go">
+                <div class="post">
+                    <p>Lorem ipsum dolor sit amet, dolores interesset cu sea, eum et eruditi sententiae.
+                        Assum scripta mandamus cu quo, dicant maiestatis consetetur sea no, eum aperiam
+                        molestiae eu. Cu sea error congue partem. Ipsum postulant dissentias ad pro. Doming
+                        adipisci partiendo per te, eos id quem noluisse patrioque, mei congue tation ne. Te
+                        his falli tibique iracundia, adversarium vituperatoribus ei pri, ne vel falli
+                        nostrud. At ius falli quando imperdiet, agam tibique vituperata quo id.
+                        Vidisse...</p>
+                    <div><p style="margin-right: auto;">10.01.2023</p>
+                        <img src="images/icons8-удивление-64.png" width="40px" height="40px"/>
+                        <p>500</p>
+                        <img src="images/icons8-палец-вверх-64.png" width="40px" height="40px"/>
+                        <p>200</p>
+                    </div>
+                </div>
+                <div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img
+                        src="images/icon-eye.png" alt="" style="top: 0px; margin-top: 5%;"></h2>
+                    <p class="b-animate b-from-right  b-delay03 "><span class="m_4">Читать дальше</span></p>
+                </div>
+            </a>
+        </div>
+            <div>
+            <a href="#small-dialog" class="b-link-stripe b-animate-go">
+                <div class="post">
+                    <p>Lorem ipsum dolor sit amet, dolores interesset cu sea, eum et eruditi sententiae.
+                        Assum scripta mandamus cu quo, dicant maiestatis consetetur sea no, eum aperiam
+                        molestiae eu. Cu sea error congue partem. Ipsum postulant dissentias ad pro. Doming
+                        adipisci partiendo per te, eos id quem noluisse patrioque, mei congue tation ne. Te
+                        his falli tibique iracundia, adversarium vituperatoribus ei pri, ne vel falli
+                        nostrud. At ius falli quando imperdiet, agam tibique vituperata quo id.
+                        Vidisse...</p>
+                    <div><p style="margin-right: auto;">10.01.2023</p>
+                        <img src="images/icons8-удивление-64.png" width="40px" height="40px"/>
+                        <p>500</p>
+                        <img src="images/icons8-палец-вверх-64.png" width="40px" height="40px"/>
+                        <p>200</p>
+                    </div>
+                </div>
+                <div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img
+                        src="images/icon-eye.png" alt="" style="top: 0px; margin-top: 5%;"></h2>
+                    <p class="b-animate b-from-right  b-delay03 "><span class="m_4">Читать дальше</span></p>
+                </div>
+            </a>
+        </div>
+            <div>
+            <a href="#small-dialog" class="b-link-stripe b-animate-go">
+                <div class="post">
+                    <p>Lorem ipsum dolor sit amet, dolores interesset cu sea, eum et eruditi sententiae.
+                        Assum scripta mandamus cu quo, dicant maiestatis consetetur sea no, eum aperiam
+                        molestiae eu. Cu sea error congue partem. Ipsum postulant dissentias ad pro. Doming
+                        adipisci partiendo per te, eos id quem noluisse patrioque, mei congue tation ne. Te
+                        his falli tibique iracundia, adversarium vituperatoribus ei pri, ne vel falli
+                        nostrud. At ius falli quando imperdiet, agam tibique vituperata quo id.
+                        Vidisse...</p>
+                    <div><p style="margin-right: auto;">10.01.2023</p>
+                        <img src="images/icons8-удивление-64.png" width="40px" height="40px"/>
+                        <p>500</p>
+                        <img src="images/icons8-палец-вверх-64.png" width="40px" height="40px"/>
+                        <p>200</p>
+                    </div>
+                </div>
+                <div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img
+                        src="images/icon-eye.png" alt="" style="top: 0px; margin-top: 5%;"></h2>
+                    <p class="b-animate b-from-right  b-delay03 "><span class="m_4">Читать дальше</span></p>
+                </div>
+            </a>
+        </div>
+            <div>
+            <a href="#small-dialog" class="b-link-stripe b-animate-go">
+                <div class="post">
+                    <p>Lorem ipsum dolor sit amet, dolores interesset cu sea, eum et eruditi sententiae.
+                        Assum scripta mandamus cu quo, dicant maiestatis consetetur sea no, eum aperiam
+                        molestiae eu. Cu sea error congue partem. Ipsum postulant dissentias ad pro. Doming
+                        adipisci partiendo per te, eos id quem noluisse patrioque, mei congue tation ne. Te
+                        his falli tibique iracundia, adversarium vituperatoribus ei pri, ne vel falli
+                        nostrud. At ius falli quando imperdiet, agam tibique vituperata quo id.
+                        Vidisse...</p>
+                    <div><p style="margin-right: auto;">10.01.2023</p>
+                        <img src="images/icons8-удивление-64.png" width="40px" height="40px"/>
+                        <p>500</p>
+                        <img src="images/icons8-палец-вверх-64.png" width="40px" height="40px"/>
+                        <p>200</p>
+                    </div>
+                </div>
+                <div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img
+                        src="images/icon-eye.png" alt="" style="top: 0px; margin-top: 5%;"></h2>
+                    <p class="b-animate b-from-right  b-delay03 "><span class="m_4">Читать дальше</span></p>
+                </div>
+            </a>
+        </div>
+            <div>
+                <a href="#small-dialog" class="b-link-stripe b-animate-go">
+                    <div class="post">
+                        <p>Lorem ipsum dolor sit amet, dolores interesset cu sea, eum et eruditi sententiae.
+                            Assum scripta mandamus cu quo, dicant maiestatis consetetur sea no, eum aperiam
+                            molestiae eu. Cu sea error congue partem. Ipsum postulant dissentias ad pro. Doming
+                            adipisci partiendo per te, eos id quem noluisse patrioque, mei congue tation ne. Te
+                            his falli tibique iracundia, adversarium vituperatoribus ei pri, ne vel falli
+                            nostrud. At ius falli quando imperdiet, agam tibique vituperata quo id.
+                            Vidisse...</p>
+                        <div><p style="margin-right: auto;">10.01.2023</p>
+                            <img src="images/icons8-удивление-64.png" width="40px" height="40px"/>
+                            <p>500</p>
+                            <img src="images/icons8-палец-вверх-64.png" width="40px" height="40px"/>
+                            <p>200</p>
+                        </div>
+                    </div>
+                    <div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img
+                            src="images/icon-eye.png" alt="" style="top: 0px; margin-top: 5%;"></h2>
+                        <p class="b-animate b-from-right  b-delay03 "><span class="m_4">Читать дальше</span></p>
+                    </div>
+                </a>
+            </div>
+            <div>
+                <a href="#small-dialog" class="b-link-stripe b-animate-go">
+                    <div class="post">
+                        <p>Lorem ipsum dolor sit amet, dolores interesset cu sea, eum et eruditi sententiae.
+                            Assum scripta mandamus cu quo, dicant maiestatis consetetur sea no, eum aperiam
+                            molestiae eu. Cu sea error congue partem. Ipsum postulant dissentias ad pro. Doming
+                            adipisci partiendo per te, eos id quem noluisse patrioque, mei congue tation ne. Te
+                            his falli tibique iracundia, adversarium vituperatoribus ei pri, ne vel falli
+                            nostrud. At ius falli quando imperdiet, agam tibique vituperata quo id.
+                            Vidisse...</p>
+                        <div><p style="margin-right: auto;">10.01.2023</p>
+                            <img src="images/icons8-удивление-64.png" width="40px" height="40px"/>
+                            <p>500</p>
+                            <img src="images/icons8-палец-вверх-64.png" width="40px" height="40px"/>
+                            <p>200</p>
+                        </div>
+                    </div>
+                    <div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img
+                            src="images/icon-eye.png" alt="" style="top: 0px; margin-top: 5%;"></h2>
+                        <p class="b-animate b-from-right  b-delay03 "><span class="m_4">Читать дальше</span></p>
+                    </div>
+                </a>
+            </div>
+            <div>
+                <a href="#small-dialog" class="b-link-stripe b-animate-go">
+                    <div class="post">
+                        <p>Lorem ipsum dolor sit amet, dolores interesset cu sea, eum et eruditi sententiae.
+                            Assum scripta mandamus cu quo, dicant maiestatis consetetur sea no, eum aperiam
+                            molestiae eu. Cu sea error congue partem. Ipsum postulant dissentias ad pro. Doming
+                            adipisci partiendo per te, eos id quem noluisse patrioque, mei congue tation ne. Te
+                            his falli tibique iracundia, adversarium vituperatoribus ei pri, ne vel falli
+                            nostrud. At ius falli quando imperdiet, agam tibique vituperata quo id.
+                            Vidisse...</p>
+                        <div><p style="margin-right: auto;">10.01.2023</p>
+                            <img src="images/icons8-удивление-64.png" width="40px" height="40px"/>
+                            <p>500</p>
+                            <img src="images/icons8-палец-вверх-64.png" width="40px" height="40px"/>
+                            <p>200</p>
+                        </div>
+                    </div>
+                    <div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img
+                            src="images/icon-eye.png" alt="" style="top: 0px; margin-top: 5%;"></h2>
+                        <p class="b-animate b-from-right  b-delay03 "><span class="m_4">Читать дальше</span></p>
+                    </div>
+                </a>
+            </div>
+            <div>
+                <a href="#small-dialog" class="b-link-stripe b-animate-go">
+                    <div class="post">
+                        <p>Lorem ipsum dolor sit amet, dolores interesset cu sea, eum et eruditi sententiae.
+                            Assum scripta mandamus cu quo, dicant maiestatis consetetur sea no, eum aperiam
+                            molestiae eu. Cu sea error congue partem. Ipsum postulant dissentias ad pro. Doming
+                            adipisci partiendo per te, eos id quem noluisse patrioque, mei congue tation ne. Te
+                            his falli tibique iracundia, adversarium vituperatoribus ei pri, ne vel falli
+                            nostrud. At ius falli quando imperdiet, agam tibique vituperata quo id.
+                            Vidisse...</p>
+                        <div><p style="margin-right: auto;">10.01.2023</p>
+                            <img src="images/icons8-удивление-64.png" width="40px" height="40px"/>
+                            <p>500</p>
+                            <img src="images/icons8-палец-вверх-64.png" width="40px" height="40px"/>
+                            <p>200</p>
+                        </div>
+                    </div>
+                    <div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img
+                            src="images/icon-eye.png" alt="" style="top: 0px; margin-top: 5%;"></h2>
+                        <p class="b-animate b-from-right  b-delay03 "><span class="m_4">Читать дальше</span></p>
+                    </div>
+                </a>
+            </div>
+            <div>
+                <a href="#small-dialog" class="b-link-stripe b-animate-go">
+                    <div class="post">
+                        <p>Lorem ipsum dolor sit amet, dolores interesset cu sea, eum et eruditi sententiae.
+                            Assum scripta mandamus cu quo, dicant maiestatis consetetur sea no, eum aperiam
+                            molestiae eu. Cu sea error congue partem. Ipsum postulant dissentias ad pro. Doming
+                            adipisci partiendo per te, eos id quem noluisse patrioque, mei congue tation ne. Te
+                            his falli tibique iracundia, adversarium vituperatoribus ei pri, ne vel falli
+                            nostrud. At ius falli quando imperdiet, agam tibique vituperata quo id.
+                            Vidisse...</p>
+                        <div><p style="margin-right: auto;">10.01.2023</p>
+                            <img src="images/icons8-удивление-64.png" width="40px" height="40px"/>
+                            <p>500</p>
+                            <img src="images/icons8-палец-вверх-64.png" width="40px" height="40px"/>
+                            <p>200</p>
+                        </div>
+                    </div>
+                    <div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img
+                            src="images/icon-eye.png" alt="" style="top: 0px; margin-top: 5%;"></h2>
+                        <p class="b-animate b-from-right  b-delay03 "><span class="m_4">Читать дальше</span></p>
+                    </div>
+                </a>
+            </div>
+            <div>
+                <a href="#small-dialog" class="b-link-stripe b-animate-go">
+                    <div class="post">
+                        <p>Lorem ipsum dolor sit amet, dolores interesset cu sea, eum et eruditi sententiae.
+                            Assum scripta mandamus cu quo, dicant maiestatis consetetur sea no, eum aperiam
+                            molestiae eu. Cu sea error congue partem. Ipsum postulant dissentias ad pro. Doming
+                            adipisci partiendo per te, eos id quem noluisse patrioque, mei congue tation ne. Te
+                            his falli tibique iracundia, adversarium vituperatoribus ei pri, ne vel falli
+                            nostrud. At ius falli quando imperdiet, agam tibique vituperata quo id.
+                            Vidisse...</p>
+                        <div><p style="margin-right: auto;">10.01.2023</p>
+                            <img src="images/icons8-удивление-64.png" width="40px" height="40px"/>
+                            <p>500</p>
+                            <img src="images/icons8-палец-вверх-64.png" width="40px" height="40px"/>
+                            <p>200</p>
+                        </div>
+                    </div>
+                    <div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img
+                            src="images/icon-eye.png" alt="" style="top: 0px; margin-top: 5%;"></h2>
+                        <p class="b-animate b-from-right  b-delay03 "><span class="m_4">Читать дальше</span></p>
+                    </div>
+                </a>
+            </div>
+            <div>
+                <a href="#small-dialog" class="b-link-stripe b-animate-go">
+                    <div class="post">
+                        <p>Lorem ipsum dolor sit amet, dolores interesset cu sea, eum et eruditi sententiae.
+                            Assum scripta mandamus cu quo, dicant maiestatis consetetur sea no, eum aperiam
+                            molestiae eu. Cu sea error congue partem. Ipsum postulant dissentias ad pro. Doming
+                            adipisci partiendo per te, eos id quem noluisse patrioque, mei congue tation ne. Te
+                            his falli tibique iracundia, adversarium vituperatoribus ei pri, ne vel falli
+                            nostrud. At ius falli quando imperdiet, agam tibique vituperata quo id.
+                            Vidisse...</p>
+                        <div><p style="margin-right: auto;">10.01.2023</p>
+                            <img src="images/icons8-удивление-64.png" width="40px" height="40px"/>
+                            <p>500</p>
+                            <img src="images/icons8-палец-вверх-64.png" width="40px" height="40px"/>
+                            <p>200</p>
+                        </div>
+                    </div>
+                    <div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img
+                            src="images/icon-eye.png" alt="" style="top: 0px; margin-top: 5%;"></h2>
+                        <p class="b-animate b-from-right  b-delay03 "><span class="m_4">Читать дальше</span></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="numbers" style="margin-top: 20px;">
+            <nav class="pagination-outer" aria-label="Page navigation">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a href="#" class="page-link" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item">
+                        <a href="#" class="page-link" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="container">
+        <div class="contact-content">
+            <ul class="contact-grids">
+                <li class="contact-grid"><img src="images/logo.png"></li><li class="contact-grid"><a href="index.html">На главную</a></li><li class="contact-grid"><a href="categories.html">Категории</a></li><li class="contact-grid"><a href="news.html">Новости</a></li><li class="contact-grid"><a href="about_us.html">О нас</a></li><li class="contact-grid"><a href="index.html#contact">Контакты</a></li><li class="contact-grid"><a href="authorization.html">Регистрация/Вход</a></li><li class="contact-grid"><a href="personal_area.html">Личный кабинет</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
