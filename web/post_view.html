@@ -390,15 +390,17 @@
                             <p>200</p>
                         </div>
                     </div>
-                    <div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img
-                            src="images/icon-eye.png" alt="" style="top: 0px; margin-top: 5%;"></h2>
-                        
-                    </div>
-                  
               </div>
           </div>
-        <div class="comments">
-
+        <div style="background-color: #fff;">
+                <h3 style="text-align: center; color: rgb(27, 135, 197);">Комментарии</h3>
+    <form id="comment-form" style="display: inline-flex; padding: 20px; align-self: right;">
+        <textarea id="comment-input" wrap="hard" rows="4" cols="50" placeholder="Комментарий..." style="width: 600px; height: 40px;"></textarea><br>
+        <button type="submit" id ="send" style = "border-radius:5px;border: none; background-color:rgb(27, 135, 197); color: #fff; margin:5px">Отправить</button>
+    </form>
+    <div id="comments">
+    
+    </div>
         </div>
          
       </div>
@@ -413,5 +415,127 @@
         </div>
     </div>
 </div>
+<script>
+    function handleReply(event) {
+   event.preventDefault();
+   var replyInput = event.target.querySelector("textarea");
+   var replyText = replyInput.value.trim();
+   if (replyText !== "") {
+     var replyElement = document.createElement("div");
+     replyElement.className = "reply";
+
+     var avatarElement = document.createElement("div");
+     avatarElement.className = "user-avatar";
+     replyElement.appendChild(avatarElement);
+
+     var replyContent = document.createElement("div");
+     replyContent.className = "reply-content";
+
+     var nameElement = document.createElement("div");
+     nameElement.className = "user-name";
+     nameElement.textContent = "Анон";
+     replyContent.appendChild(nameElement);
+
+     var replyTextElement = document.createElement("p");
+     replyTextElement.className = "reply-text";
+     replyTextElement.textContent = replyText;
+     replyContent.appendChild(replyTextElement);
+
+     replyElement.appendChild(replyContent);
+
+     var deleteButton = document.createElement("button");
+     deleteButton.textContent = "Удалить";
+     deleteButton.addEventListener("click", function() {
+       replyElement.remove();
+     });
+     replyElement.appendChild(deleteButton);
+
+     var replyForm = document.createElement("form");
+     replyForm.className = "reply-form";
+     var nestedReplyInput = document.createElement("textarea");
+     nestedReplyInput.rows = "2";
+     nestedReplyInput.cols = "40";
+     nestedReplyInput.placeholder = "Ваш ответ";
+     var nestedReplyButton = document.createElement("button");
+     nestedReplyButton.type = "submit";
+     nestedReplyButton.textContent = "Ответить";
+     replyForm.appendChild(nestedReplyInput);
+     replyForm.appendChild(nestedReplyButton);
+     replyForm.addEventListener("submit", handleReply);
+     replyElement.appendChild(replyForm);
+
+     var parentComment = event.target.closest(".comment");
+     if (parentComment) {
+       var replyContainer = parentComment.querySelector(".reply-container");
+       if (!replyContainer) {
+         replyContainer = document.createElement("div");
+         replyContainer.className = "reply-container";
+         parentComment.appendChild(replyContainer);
+       }
+       replyContainer.appendChild(replyElement);
+     }
+
+     replyInput.value = "";
+   }
+ }
+
+ function handleSubmit(event) {
+   event.preventDefault();
+   var commentInput = document.getElementById("comment-input");
+   var commentText = commentInput.value.trim();
+
+   if (commentText !== "") {
+     var commentElement = document.createElement("div");
+     commentElement.className = "comment";
+
+     var avatarElement = document.createElement("div");
+     avatarElement.className = "user-avatar";
+     commentElement.appendChild(avatarElement);
+
+     var commentContent = document.createElement("div");
+     commentContent.className = "comment-content";
+
+     var nameElement = document.createElement("div");
+     nameElement.className = "user-name";
+     nameElement.textContent = "Анон";
+     commentContent.appendChild(nameElement);
+
+     var commentTextElement = document.createElement("p");
+     commentTextElement.className = "comment-text";
+     commentTextElement.textContent = commentText;
+     commentContent.appendChild(commentTextElement);
+
+     commentElement.appendChild(commentContent);
+     var replyForm = document.createElement("form");
+     replyForm.className = "reply-form";
+     var replyInput = document.createElement("textarea");
+     replyInput.rows = "2";
+     replyInput.cols = "40";
+     replyInput.placeholder = "Ваш ответ";
+     var replyButton = document.createElement("button");
+     replyButton.type = "submit";
+     replyButton.textContent = "Ответить";
+     replyForm.appendChild(replyInput);
+     replyForm.appendChild(replyButton);
+     replyForm.addEventListener("submit", handleReply);
+     commentElement.appendChild(replyForm);
+
+     var deleteButton = document.createElement("button");
+     deleteButton.textContent = "Удалить";
+     deleteButton.addEventListener("click", function() {
+       commentElement.remove();
+     });
+     commentElement.appendChild(deleteButton);
+
+     var commentsContainer = document.getElementById("comments");
+     commentsContainer.appendChild(commentElement);
+
+     commentInput.value = "";
+   }
+ }
+
+ var commentForm = document.getElementById("comment-form");
+ commentForm.addEventListener("submit", handleSubmit);
+</script>
 </body>
 </html>
