@@ -1000,7 +1000,9 @@ ul.contact-grids li{
 	 list-style: none;
 	 display:inline-block;
 	 margin-left:64px;
-}
+}ul.contact-grids li:first-child{
+	 margin-left:0;
+ }
 li.contact-grid{
 	cursor: pointer;
 	transition: 0.5s ease;
@@ -2105,9 +2107,8 @@ form{
 	padding: 5px;
 }
 
-.post div {
+.post > div:last-child {
 	display: flex;
-	justify-content: end;
 	font-size: 20px;
 	font-weight: 600;
 }
@@ -2162,3 +2163,6 @@ form{
 	align-items: center;
 }
 
+body {
+	min-height: 100vh;
+}

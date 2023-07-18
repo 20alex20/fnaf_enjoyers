@@ -1,0 +1,51 @@
+a.milopdsaxru_thites {
+    background: #71C2FF;
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 30px;
+    margin-right: 10px !important;
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 8px 0 #325b7a, 0 0 6px rgba(12, 12, 12, 0.2);
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s cubic-bezier(0.42, 0, 0.46, 0.97);
+}
+
+a.milopdsaxru_thites:hover {
+    background: #2980b9;
+    box-shadow: none;
+    -ms-transform: translateY(8px);
+    -webkit-transform: translate3D(0, 8px, 0);
+    -moz-transform: translateY(8px);
+    transform: translate3D(0, 8px, 0);
+}
+
+.post_comments {
+    margin-left: 30px;
+}
+
+.post div {
+    margin-bottom: 10px;
+}
+.post > div > * {
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+}
+.post > div:first-child {
+    font-size: 1.2em;
+    border: 3px dashed #0f3d5a8a;
+    border-radius: 16px;
+    padding: 5px;
+}
+.post > div:first-child > p {
+    margin: 8px 0 0 0 !important;
+}
+.post > div:first-child > p:first-child {
+    margin: 0 !important;
+}
+.footer a {
+    color: #ecf0f1;
+}
