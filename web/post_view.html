@@ -392,11 +392,11 @@
                     </div>
               </div>
           </div>
-        <div style="background-color: #fff;">
+        <div style="background-color: #fff; border: 3px dashed #0f3d5a8a; border-radius: 16px; padding: 10px;">
                 <h3 style="text-align: center; color: rgb(27, 135, 197);">Комментарии</h3>
-    <form id="comment-form" style="display: inline-flex; padding: 20px; align-self: right;">
-        <textarea id="comment-input" wrap="hard" rows="4" cols="50" placeholder="Комментарий..." style="width: 600px; height: 40px;"></textarea><br>
-        <button type="submit" id ="send" style = "border-radius:5px;border: none; background-color:rgb(27, 135, 197); color: #fff; margin:5px">Отправить</button>
+    <form id="comment-form" style="display: inline-flex; padding: 10px;">
+        <textarea id="comment-input" wrap="hard" rows="4" cols="50" placeholder="Комментарий..." style="height: 40px "></textarea><br>
+        <button type="submit" id ="send" style = "border-radius:5px;border: none; background-color:rgb(27, 135, 197); color: #fff; margin:5px; height: 30px;">Отправить</button>
     </form>
     <div id="comments">
     
@@ -443,13 +443,7 @@
 
      replyElement.appendChild(replyContent);
 
-     var deleteButton = document.createElement("button");
-     deleteButton.textContent = "Удалить";
-     deleteButton.addEventListener("click", function() {
-       replyElement.remove();
-     });
-     replyElement.appendChild(deleteButton);
-
+ 
      var replyForm = document.createElement("form");
      replyForm.className = "reply-form";
      var nestedReplyInput = document.createElement("textarea");
@@ -463,6 +457,15 @@
      replyForm.appendChild(nestedReplyButton);
      replyForm.addEventListener("submit", handleReply);
      replyElement.appendChild(replyForm);
+
+     var deleteButton = document.createElement("button");
+     deleteButton.className = "del-btn";
+     deleteButton.textContent = "Удалить";
+     deleteButton.addEventListener("click", function() {
+       replyElement.remove();
+     });
+     replyElement.appendChild(deleteButton);
+
 
      var parentComment = event.target.closest(".comment");
      if (parentComment) {
@@ -522,6 +525,7 @@
 
      var deleteButton = document.createElement("button");
      deleteButton.textContent = "Удалить";
+     deleteButton.className = "del-btn";
      deleteButton.addEventListener("click", function() {
        commentElement.remove();
      });

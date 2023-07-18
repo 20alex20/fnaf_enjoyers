@@ -2557,30 +2557,20 @@ form {
 
 .reply {
     margin-top: 5px;
-    padding: 5px;
+    padding: 10px;
     background-color: #f9f9f9;
     border: 1px solid #ccc;
     margin-left: 60px;
 }
 
-.reply-form {
-    width: 600px;
-    height: 40px;
 
-}
 
 .nested-reply {
-    margin-left: 40px;
+     display:inline-flex;
+     margin-left: 10px;
+     width:500px;
 }
 
-.reply-button {
-    margin-left: 5px;
-    border-radius: 5px;
-    border: none;
-    background-color: rgb(27, 135, 197);
-    color: #fff;
-    margin: 5px
-}
 
 .user-avatar {
 
@@ -2593,21 +2583,30 @@ form {
 }
 
 .reply-form textarea {
+    padding: 10px;
     height: 40px;
-    width: 600px;
+    width: 500px;
+    
+}
+
+.reply-form {
+    
+    margin:2px;
     display:inline-flex;
+    align-items:left;
+    padding: 10px;
+    
 }
 
 .user-name {
     font-weight: bold;
     margin-top: 0px;
-
     margin-left: 0px;
 
 }
 
 .user-info {
-    display: flex;
+    display: inline-flex;
 }
 
 .reply-menu {
@@ -2629,6 +2628,11 @@ form {
 
 }
 
+.reply-text {
+    font-size: 1.2em;
+
+}
+
 .comment-form: {
     width: 50px;
 }
@@ -2637,11 +2641,21 @@ form {
 .reply .reply-actions {
     display: flex;
 }
-
-.reply .reply-actions button {
-    border-radius: 5px;
+.comment button{
+border-radius: 5px;
     border: none;
     background-color: rgb(27, 135, 197);
     color: #fff;
     margin: 5px;
+    height:30px;
+    display:inline-block;
 }
+.reply button {
+    border-radius: 5px;
+    border: none;
+    height:30px;
+    background-color: rgb(27, 135, 197);
+    color: #fff;
+    margin: 5px;
+}
+
