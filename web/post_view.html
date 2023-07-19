@@ -394,16 +394,25 @@
                         facete iuvaret. Ex quo soleat putant. Usu ex autem phaedrum hendrerit, duo ex modo delicata.
                         Luptatum ocurreret usu ut, affert nullam volutpat ea eam. Ludus democritum est ex.</p>
                 </div>
-                <div><p style="margin-right: auto;">10.01.2023</p>
+                <div><p style="margin-right: auto;">10.01.2023, 12:00</p>
                     <img src="images/icons8-удивление-64.png" width="40px" height="40px"/>
                     <p>500</p>
                     <img src="images/icons8-палец-вверх-64.png" width="40px" height="40px"/>
-                    <p>200</p>
-                    <a href="#" class="not_clicked" style="margin-top: -16px !important;">
+                    <p id="likes">200</p>
+                    <button id="like" class="not_clicked">
                         <img src="images/icons8-палец-вверх-64-3.png" width="40px" height="40px"/>
-                    </a>
+                    </button>
                 </div>
             </div>
+            <script type="text/javascript">
+                document.getElementById('like').addEventListener('click', function () {
+                    var element = document.getElementById('like');
+                    if (element.classList.contains("not_clicked")) {
+                        element.classList.remove("not_clicked");
+                        element.classList.add("clicked");
+                    }
+                })
+            </script>
 
             <div class="comments">
                 <ul class="media-list">
@@ -419,7 +428,7 @@
                                 <div class="panel-heading">
                                     <div class="author">Дима</div>
                                     <div class="metadata">
-                                        <span class="date">16 ноября 2015, 13:43</span>
+                                        <span class="date">10.01.2023, 12:00</span>
                                     </div>
                                 </div>
                                 <div class="panel-body">
@@ -433,7 +442,8 @@
                                     </div>
                                 </div>
                                 <div class="panel-footer">
-                                    <a class="btn btn-primary" href="#">Ответить</a>
+                                    <textarea class="comment_input" rows="3" placeholder="Введите ваш комментарий"></textarea>
+                                    <button class="btn btn-primary" href="#">Ответить</button>
                                 </div>
                             </div>
                             <!-- Вложенный медиа-компонент (уровень 2) -->
@@ -448,7 +458,7 @@
                                         <div class="panel-heading">
                                             <div class="author">Пётр</div>
                                             <div class="metadata">
-                                                <span class="date">19 ноября 2015, 10:28</span>
+                                                <span class="date">10.01.2023, 12:00</span>
                                             </div>
                                         </div>
                                         <div class="panel-body">
@@ -460,7 +470,7 @@
                                             </div>
                                         </div>
                                         <div class="panel-footer">
-                                            <a class="btn btn-primary" href="#">Ответить</a>
+                                            <textarea class="comment_input" rows="3" placeholder="Введите ваш комментарий"></textarea><button class="btn btn-primary" href="#">Ответить</button>
                                         </div>
                                     </div>
 
@@ -476,7 +486,7 @@
                                                 <div class="panel-heading">
                                                     <div class="author">Александр</div>
                                                     <div class="metadata">
-                                                        <span class="date">Вчера в 19:34</span>
+                                                        <span class="date">10.01.2023, 12:00</span>
                                                     </div>
                                                 </div>
                                                 <div class="panel-body">
@@ -486,7 +496,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="panel-footer">
-                                                    <a class="btn btn-primary" href="#">Ответить</a>
+                                                    <textarea class="comment_input" rows="3" placeholder="Введите ваш комментарий"></textarea><button class="btn btn-primary" href="#">Ответить</button>
                                                 </div>
                                             </div>
 
@@ -510,7 +520,7 @@
                                         <div class="panel-heading">
                                             <div class="author">Сергей</div>
                                             <div class="metadata">
-                                                <span class="date">20 ноября 2015, 17:45</span>
+                                                <span class="date">10.01.2023, 12:00</span>
                                             </div>
                                         </div>
                                         <div class="panel-body">
@@ -522,7 +532,7 @@
                                             </div>
                                         </div>
                                         <div class="panel-footer">
-                                            <a class="btn btn-primary" href="#">Ответить</a>
+                                            <textarea class="comment_input" rows="3" placeholder="Введите ваш комментарий"></textarea><button class="btn btn-primary" href="#">Ответить</button>
                                         </div>
                                     </div>
 
@@ -547,7 +557,7 @@
                                 <div class="panel-heading">
                                     <div class="author">Иван</div>
                                     <div class="metadata">
-                                        <span class="date">Вчера в 17:34</span>
+                                        <span class="date">10.01.2023, 12:00</span>
                                     </div>
                                 </div>
                                 <div class="panel-body">
@@ -559,7 +569,7 @@
                                     </div>
                                 </div>
                                 <div class="panel-footer">
-                                    <a class="btn btn-primary" href="#">Ответить</a>
+                                    <textarea class="comment_input" rows="3" placeholder="Введите ваш комментарий"></textarea><button class="btn btn-primary" href="#">Ответить</button>
                                 </div>
                             </div>
 
@@ -580,7 +590,7 @@
                                 <div class="panel-heading">
                                     <div class="author">Дима</div>
                                     <div class="metadata">
-                                        <span class="date">3 минуты назад</span>
+                                        <span class="date">10.01.2023, 12:00</span>
                                     </div>
                                 </div>
                                 <div class="panel-body">
@@ -597,7 +607,7 @@
                                     </div>
                                 </div>
                                 <div class="panel-footer">
-                                    <a class="btn btn-primary" href="#">Ответить</a>
+                                    <textarea class="comment_input" rows="3" placeholder="Введите ваш комментарий"></textarea><button class="btn btn-primary" href="#">Ответить</button>
                                 </div>
                             </div>
 
@@ -607,6 +617,19 @@
 
                 </ul>
             </div>
+            <script type="text/javascript">
+                document.getElementsByClassName('btn-primary')[0].addEventListener('click', function () {
+                    document.getElementsByClassName('comment_input')[0].style.display = "block";
+                    document.getElementsByClassName('btn-primary')[0].style.margin = "auto 0 0 10px";
+                })
+                /*var classes = document.getElementsByClassName('btn-primary')
+                for (var i = 0; i < classes.length; i++) {
+                    classes[i].addEventListener('click', function () {
+                        document.getElementsByClassName('comment_input')[i].style.display = "block";
+                        this.style.margin = "auto 0 0 10px";
+                    })
+                }/*
+            </script>
         </div>
 
     </div>

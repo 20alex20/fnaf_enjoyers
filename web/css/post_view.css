@@ -1,5 +1,4 @@
-a.not_clicked {
-    background: #71C2FF;
+#like {
     position: relative;
     display: inline-block;
     padding: 10px;
@@ -7,6 +6,11 @@ a.not_clicked {
     margin-right: 10px ;
     width: 60px;
     height: 60px;
+    border-width: 0;
+}
+.not_clicked {
+    top: -6px;
+    background: #71C2FF;
     box-shadow: 0 6px 0 #325b7a, 0 0 6px rgba(12, 12, 12, 0.2);
     -moz-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
@@ -14,13 +18,17 @@ a.not_clicked {
     transition: all 0.2s cubic-bezier(0.42, 0, 0.46, 0.97);
 }
 
-a.not_clicked:hover {
+.not_clicked:hover {
     background: #2980b9;
     box-shadow: none;
-    -ms-transform: translateY(8px);
-    -webkit-transform: translate3D(0, 8px, 0);
-    -moz-transform: translateY(8px);
-    transform: translate3D(0, 8px, 0);
+    -ms-transform: translateY(6px);
+    -webkit-transform: translate3D(0, 6px, 0);
+    -moz-transform: translateY(6px);
+    transform: translate3D(0, 6px, 0);
+}
+.clicked {
+    background: #2980b9;
+    margin-top: 6px !important;
 }
 
 .post_comments {
@@ -41,10 +49,12 @@ a.not_clicked:hover {
     padding: 5px;
 }
 .post > div:first-child > p {
-    margin: 8px 0 0 0 ;
+    margin: 8px 0 0 0 !important;
+    text-align: justify;
+    text-indent: 20px;
 }
 .post > div:first-child > p:first-child {
-    margin: 0 ;
+    margin: 0 !important;
 }
 .footer a {
     color: #ecf0f1;
@@ -105,4 +115,18 @@ a.not_clicked:hover {
 }
 .panel-footer {
     font-size: 1.2em;
+}
+
+
+.panel-footer {
+    display: flex;
+}
+.comment_input {
+    display: none;
+    resize: vertical;
+    border-radius: 5px;
+    width: 100%;
+}
+.btn-primary {
+    border-radius: 5px;
 }
