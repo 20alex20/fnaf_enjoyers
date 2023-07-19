@@ -636,13 +636,25 @@
                 </ul>
             </div>
             <script type="text/javascript">
-                var classes = document.getElementsByClassName('btn_js')
-                for (var i = 0; i < classes.length; i++) {
-                    classes[i].addEventListener('click', function () {
-                        this.parentElement.firstElementChild.style.display = "block";
-                    })
-                }
-            </script>
+           
+                
+                var classes = document.getElementsByClassName('btn_js');
+     
+                 for (var i = 0; i < classes.length; i++) {
+                 (function(index) {
+                     classes[index].addEventListener('click', function() {
+                     var container = this.parentElement;
+                     var containerWidth = container.offsetWidth;
+                     var percentage = 80; // Adjust this value as needed
+     
+                     classes[index].classList.toggle('move-right');
+                     classes[index].style.transform = 'translateX(' + (containerWidth * (percentage / 100)) + 'px)';
+                     //classes[index].parentElement.firstElementChild.style.display = "block";
+                     });
+                 })(i);
+                 }
+                     
+                 </script>
         </div>
 
     </div>
