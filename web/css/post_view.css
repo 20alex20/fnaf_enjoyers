@@ -122,11 +122,32 @@
     display: flex;
 }
 .comment_input {
-    display: none;
     resize: vertical;
     border-radius: 5px;
     width: 100%;
+    margin: 0 10px 0 0;
+    font-size: 16px;
 }
 .btn-primary {
     border-radius: 5px;
+    margin: auto 0 0 0;
+}
+
+.comment {
+    background-color: #ecf0f1;
+    border: 5px solid #2980b9;
+    border-radius: 25px;
+    padding: 10px 15px;
+    margin-top: 30px;
+}
+.comment > div:first-child {
+    display: flex;
+}
+.comment > div:last-child {
+    margin: 10px 0 0 0;
+}
+
+.comment > div:first-child > * {
+    font-size: 20px;
+    font-weight: 600;
 }

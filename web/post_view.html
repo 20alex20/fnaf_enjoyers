@@ -414,6 +414,24 @@
                 })
             </script>
 
+            <div class="comment">
+                <div><p style="margin: auto auto auto 0;">Комментарии</p><button id="open_comment" class="btn btn-primary">Оставить комментарий</button></div>
+                <div style="display: none;">
+                    <textarea class="comment_input" rows="5" placeholder="Введите ваш комментарий"></textarea>
+                    <button class="btn btn-primary">Отправить</button>
+                </div>
+            </div>
+            <script type="text/javascript">
+                document.getElementById('open_comment').addEventListener('click', function () {
+                    if (this.parentElement.parentElement.lastElementChild.style.display == "flex") {
+                        this.parentElement.parentElement.lastElementChild.style.display = "none";
+                    }
+                    else {
+                        this.parentElement.parentElement.lastElementChild.style.display = "flex";
+                    }
+                })
+            </script>
+
             <div class="comments">
                 <ul class="media-list">
                     <!-- Комментарий (уровень 1) -->
@@ -442,8 +460,8 @@
                                     </div>
                                 </div>
                                 <div class="panel-footer">
-                                    <textarea class="comment_input" rows="3" placeholder="Введите ваш комментарий"></textarea>
-                                    <button class="btn btn-primary" href="#">Ответить</button>
+                                    <textarea class="comment_input" style="display: none;" rows="3" placeholder="Введите ваш комментарий"></textarea>
+                                    <button class="btn btn-primary btn_js">Ответить</button>
                                 </div>
                             </div>
                             <!-- Вложенный медиа-компонент (уровень 2) -->
@@ -470,7 +488,7 @@
                                             </div>
                                         </div>
                                         <div class="panel-footer">
-                                            <textarea class="comment_input" rows="3" placeholder="Введите ваш комментарий"></textarea><button class="btn btn-primary" href="#">Ответить</button>
+                                            <textarea class="comment_input" style="display: none;" rows="3" placeholder="Введите ваш комментарий"></textarea><button class="btn btn-primary btn_js">Ответить</button>
                                         </div>
                                     </div>
 
@@ -496,7 +514,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="panel-footer">
-                                                    <textarea class="comment_input" rows="3" placeholder="Введите ваш комментарий"></textarea><button class="btn btn-primary" href="#">Ответить</button>
+                                                    <textarea class="comment_input" style="display: none;" rows="3" placeholder="Введите ваш комментарий"></textarea><button class="btn btn-primary btn_js">Ответить</button>
                                                 </div>
                                             </div>
 
@@ -532,7 +550,7 @@
                                             </div>
                                         </div>
                                         <div class="panel-footer">
-                                            <textarea class="comment_input" rows="3" placeholder="Введите ваш комментарий"></textarea><button class="btn btn-primary" href="#">Ответить</button>
+                                            <textarea class="comment_input" style="display: none;" rows="3" placeholder="Введите ваш комментарий"></textarea><button class="btn btn-primary btn_js">Ответить</button>
                                         </div>
                                     </div>
 
@@ -569,7 +587,7 @@
                                     </div>
                                 </div>
                                 <div class="panel-footer">
-                                    <textarea class="comment_input" rows="3" placeholder="Введите ваш комментарий"></textarea><button class="btn btn-primary" href="#">Ответить</button>
+                                    <textarea class="comment_input" style="display: none;" rows="3" placeholder="Введите ваш комментарий"></textarea><button class="btn btn-primary btn_js">Ответить</button>
                                 </div>
                             </div>
 
@@ -607,7 +625,7 @@
                                     </div>
                                 </div>
                                 <div class="panel-footer">
-                                    <textarea class="comment_input" rows="3" placeholder="Введите ваш комментарий"></textarea><button class="btn btn-primary" href="#">Ответить</button>
+                                    <textarea class="comment_input" style="display: none;" rows="3" placeholder="Введите ваш комментарий"></textarea><button class="btn btn-primary btn_js">Ответить</button>
                                 </div>
                             </div>
 
@@ -618,17 +636,12 @@
                 </ul>
             </div>
             <script type="text/javascript">
-                document.getElementsByClassName('btn-primary')[0].addEventListener('click', function () {
-                    document.getElementsByClassName('comment_input')[0].style.display = "block";
-                    document.getElementsByClassName('btn-primary')[0].style.margin = "auto 0 0 10px";
-                })
-                /*var classes = document.getElementsByClassName('btn-primary')
+                var classes = document.getElementsByClassName('btn_js')
                 for (var i = 0; i < classes.length; i++) {
                     classes[i].addEventListener('click', function () {
-                        document.getElementsByClassName('comment_input')[i].style.display = "block";
-                        this.style.margin = "auto 0 0 10px";
+                        this.parentElement.firstElementChild.style.display = "block";
                     })
-                }/*
+                }
             </script>
         </div>
 
