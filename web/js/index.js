@@ -14,7 +14,7 @@ for (var i = 0; i < 3; i++) {
         url: 'json/posts_' + key + '.json',         /* Куда пойдет запрос */
         method: 'get',             /* Метод передачи (post или get) */
         dataType: 'json',          /* Тип данных в ответе (xml, json, script, html). */
-        data: {category: 'all', filter: "without", sort: key, number: 2},     /* Параметры передаваемые в запросе. */
+        data: {category: 'all', filter: "without", sort: key, number: 2, page: 1},     /* Параметры передаваемые в запросе. */
         success: function (data) {   /* функция, которая будет выполнена после успешного запроса.  */
             for (var j = 0; j < data.length; j++) {
                 var obj = data[j];
