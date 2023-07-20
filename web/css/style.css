@@ -2167,3 +2167,12 @@ form{
 body {
 	min-height: 100vh;
 }
+
+
+.btn {
+      transition: transform 0.5s ease;
+    }
+
+.btn.move-right {
+ transform: translateX(60%);
+}
