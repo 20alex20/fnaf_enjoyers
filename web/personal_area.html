@@ -398,9 +398,45 @@
                 </div>
             </div>
             <div id="content-4">
-                Содержимое 3...
+                <div class="post" >
+                    <div class="avatar" id="avatar" style="background-image: url('placeholder_avatar.jpg')"></div>
+                    <div class="nickname" id="nickname">JohnDoe</div>
+                   <div class="level" id="level">&#9734 Уровень: новичок</div>
+
+                    <div class="edit-form">
+                        <label for="newAvatar" style="font-size: 18px">Сменить аватарку:</label>
+                        <input type="file" style="font-size: 18px; font-weight: 100;" id="newAvatar" accept="image/*">
+                        <br>
+                        <label for="newNickname" style="font-size: 18px">Сменить ник:</label>
+                        <input type="text" id="newNickname">
+                        <br>
+                        <button id="updateData" class="btn btn-primary" style="margin:5px">Сохранить изменения</button>
+                    </div>
+
+                
+                </div>
             </div>
         </div>
+        <script>
+            document.getElementById('updateData').addEventListener('click', function () {
+              var newAvatar = document.getElementById('newAvatar').files[0];
+              var newNickname = document.getElementById('newNickname').value;
+        
+              if (newAvatar) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                  document.getElementById('avatar').style.backgroundImage = 'url(' + e.target.result + ')';
+                };
+                reader.readAsDataURL(newAvatar);
+              }
+        
+              if (newNickname) {
+                // Handle nickname change here
+                console.log('New nickname:', newNickname);
+                document.getElementById('nickname').textContent = newNickname;
+              }
+            });
+          </script>
     </div>
 </div>
 <div class="footer" style="background-color: inherit;">

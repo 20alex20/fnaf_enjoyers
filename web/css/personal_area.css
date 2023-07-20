@@ -100,3 +100,38 @@
     background-color: #71C2FF;
     border-color: #71C2FF;
 }
+
+
+.avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #ccc;
+      background-size: cover;
+      background-position: center;
+      margin-left: 43%;
+      border: 5px solid #2980b9;
+    }
+
+.nickname {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+
+.level {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+.edit-form {
+      
+      margin-top: 20px;
+    }
+
+.content-4
+{
+      max-width: 300px;
+      padding: 20px;
+      color:#357ebd;
+    }
+
