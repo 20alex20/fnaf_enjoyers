@@ -1,0 +1,124 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/main/posts": {
+            "get": {
+                "description": "Gets posts on the main page",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "main"
+                ],
+                "summary": "Main page posts",
+                "parameters": [
+                    {
+                        "description": "request body",
+                        "name": "requestBody",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.MainPostRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.PostMain"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user-post": {
+            "get": {
+                "summary": "Return all user posts",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "user id",
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        }
+    },
+    "definitions": {
+        "model.MainPostRequest": {
+            "type": "object",
+            "properties": {
+                "category": {
+                    "type": "string",
+                    "example": "all"
+                },
+                "filter": {
+                    "type": "string",
+                    "example": "without"
+                },
+                "number": {
+                    "type": "integer",
+                    "example": 2
+                },
+                "page": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "sort": {
+                    "type": "string",
+                    "enum": [
+                        "date_time",
+                        "likes",
+                        "views"
+                    ]
+                }
+            }
+        },
+        "model.PostMain": {
+            "type": "object",
+            "properties": {
+                "date_time": {
+                    "type": "string",
+                    "example": "2023.07.20 12:00"
+                },
+                "likes": {
+                    "type": "integer",
+                    "example": 50
+                },
+                "text": {
+                    "type": "string",
+                    "example": "Lorem ipsum"
+                },
+                "views": {
+                    "type": "integer",
+                    "example": 100
+                }
+            }
+        }
+    }
+}
