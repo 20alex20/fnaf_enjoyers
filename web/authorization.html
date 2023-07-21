@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="css/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <link href="css/style.css" rel='stylesheet' type='text/css'/>
+    <link href="css/authorization.css" rel='stylesheet' type='text/css'/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic'
+          rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<div id="authorization">
+    <div class="header-top">
+        <div class="container">
+            <div style="float: left;margin-top:0.5em;">
+                <a href="index.html"><img src="images/head-logo.png"/></a>
+            </div>
+            <!--top-nav-->
+            <div class="top-nav">
+                <span class="menu"> </span>
+                <ul>
+                    <li><a href="categories.html">Категории</a></li>
+                    <li><a href="news.html">Новости</a></li>
+                    <li><a href="about_us.html">О нас</a></li>
+                    <li><a href="index.html#contact" class="scroll">Контакты</a></li>
+                    <li><a href="authorization.html">Регистрация/Вход</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="container">
+            <div class="contact-section" style="margin-top: 9%;">
+                <h3>Авторизация</h3>
+                <lable></lable>
+            </div>
+            <div class="contact-content auth">
+                <ul class="contact-grids">
+                    <li class="contact-grid" style="margin-left: 0;" id="login_button">
+                        <h4>Вход</h4>
+                    </li>
+                    <li class="contact-grid" id="register_button">
+                        <h4>Регистрация</h4>
+                    </li>
+                </ul>
+                <form method="post" action="#" id="login" class="active">
+                    <input type="text" class="textbox" value="Никнейм" onfocus="this.value = '';"
+                           onblur="if (this.value == '') {this.value = 'Никнейм';}">
+                    <input type="text" class="textbox" value="Пароль" onfocus="this.value = '';this.type='password';"
+                           onblur="if (this.value == '') {this.type='text'; this.value = 'Пароль';}">
+                    <div class="submit">
+                        <input type="submit" value="Войти "/>
+                    </div>
+                </form>
+                <form method="post" action="#" id="register">
+                    <input type="text" class="textbox" value="Никнейм" onfocus="this.value = '';"
+                           onblur="if (this.value == '') {this.value = 'Никнейм';}">
+                    <input type="text" class="textbox" value="Пароль" onfocus="this.value = '';this.type='password';"
+                           onblur="if (this.value == '') {this.type='text'; this.value = 'Пароль';}">
+                    <input type="text" class="textbox" value="Подтвердите пароль"
+                           onfocus="this.value = '';this.type='password';"
+                           onblur="if (this.value == '') {this.type='text'; this.value = 'Подтвердите пароль';}">
+                    <div class="submit">
+                        <input type="submit" value="Зарегистрироваться "/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        document.getElementById('login_button').addEventListener('click', function () {
+            var login = document.getElementById('login');
+            var regist = document.getElementById('register');
+            if (regist.classList.contains("active")) {
+                regist.classList.remove("active");
+                login.classList.add("active");
+            }
+        })
+        document.getElementById('register_button').addEventListener('click', function () {
+            var login = document.getElementById('login');
+            var regist = document.getElementById('register');
+            if (login.classList.contains("active")) {
+                login.classList.remove("active");
+                regist.classList.add("active");
+            }
+        })
+    </script>
+</div>
+<div class="footer">
+    <div class="container">
+        <div class="contact-content">
+            <ul class="contact-grids">
+                <li class="contact-grid"><img src="images/logo.png"></li><li class="contact-grid"><a href="index.html">На главную</a></li><li class="contact-grid"><a href="categories.html">Категории</a></li><li class="contact-grid"><a href="news.html">Новости</a></li><li class="contact-grid"><a href="about_us.html">О нас</a></li><li class="contact-grid"><a href="index.html#contact">Контакты</a></li><li class="contact-grid"><a href="authorization.html">Регистрация/Вход</a></li><li class="contact-grid"><a href="personal_area.html">Личный кабинет</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

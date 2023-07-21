@@ -65,13 +65,15 @@ margin-top: 20px;
 }
 /*----slider----*/
 .header{
-	background: url(../images/banner.png) #ECF0F1 100% 100%;
+	background-blend-mode: multiply;
+	background: url(../images/mgtu.png);
+	background-color: #ECF0F1;
+	background-position: bottom;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-o-background-size:cover;
 	-moz-background-size:cover;
 	min-height:780px;
-	position: relative;
 }
 /*--banner-sub-head--*/
 .banner-sub-head {
@@ -132,7 +134,7 @@ text-align: center;
 	display: block;
 	width: 33px;
 	height:30px;
-	background: url(../images/menu-icon.png) no-repeat 0px 0px;
+	background: url(../images/2.png) no-repeat 0px 0px;
 	display: block;
 	position: absolute;
 	right:26px;
@@ -241,7 +243,10 @@ i.icon3{
 }
 /*------portfolio----------*/
 div#portfolio{
-background: url(../images/bg.png) #ECF0F1 100% 100%;
+	background-blend-mode: multiply;
+	background-position: bottom;
+	background-image: url(../images/2.png);
+	background-color:#ECF0F1;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-o-background-size:cover;
@@ -537,6 +542,7 @@ ul#filters {
 	-o-transition: 0.5s all;
 	-moz-transition: 0.5s all;
 	-ms-transition: 0.5s all;
+	border-radius: 25px;
 	
 }
 .portfolio {
@@ -890,7 +896,10 @@ padding: 0;
 }
 /*-----contact-----------*/
 div#contact{
-	background: url(../images/bg3.png) #ECF0F1 100% 100%;
+	background-blend-mode: multiply;
+	background-image: url(../images/1.png);
+	background-color:#ECF0F1;
+	background-position: bottom;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-o-background-size:cover;
@@ -920,7 +929,7 @@ div#contact{
 	width: 9%;
 }
 .contact-content {
-	padding: 4em 0;
+	padding: 2em 0;
 }
 ul.contact-grids li i.icon11{
 	width: 43px;
@@ -1026,7 +1035,7 @@ form{
 	margin:3% auto 0;
 	text-align: center;
 }
-.contact-content input[type="text"],.contact-content  textarea {
+.contact-content input,.contact-content  textarea {
 	padding:11px;
 	width:70%;
 	margin:2% 0% 0 0;
@@ -1428,7 +1437,7 @@ form{
 	}
 	div#portfolio {
 	min-height: 640px;
-	background: url(../images/bg.png) #ECF0F1 no-repeat;
+	background: url(../images/2.png) #ECF0F1 no-repeat;
 	background-size: 100% 100%;
 	}
 	#portfoliolist .portfolio {
@@ -2081,6 +2090,7 @@ form{
 	}
 }
 
+
 .post  {
 	background-color: #ecf0f1;
 	border: 5px solid #2980b9;
@@ -2151,3 +2161,4 @@ form{
 	display: flex !important;
 	align-items: center;
 }
+
