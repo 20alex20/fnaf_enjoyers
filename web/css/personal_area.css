@@ -87,6 +87,7 @@
 .comment > div > button {
     margin: auto 0 0 10px;
 }
+
 .comment textarea {
     border-radius: 5px;
     width: 100%;
@@ -148,6 +149,7 @@
     display: flex;
     margin: 0 0 10px 0;
 }
+
 .edit-form > div > div > div {
     width: 50%;
     text-align: left;
@@ -165,12 +167,80 @@
     margin-top: 30px;
     text-align: center;
 }
+
 .footer a {
     color: #ecf0f1;
 }
+
 a:hover {
     text-decoration: none;
 }
+
 .read a:hover {
     color: initial;
 }
+
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.post-header span {
+    font-size: 16px;
+    color: #777;
+}
+
+.reason-box {
+    display: none;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.reject-btn {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.accept-btn {
+    background-color: #228B22;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-left: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.cancel-reject-btn {
+    background-color: #808080;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-left: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.confirm-reject-btn {
+    margin-top: 10px;
+    background-color: #dc3545;
+    color: #fff;
+    font-size: 14px;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
