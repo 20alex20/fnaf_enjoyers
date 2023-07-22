@@ -7,6 +7,7 @@ import (
 	"github.com/fnaf-enjoyers/post-service/pkg/route"
 	"github.com/fnaf-enjoyers/post-service/pkg/usecases"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	_ "github.com/jackc/pgx/v5/stdlib"
 	"github.com/jmoiron/sqlx"
 	"log"
@@ -17,6 +18,13 @@ func Run() {
 	app := fiber.New(fiber.Config{
 		AppName: "Post UseCase",
 	})
+
+	app.Use(cors.New(cors.Config{
+		AllowOrigins:     "*",
+		AllowHeaders:     "Origin,Content-Type,Accept,Content-Length,Accept-Language,Accept-Encoding,Connection,Access-Control-Allow-Origin",
+		AllowCredentials: true,
+		AllowMethods:     "GET,POST,HEAD,PUT,DELETE,PATCH,OPTIONS",
+	}))
 
 	err := os.Setenv("CONFIG_PATH", "./config.yml")
 	if err != nil {
@@ -56,11 +64,11 @@ func Run() {
 		}
 	}(db)
 
-	ser := usecases.NewService(cfg)
+	uc := usecases.NewService(cfg)
 	repo := repository.NewRepository(db)
 
 	route.SetupSwagger(app)
-	route.SetupRoutes(app, ser, repo)
+	route.SetupRoutes(app, uc, repo)
 
 	err = app.Listen(os.Getenv("PORT"))
 	if err != nil {

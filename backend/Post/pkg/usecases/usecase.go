@@ -8,7 +8,7 @@ import (
 
 type UseCase interface {
 	UserPost(userID string, repo repository.Repository) ([]model.Post, error)
-	MainPosts(requestBody model.MainPostRequest, repo repository.Repository) ([]model.PostMain, error)
+	MainPosts(category, filter, sort string, number, page int, repo repository.Repository) ([]model.PostMain, error)
 }
 
 type service struct {

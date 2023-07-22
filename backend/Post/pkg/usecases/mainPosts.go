@@ -8,14 +8,22 @@ import (
 // MainPosts fills main page with posts
 // with certain criteria from db
 //
-// - requestBody: json containing search parameters
-func (s *service) MainPosts(requestBody model.MainPostRequest, repo repository.Repository) ([]model.PostMain, error) {
-	filtered := requestBody.Filter != "without"
-	categorized := requestBody.Category != "all"
+// - category: category to search from
+//
+// - filter: faculty to search from
+//
+// - sort: type of post sorting (date_time, likes, views)
+//
+// - number: total number of posts (defining max page)
+//
+// - page: defines an offset for sql scrolling
+func (s *service) MainPosts(category, filter, sort string, number, page int, repo repository.Repository) ([]model.PostMain, error) {
+	filtered := filter != "without"
+	categorized := category != "all"
 
 	order := "id"
 
-	switch requestBody.Sort {
+	switch sort {
 	case "date_time":
 		order = model.DateTime
 		break
@@ -32,28 +40,28 @@ func (s *service) MainPosts(requestBody model.MainPostRequest, repo repository.R
 
 	if filtered && categorized {
 		postsDTO, err = repo.GetMainPostsCF(
-			requestBody.Category,
-			requestBody.Filter,
+			category,
+			filter,
 			order,
-			requestBody.Number,
-			requestBody.Page)
+			number,
+			page)
 	} else if filtered {
 		postsDTO, err = repo.GetMainPostsFiltered(
-			requestBody.Filter,
+			filter,
 			order,
-			requestBody.Number,
-			requestBody.Page)
+			number,
+			page)
 	} else if categorized {
 		postsDTO, err = repo.GetMainPostsCategorized(
-			requestBody.Category,
+			category,
 			order,
-			requestBody.Number,
-			requestBody.Page)
+			number,
+			page)
 	} else {
 		postsDTO, err = repo.GetMainPosts(
 			order,
-			requestBody.Number,
-			requestBody.Page)
+			number,
+			page)
 	}
 
 	if err != nil {

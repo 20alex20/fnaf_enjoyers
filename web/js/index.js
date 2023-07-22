@@ -11,7 +11,7 @@ var my_index = 0
 for (var i = 0; i < 3; i++) {
     var key = array[i]
     $.ajax({
-        url: 'json/posts_' + key + '.json',         /* Куда пойдет запрос */
+        url: 'http://localhost:3001/main/posts',         /* Куда пойдет запрос */
         method: 'get',             /* Метод передачи (post или get) */
         dataType: 'json',          /* Тип данных в ответе (xml, json, script, html). */
         data: {category: 'all', filter: "without", sort: key, number: 2, page: 1},     /* Параметры передаваемые в запросе. */
