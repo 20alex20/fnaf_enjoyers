@@ -185,7 +185,10 @@ a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 8px;
+    margin: 0 0 5px 0;
+}
+.post-header:first-child {
+    margin: 5px 0;
 }
 
 .post-header span {
@@ -196,7 +199,8 @@ a:hover {
 .reason-box {
     display: none;
     font-size: 14px;
-    margin-top: 10px;
+    margin: 0;
+    width: 100%;
 }
 
 .reject-btn {
@@ -206,7 +210,7 @@ a:hover {
     padding: 8px 12px;
     font-size: 14px;
     border-radius: 4px;
-    margin-left: 5px;
+    margin: 0 0 5px 0;
     cursor: pointer;
 }
 
@@ -216,7 +220,7 @@ a:hover {
     border: none;
     padding: 8px 12px;
     border-radius: 4px;
-    margin-left: 5px;
+    margin: 0 5px 5px 0;
     font-size: 14px;
     cursor: pointer;
 }
@@ -227,13 +231,13 @@ a:hover {
     border: none;
     padding: 8px 12px;
     border-radius: 4px;
-    margin-left: 5px;
+    margin: 5px 5px 5px 0;
     font-size: 14px;
     cursor: pointer;
 }
 
 .confirm-reject-btn {
-    margin-top: 10px;
+    margin: 5px 0 5px 0;
     background-color: #dc3545;
     color: #fff;
     font-size: 14px;
@@ -243,6 +247,7 @@ a:hover {
     cursor: pointer;
 }
 .reason-form{
- 	width: 700px;
+ 	width: 100%;
+    border-radius: 5px;
 }
 
