@@ -8,13 +8,14 @@ function truncate(str, maxlength) {
 dict = {"date_time": "card", "likes": "logo", "views": "app"}
 array = ["date_time", "likes", "views"]
 var my_index = 0
-for (var i = 0; i < 3; i++) {
-    var key = array[i]
+my();
+
+function my() {
     $.ajax({
         url: 'http://localhost:3001/main/posts',         /* Куда пойдет запрос */
         method: 'get',             /* Метод передачи (post или get) */
         dataType: 'json',          /* Тип данных в ответе (xml, json, script, html). */
-        data: {category: 'all', filter: "without", sort: key, number: 2, page: 1},     /* Параметры передаваемые в запросе. */
+        data: {category: 'all', filter: "without", sort: array[my_index], number: 2, page: 1},     /* Параметры передаваемые в запросе. */
         success: function (data) {   /* функция, которая будет выполнена после успешного запроса.  */
             for (var j = 0; j < data.length; j++) {
                 var obj = data[j];
@@ -39,6 +40,9 @@ for (var i = 0; i < 3; i++) {
                     "                </div>");
             }
             my_index += 1;
+            if (my_index < 3) {
+                my();
+            }
         }
     });
 }
