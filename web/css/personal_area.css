@@ -228,3 +228,75 @@ a:hover {
 #filters2 p {
     margin: auto 0;
 }
+
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 5px 0;
+}
+.post-header:first-child {
+    margin: 5px 0;
+}
+
+.post-header span {
+    font-size: 16px;
+    color: #777;
+}
+
+.reason-box {
+    display: none;
+    font-size: 14px;
+    margin: 0;
+    width: 100%;
+}
+
+.reject-btn {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    margin: 0 0 5px 0;
+    cursor: pointer;
+}
+
+.accept-btn {
+    background-color: #228B22;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin: 0 5px 5px 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.cancel-reject-btn {
+    background-color: #808080;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin: 5px 5px 5px 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.confirm-reject-btn {
+    margin: 5px 0 5px 0;
+    background-color: #dc3545;
+    color: #fff;
+    font-size: 14px;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.reason-form{
+ 	width: 100%;
+    border-radius: 5px;
+}
+
