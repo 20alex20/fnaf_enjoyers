@@ -2176,3 +2176,20 @@ body {
 .btn.move-right {
  transform: translateX(60%);
 }
+
+#contact .contact-grid {
+	display: block;
+	margin: 10px 0 0 0;
+}
+
+#contact .contact-grid h4 {
+	font-size: 2em;
+}
+#contact .contact-grid h5 {
+	font-size: 1.5em;
+	margin: 0 0 40px 0;
+}
+
+.hide_class {
+	display: none !important;
+}

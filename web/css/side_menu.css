@@ -37,9 +37,8 @@ a:hover {
 .sidebar-nav ul {
     list-style: none;
     display: block;
-    padding: 0;
+    padding: 0 0 2.85em 0;
     margin: 0;
-
 }
 
 .sidebar-nav ul li {

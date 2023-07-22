@@ -16,7 +16,8 @@
 #tab-btn-1:checked ~ #content-1,
 #tab-btn-2:checked ~ #content-2,
 #tab-btn-3:checked ~ #content-3,
-#tab-btn-4:checked ~ #content-4 {
+#tab-btn-4:checked ~ #content-4,
+#tab-btn-5:checked ~ #content-5{
     display: block;
     width: 100%;
 }
@@ -53,7 +54,7 @@
 }
 
 .read > div {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 @media (min-width: 768px) {
@@ -80,12 +81,12 @@
     border-radius: 25px;
     padding: 10px 15px;
     margin-top: 30px;
-    text-align: center;
+    text-align: right;
 }
 
 
-.comment > div > button {
-    margin: auto 0 0 10px;
+.comment button {
+    margin: 5px 0 0 0;
 }
 .comment textarea {
     border-radius: 5px;
@@ -174,3 +175,130 @@ a:hover {
 .read a:hover {
     color: initial;
 }
+
+.comment > div {
+    display: flex;
+}
+
+
+#categories > div {
+    display: flex;
+    font-size: 18px;
+    width: 50%;
+}
+#categories > div  p {
+    margin: 0 10px 0 0;
+    font-weight: bold;
+}
+#categories > div:first-of-type {
+    margin: 0 0 10px 0;
+}
+#faculties {
+    margin: 0 30px auto 0;
+    border-radius: 5px;
+}
+#selects {
+    display: flex;
+    flex-wrap: wrap;
+}
+#selects select {
+    display: none;
+    margin: 0 0 10px 10px;
+    border-radius: 5px;
+}
+.comment textarea {
+    resize: vertical;
+    font-size: 16px;
+}
+
+#filters2 {
+    text-align: left;
+    flex-wrap: wrap;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+#filters2 label {
+    display: flex;
+    font-weight: normal;
+    margin: 0;
+}
+#filters2 input {
+    margin: 10px 10px 10px 20px;
+}
+#filters2 p {
+    margin: auto 0;
+}
+
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 5px 0;
+}
+.post-header:first-child {
+    margin: 5px 0;
+}
+
+.post-header span {
+    font-size: 16px;
+    color: #777;
+}
+
+.reason-box {
+    display: none;
+    font-size: 14px;
+    margin: 0;
+    width: 100%;
+}
+
+.reject-btn {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    margin: 0 0 5px 0;
+    cursor: pointer;
+}
+
+.accept-btn {
+    background-color: #228B22;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin: 0 5px 5px 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.cancel-reject-btn {
+    background-color: #808080;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin: 5px 5px 5px 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.confirm-reject-btn {
+    margin: 5px 0 5px 0;
+    background-color: #dc3545;
+    color: #fff;
+    font-size: 14px;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.reason-form{
+ 	width: 100%;
+    border-radius: 5px;
+    resize: vertical;
+}
+
