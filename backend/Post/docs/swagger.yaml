@@ -1,0 +1,79 @@
+definitions:
+  model.MainPostRequest:
+    properties:
+      category:
+        example: all
+        type: string
+      filter:
+        example: without
+        type: string
+      number:
+        example: 2
+        type: integer
+      page:
+        example: 1
+        type: integer
+      sort:
+        enum:
+        - date_time
+        - likes
+        - views
+        type: string
+    type: object
+  model.PostMain:
+    properties:
+      date_time:
+        example: 2023.07.20 12:00
+        type: string
+      likes:
+        example: 50
+        type: integer
+      text:
+        example: Lorem ipsum
+        type: string
+      views:
+        example: 100
+        type: integer
+    type: object
+info:
+  contact: {}
+paths:
+  /main/posts:
+    get:
+      consumes:
+      - application/json
+      description: Gets posts on the main page
+      parameters:
+      - description: request body
+        in: body
+        name: requestBody
+        required: true
+        schema:
+          $ref: '#/definitions/model.MainPostRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.PostMain'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Main page posts
+      tags:
+      - main
+  /user-post:
+    get:
+      parameters:
+      - description: user id
+        in: query
+        name: user_id
+        required: true
+        type: string
+      responses: {}
+      summary: Return all user posts
+swagger: "2.0"
