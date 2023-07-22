@@ -251,6 +251,7 @@ a:hover {
     font-size: 14px;
     margin: 0;
     width: 100%;
+    text-align: center;
 }
 
 .reject-btn {
@@ -300,5 +301,45 @@ a:hover {
  	width: 100%;
     border-radius: 5px;
     resize: vertical;
+    font-weight: normal;
 }
 
+#moder_message {
+    display: inline-block;
+    text-align: left;
+    margin: 5px 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    padding: 10px 15px;
+    border-radius: 0 0 21px 21px;
+}
+#moder_message p {
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0;
+    width: 100%;
+}
+
+.post {
+    text-align: left;
+}
+#content-5 .post {
+    padding: 0;
+}
+#content-5 .post > * {
+    margin-left: 4px;
+    margin-right: 4px;
+}
+#content-5 .post > div:last-of-type {
+    margin: 0;
+    padding: 5px 4px 10px 4px;
+    font-weight: normal;
+}
+#content-5 .post > div:first-of-type {
+    margin-top: 10px;
+}
+.read a:focus {
+    text-decoration: none;
+    color: initial;
+}
