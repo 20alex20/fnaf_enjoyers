@@ -18,9 +18,9 @@ for (var i = 0; i < 3; i++) {
         success: function (data) {   /* функция, которая будет выполнена после успешного запроса.  */
             for (var j = 0; j < data.length; j++) {
                 var obj = data[j];
-                $("#portfoliolist").append("<div class='portfolio " + dict[array[my_index]] + " mix_all' data-cat='" + dict[array[my_index]] + "' style=' display: inline-block; opacity: 1;'>\n" +
+                $("#portfoliolist").append("<div class='portfolio " + dict[array[my_index]] + " mix_all" + (my_index === 0 ? "" : " hide_class") + "' data-cat='" + dict[array[my_index]] + "'" + (my_index === 0 ? " style=' display: inline-block; opacity: 1;'" : "") + ">\n" +
                     "                    <div class='portfolio-wrapper'>\n" +
-                    "                        <a href='#small-dialog' class='b-link-stripe b-animate-go  thickbox '>\n" +
+                    "                        <a href='#small-dialog' class='b-link-stripe b-animate-go thickbox'>\n" +
                     "                            <div class='post'>\n" +
                     "                                <p>" + truncate(obj["text"], 500) + "</p>\n" +
                     "                                <div><p style='margin-right: auto;'>" + obj["date_time"] + "</p>\n" +

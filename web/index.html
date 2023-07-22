@@ -118,20 +118,31 @@
             <ul id="filters" class="clearfix">
                 <li class="active" id="latest_li"><span id="latest" class="filter" data-filter="card">Последние</span>
                 </li>
-                <li id="see_li"><span class="filter" data-filter="app">Самые</br>просматриваемые</span></li>
-                <li id="like_li"><span class="filter" data-filter="logo">Самые</br>понравившиеся</span></li>
+                <li id="see_li"><span class="filter" data-filter="app">Самые<br>просматриваемые</span></li>
+                <li id="like_li"><span class="filter" data-filter="logo">Самые<br>понравившиеся</span></li>
             </ul>
             <div id="portfoliolist">
 
             </div>
         </div>
 
+
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
         <script type="text/javascript">
-            setTimeout(function () {
+            $(document).ready( function () {
                 document.getElementById('latest').click();
-            }, 1000);
+                setTimeout(function () {
+                    document.getElementById('latest').click();
+                    var elems = document.getElementsByClassName("mix_all");
+                    for (var i = 0; i < 6; i++) {
+                        if (elems[i].classList.contains("hide_class")) {
+                            elems[i].classList.remove("hide_class");
+                        }
+                    }
+                }, 1000);
+            })
+
             document.getElementById('latest_li').addEventListener('click', function () {
                 var elementOne = document.getElementById('latest_li');
                 var elementTwo = document.getElementById('see_li');
@@ -313,14 +324,6 @@
     </div>
 </div>
 <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"></span></a>
-<script type="text/javascript">
-    //document.addEventListener("DOMContentLoaded", function() {
-    //	document.getElementById('latest').click();
-    //});
-    setTimeout(function () {
-        document.getElementById('latest').click();
-    }, 1000);
-</script>
 
 </body>
 </html>

@@ -2189,3 +2189,7 @@ body {
 	font-size: 1.5em;
 	margin: 0 0 40px 0;
 }
+
+.hide_class {
+	display: none !important;
+}
