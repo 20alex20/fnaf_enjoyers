@@ -298,5 +298,6 @@ a:hover {
 .reason-form{
  	width: 100%;
     border-radius: 5px;
+    resize: vertical;
 }
 
