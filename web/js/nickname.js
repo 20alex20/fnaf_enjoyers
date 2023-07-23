@@ -1,14 +1,49 @@
-document.getElementById('updateData').addEventListener('click', function () {
-    var newAvatar = document.getElementById('newAvatar').files[0];
-    var newNickname = document.getElementById('newNickname').value;
+function getAvatarAndNickname() {
 
-    if (newAvatar) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            document.getElementById('avatar').style.backgroundImage = 'url(' + e.target.result + ')';
-        };
-        reader.readAsDataURL(newAvatar);
-    }
+    $.ajax({
+        url: '../json/img.json',
+        method: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            var avatarUrl = data.img;
+            if (avatarUrl) {
+                document.getElementById('avatar').style.backgroundImage = 'url(' + avatarUrl + ')';
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('Error fetching avatar image:', status, error);
+        }
+    });
+
+    $.ajax({
+        url: '../json/nickname.json',
+        method: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            var nickname = data.nickname;
+            if (nickname) {
+                document.getElementById('nickname').textContent = nickname;
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('Error fetching nickname:', status, error);
+        }
+    });
+}
+
+getAvatarAndNickname();
+
+    document.getElementById('updateData').addEventListener('click', function () {
+        var newAvatar = document.getElementById('newAvatar').files[0];
+        var newNickname = document.getElementById('newNickname').value;
+
+        if (newAvatar) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById('avatar').style.backgroundImage = 'url(' + e.target.result + ')';
+            };
+            reader.readAsDataURL(newAvatar);
+        }
 
     if (newNickname) {
         $.ajax({
@@ -44,3 +79,4 @@ document.getElementById('updateData').addEventListener('click', function () {
         });
     }
 });
+
