@@ -12,10 +12,10 @@ document.getElementById('updateData').addEventListener('click', function () {
 
     if (newNickname) {
         $.ajax({
-            url: '../json/nickname.json',
+            url: 'json/nickname.json',
             method: 'POST',
             dataType: 'json',
-            data: JSON.stringify({ nickname: newNickname }),
+            data: { nickname: newNickname },
             success: function (data) {
                 console.log('Nickname updated successfully:', data);
                 document.getElementById('nickname').textContent = newNickname;
@@ -30,7 +30,7 @@ document.getElementById('updateData').addEventListener('click', function () {
         var formData = new FormData();
         formData.append('avatar', newAvatar);
         $.ajax({
-            url: '../json/nickname.json',
+            url: 'json/nickname.json',
             method: 'POST',
             data: formData,
             processData: false,
