@@ -46,7 +46,7 @@
     display: inline-flex;
     position: relative;
 }
-.pagination li a.page-link{
+.pagination li .page-link{
     color: #2980b9;
     background-color: transparent;
     font-size: 20px;
@@ -63,18 +63,18 @@
     -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
-.pagination li.active a.page-link,
-.pagination li a.page-link:hover,
-.pagination li.active a.page-link:hover{
+.pagination li.active .page-link,
+.pagination li .page-link:hover,
+.pagination li.active .page-link:hover{
     color: #ecf0f1;
     background-color: transparent;
     text-shadow: 0 0 2px #777;
 }
-.pagination li:first-child a.page-link,
-.pagination li:last-child a.page-link{
+.pagination li#first .page-link,
+.pagination li#last .page-link{
     background-color: rgba(0,0,0,0.2);
 }
-.pagination li a.page-link:before{
+.pagination li .page-link:before{
     content: "";
     background: #2980b9;
     width: 25px;
@@ -90,8 +90,8 @@
     height 0.3s ease 0.3s,
     width 0.3s ease 0.5s;
 }
-.pagination li a.page-link:hover:before,
-.pagination li.active a.page-link:before{
+.pagination li .page-link:hover:before,
+.pagination li.active .page-link:before{
     height: 105%;
     width: 100%;
     border-radius: 0;
