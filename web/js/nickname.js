@@ -1,7 +1,21 @@
 function getAvatarAndNickname() {
+    $.ajax({
+        url: 'json/nickname.json',
+        method: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            var nickname = data["nickname"]
+            if (nickname) {
+                document.getElementById('nickname').textContent = nickname;
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('Error fetching nickname:', status, error);
+        }
+    });
 
     $.ajax({
-        url: '../json/img.json',
+        url: 'json/img.json',
         method: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -15,35 +29,21 @@ function getAvatarAndNickname() {
         }
     });
 
-    $.ajax({
-        url: '../json/nickname.json',
-        method: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            var nickname = data.nickname;
-            if (nickname) {
-                document.getElementById('nickname').textContent = nickname;
-            }
-        },
-        error: function (xhr, status, error) {
-            console.error('Error fetching nickname:', status, error);
-        }
-    });
 }
 
 getAvatarAndNickname();
 
-    document.getElementById('updateData').addEventListener('click', function () {
-        var newAvatar = document.getElementById('newAvatar').files[0];
-        var newNickname = document.getElementById('newNickname').value;
+document.getElementById('updateData').addEventListener('click', function () {
+    var newAvatar = document.getElementById('newAvatar').files[0];
+    var newNickname = document.getElementById('newNickname').value;
 
-        if (newAvatar) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                document.getElementById('avatar').style.backgroundImage = 'url(' + e.target.result + ')';
-            };
-            reader.readAsDataURL(newAvatar);
-        }
+    if (newAvatar) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById('avatar').style.backgroundImage = 'url(' + e.target.result + ')';
+        };
+        reader.readAsDataURL(newAvatar);
+    }
 
     if (newNickname) {
         $.ajax({
