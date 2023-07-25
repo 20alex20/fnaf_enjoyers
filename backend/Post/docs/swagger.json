@@ -7,9 +7,6 @@
         "/main/posts": {
             "get": {
                 "description": "Gets posts on the main page",
-                "consumes": [
-                    "application/json"
-                ],
                 "produces": [
                     "application/json"
                 ],
@@ -19,13 +16,44 @@
                 "summary": "Main page posts",
                 "parameters": [
                     {
-                        "description": "request body",
-                        "name": "requestBody",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/model.MainPostRequest"
-                        }
+                        "type": "string",
+                        "example": "all",
+                        "description": "post category",
+                        "name": "category",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "example": "without",
+                        "description": "post filter",
+                        "name": "filter",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "example": "date_time",
+                        "description": "sort type",
+                        "name": "sort",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "example": 2,
+                        "description": "total number of posts to get",
+                        "name": "number",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "example": 1,
+                        "description": "page number",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -64,35 +92,6 @@
         }
     },
     "definitions": {
-        "model.MainPostRequest": {
-            "type": "object",
-            "properties": {
-                "category": {
-                    "type": "string",
-                    "example": "all"
-                },
-                "filter": {
-                    "type": "string",
-                    "example": "without"
-                },
-                "number": {
-                    "type": "integer",
-                    "example": 2
-                },
-                "page": {
-                    "type": "integer",
-                    "example": 1
-                },
-                "sort": {
-                    "type": "string",
-                    "enum": [
-                        "date_time",
-                        "likes",
-                        "views"
-                    ]
-                }
-            }
-        },
         "model.PostMain": {
             "type": "object",
             "properties": {

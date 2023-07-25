@@ -1,25 +1,4 @@
 definitions:
-  model.MainPostRequest:
-    properties:
-      category:
-        example: all
-        type: string
-      filter:
-        example: without
-        type: string
-      number:
-        example: 2
-        type: integer
-      page:
-        example: 1
-        type: integer
-      sort:
-        enum:
-        - date_time
-        - likes
-        - views
-        type: string
-    type: object
   model.PostMain:
     properties:
       date_time:
@@ -40,16 +19,38 @@ info:
 paths:
   /main/posts:
     get:
-      consumes:
-      - application/json
       description: Gets posts on the main page
       parameters:
-      - description: request body
-        in: body
-        name: requestBody
+      - description: post category
+        example: all
+        in: query
+        name: category
         required: true
-        schema:
-          $ref: '#/definitions/model.MainPostRequest'
+        type: string
+      - description: post filter
+        example: without
+        in: query
+        name: filter
+        required: true
+        type: string
+      - description: sort type
+        example: date_time
+        in: query
+        name: sort
+        required: true
+        type: string
+      - description: total number of posts to get
+        example: 2
+        in: query
+        name: number
+        required: true
+        type: integer
+      - description: page number
+        example: 1
+        in: query
+        name: page
+        required: true
+        type: integer
       produces:
       - application/json
       responses:

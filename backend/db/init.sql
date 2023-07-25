@@ -1,18 +1,13 @@
--- Database: stories.bmstu
-
--- drop database if exists "stories.bmstu";
---
--- create database "stories.bmstu"
---     with
---     owner = "admin"
---     encoding = 'UTF8'
---     lc_collate = 'en_US.utf8'
---     lc_ctype = 'en_US.utf8'
---     tablespace = pg_default
---     connection limit = -1
---     is_template = false;
-
 create extension if not exists "uuid-ossp";
+
+create or replace function default_picture()
+    returns uuid
+    language sql as
+$$
+select id
+from profile_picture
+where title = 'default'
+$$;
 
 drop table if exists "info";
 create table if not exists "info"
@@ -22,25 +17,26 @@ create table if not exists "info"
     total_views int not null default 0
 );
 
-drop table if exists profile_image cascade;
-create table if not exists profile_image
+drop table if exists profile_picture cascade;
+create table if not exists profile_picture
 (
-    id    uuid  not null default uuid_generate_v4(),
-    image bytea not null,
+    id    uuid not null default uuid_generate_v4(),
+    link  text not null,
+    title text not null,
     primary key (id)
 );
 
 drop table if exists "user" cascade;
 create table if not exists "user"
 (
-    id               uuid        not null default uuid_generate_v4(),
-    profile_image_id uuid        not null references profile_image (id),
-    login            text unique not null,
-    password         text        not null,
-    is_moderator     boolean     not null default false,
-    user_posts       int         not null default 0,
-    user_likes       int         not null default 0,
-    user_views       int         not null default 0,
+    id                 uuid        not null default uuid_generate_v4(),
+    profile_picture_id uuid        not null default default_picture() references profile_picture (id),
+    nickname           text unique not null,
+    password           text        not null,
+    is_moderator       boolean     not null default false,
+    user_posts         int         not null default 0,
+    user_likes         int         not null default 0,
+    user_views         int         not null default 0,
 
     primary key (id)
 );
@@ -64,13 +60,13 @@ create table if not exists "filter"
 drop table if exists post cascade;
 create table if not exists post
 (
-    id       uuid    not null default uuid_generate_v4(),
+    id       uuid      not null default uuid_generate_v4(),
     user_id  uuid references "user" (id),
     "date"   timestamp not null default date_trunc('minute', now()),
-    "text"   text    not null,
-    views    int     not null default 0,
-    likes    int     not null default 0,
-    accepted boolean not null default false,
+    "text"   text      not null,
+    views    int       not null default 0,
+    likes    int       not null default 0,
+    accepted boolean   not null default false,
     primary key (id)
 );
 
@@ -95,11 +91,11 @@ create table if not exists post_filter
 drop table if exists "comment";
 create table if not exists "comment"
 (
-    id      uuid not null default uuid_generate_v4(),
+    id      uuid      not null default uuid_generate_v4(),
     post_id uuid references post (id),
     user_id uuid references "user" (id),
     "date"  timestamp not null default date_trunc('minute', now()),
-    "text"  text not null,
+    "text"  text      not null,
     primary key (id)
 );
 
@@ -110,4 +106,13 @@ create table if not exists "message"
     post_id uuid not null references post (id),
     text    text not null,
     primary key (id)
+);
+
+drop table if exists user_post_liked;
+create table if not exists user_post_liked
+(
+    user_id uuid references "user" (id),
+    post_id uuid references post (id),
+    constraint user_post_liked_pkey
+        primary key (user_id, post_id)
 );

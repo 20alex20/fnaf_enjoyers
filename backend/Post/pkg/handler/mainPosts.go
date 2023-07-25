@@ -2,7 +2,7 @@ package handler
 
 import (
 	"github.com/fnaf-enjoyers/post-service/pkg/repository"
-	"github.com/fnaf-enjoyers/post-service/pkg/usecases"
+	"github.com/fnaf-enjoyers/post-service/pkg/usecase"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -10,13 +10,16 @@ import (
 // @Summary Main page posts
 // @Description Gets posts on the main page
 // @Tags main
-// @Accept json
 // @Produce json
-// @Param requestBody body model.MainPostRequest true "request body"
+// @Param category query string true "post category" example(all)
+// @Param filter query string true "post filter" example(without)
+// @Param sort query string true "sort type" example(date_time)
+// @Param number query int true "total number of posts to get" example(2)
+// @Param page query int true "page number" "1" example(1)
 // @Failure 500 {string} string
 // @Success 200 {array} model.PostMain
 // @Router /main/posts [get]
-func MainPosts(uc usecases.UseCase, repo repository.Repository) fiber.Handler {
+func MainPosts(uc usecase.UseCase, repo repository.Repository) fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
 		category := ctx.Query("category", "all")
 		filter := ctx.Query("filter", "without")
