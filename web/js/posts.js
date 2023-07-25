@@ -9,7 +9,7 @@ function ajax() {
     document.getElementById("post_20").innerHTML = '';
     $.ajax({
         url: 'json/posts_20.json',  // 'http://localhost:3001/main/posts'
-        method: 'post',
+        method: 'get',
         dataType: 'json',
         data: params,
         success: function (data) {
@@ -69,7 +69,7 @@ document.getElementById("sort").addEventListener("change", function () {
 
 function numbers() {
     document.getElementById("numbers").innerHTML = '';
-    let current = parseInt(params["page"])
+    var current = parseInt(params["page"])
     var max, min
     if (current == 1 || current == 2) {
         min = 1
@@ -116,7 +116,7 @@ function numbers() {
             numbers();
         });
     }
-    let elements = document.getElementsByClassName("number_pages");
+    var elements = document.getElementsByClassName("number_pages");
     for (j = min; j <= max; j++) {
         elements[j - min].children[0].addEventListener("click", function () {
             params["page"] = this.getAttribute("num");
@@ -143,14 +143,14 @@ if (!("page" in params))
 params["number"] = "20";
 
 var selects = document.getElementById("filt").children;
-for (let i = 0; i < 4; i++) {
+for (var i = 0; i < 4; i++) {
     if (selects[i].getAttribute("value") == params["filter"]) {
         selects[i].selected = true;
         break;
     }
 }
 selects = document.getElementById("sort").children;
-for (let i = 0; i < 3; i++) {
+for (i = 0; i < 3; i++) {
     if (selects[i].getAttribute("value") == params["sort"]) {
         selects[i].selected = true;
         break;
@@ -164,7 +164,7 @@ var max_page;
 var flag1, flag2;
 $.ajax({
     url: 'json/max_page.json',  // 'http://localhost:3001/main/max_pages'
-    method: 'post',
+    method: 'get',
     dataType: 'json',
     data: params,
     success: function (data) {

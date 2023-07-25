@@ -1091,6 +1091,7 @@ form{
 }
 .footer {
 	background: #ECF0F1;
+	margin-top: auto;
 }
 .copy-right {
 	float: left;

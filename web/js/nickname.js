@@ -6,7 +6,6 @@ document.getElementById('updateData').addEventListener('click', function () {
         $.ajax({
             url: 'json/server_accept.json',  // 'http://localhost:3001/main/update_nickname'
             method: 'post',
-            dataType: 'json',
             data: {id: '3490589089389489', nickname: newNickname },
             success: function (data) {
                 info();
@@ -40,8 +39,9 @@ document.getElementById('updateData').addEventListener('click', function () {
 var nickname
 $.ajax({
     url: 'json/nickname.json',  // 'http://localhost:3001/main/get_nickname'
-    method: 'post',
+    method: 'get',
     dataType: 'json',
+    data: {id: '3490589089389489'},
     success: function (data) {
         nickname = data["nickname"]
         document.getElementById('nickname').textContent = nickname;
@@ -51,8 +51,9 @@ $.ajax({
 
 $.ajax({
     url: 'json/img.json',  // 'http://localhost:3001/main/get_nickname'
-    method: 'post',
+    method: 'get',
     dataType: 'json',
+    data: {id: '3490589089389489'},
     success: function (data) {
         var avatarUrl = data.img;
         if (avatarUrl) {

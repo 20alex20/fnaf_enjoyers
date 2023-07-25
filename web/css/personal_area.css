@@ -59,7 +59,7 @@
 
 @media (min-width: 768px) {
     .container3 {
-        width: 700px;
+        width: 750px;
     }
 }
 
@@ -356,4 +356,10 @@ a:hover {
 }
 #message p  {
     margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }

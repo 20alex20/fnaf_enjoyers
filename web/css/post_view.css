@@ -200,3 +200,9 @@
 .media-list .media-list {
     margin-left: 40px;
 }
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}

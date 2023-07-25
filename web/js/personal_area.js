@@ -1,4 +1,6 @@
 function info() {
+    if (document.getElementById("message").style.display == "block")
+        return;
     document.getElementById("message").style.display = "block";
     setTimeout(function () {
         document.getElementById("message").style.backgroundColor = "#4cae4c";
@@ -32,6 +34,8 @@ document.getElementById("btn").addEventListener("click", function () {
                     categories.push(small_categories.pop())
         }
     }
+    if (faculties[11].selected)
+        categories.push(faculties[11].value)
 
     var filters = [];
     for (i = 0; i < 3; i++) {
@@ -42,10 +46,12 @@ document.getElementById("btn").addEventListener("click", function () {
 
     var text = document.getElementById("text").value;
 
+    if (categories.length == 0 || text == "")
+        return;
+
     $.ajax({
         url: 'json/server_accept.json',  // 'http://localhost:3001/main/create_post'
         method: 'post',
-        dataType: 'json',
         data: {"categories[]": categories, "filters[]": filters, "text": text}
     });
 
@@ -55,6 +61,7 @@ document.getElementById("btn").addEventListener("click", function () {
             selects[i + 1].children[j].selected = false;
         selects[i + 1].style.display = "none";
     }
+    faculties[11].selected = false;
     selects[0].style.display = "none";
     for (i = 0; i < 3; i++) {
         document.getElementById("filter" + String(i + 1)).checked = false;
@@ -73,7 +80,7 @@ function truncate(str, maxlength) {
 
 $.ajax({
     url: 'json/posts_20.json',  // 'http://localhost:3001/main/my_posts',
-    method: 'post',
+    method: 'get',
     dataType: 'json',
     data: {id: '3490589089389489', what: "my"},
     success: function (data) {
@@ -102,7 +109,7 @@ $.ajax({
 
 $.ajax({
     url: 'json/posts_20.json',  // 'http://localhost:3001/main/my_posts'
-    method: 'post',
+    method: 'get',
     dataType: 'json',
     data: {id: '3490589089389489', what: "liked"},
     success: function (data) {
@@ -131,22 +138,30 @@ $.ajax({
 
 function after_nick() {
     var dict = {funny: "Смешные", instructive: "Поучительные", condemning: "Осуждающие"}
+    var dict2 = {IU: "ИУ", IBM: "ИБМ", SM: "СМ", E: "Э", MT: "МТ", RL: "РЛ", BMT: "БМТ", RK: "РК", FN: "ФН", L: "Л",
+        SGN: "СГН", UR: "ЮР"}
     $.ajax({
         url: 'json/posts_from_moder.json',  // 'http://localhost:3001/main/my_posts'
-        method: 'post',
+        method: 'get',
         dataType: 'json',
         data: {id: '3490589089389489', what: "rejected"},
         success: function (data) {
             for (var j = 0; j < data.length; j++) {
-                let obj = data[j];
-                let arr = [];
+                var obj = data[j];
+                var arr = [];
                 for (var i = 0; i < obj["filters"].length; i++)
-                    arr.push(dict[obj["filters"][i]])
+                    arr.push(dict[obj["filters"][i]]);
+                var arr2 = [];
+                for (i = 0; i < obj["categories"].length; i++)
+                    if (obj["categories"][i].includes("-"))
+                        arr2.push(dict2[obj["categories"][i].split("-")[0]] + '-' + obj["categories"][i].split("-")[1]);
+                    else
+                        arr2.push(dict2[obj["categories"][i]])
                 $("#content-5").append("<div>\n" +
                     "                    <div class=\"post\">\n" +
                     "                        <div class=\"post-header\">\n" +
                     "                            <span>Автор: " + nickname + "</span>\n" +
-                    "                            <span>Категории: " + obj["categories"].join(', ') + "</span>\n" +
+                    "                            <span>Категории: " + arr2.join(', ') + "</span>\n" +
                     "                        </div>\n" +
                     "                        <div class=\"post-header\">\n" +
                     "                            <span>Время: " + obj["date_time"] + "</span>\n" +
