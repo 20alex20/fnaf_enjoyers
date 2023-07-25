@@ -1,0 +1,28 @@
+[
+  {
+    "img":"https://itchief.ru/examples/images/avatar1.jpg",
+    "author": "Дима",
+    "date": "10.01.2023, 12:00",
+    "text": "Lorem ipsum dolor sit amet. Blanditiis praesentium voluptatum deleniti atque. Autem vel illum, qui blanditiis praesentium voluptatum deleniti atque corrupti. Dolor repellendus cum soluta nobis. Corporis suscipit laboriosam, nisi ut enim. Debitis aut perferendis doloribus asperiores repellat. sint, obcaecati cupiditate non numquam eius. Itaque earum rerum facilis. Similique sunt in ea commodi. Dolor repellendus numquam eius modi. Quam nihil molestiae consequatur, vel illum, qui ratione voluptatem accusantium doloremque.",
+    "replies": [
+      {
+        "img":"https://itchief.ru/examples/images/avatar1.jpg",
+        "author": "Анна",
+        "date": "11.01.2023, 14:00",
+        "text": "Thank you for your comment, Дима!"
+      },
+      {
+        "img":"https://itchief.ru/examples/images/avatar1.jpg",
+        "author": "Иван",
+        "date": "11.01.2023, 15:30",
+        "text": "I agree with you, Дима!"
+      }
+    ]
+  },
+  {
+    "img":"https://itchief.ru/examples/images/avatar1.jpg",
+    "author": "Пётр",
+    "date": "10.01.2023, 12:00",
+    "text": "Dolor sit, amet, consectetur, adipisci velit. Aperiam eaque ipsa, quae. Amet, consectetur, adipisci velit, sed quia consequuntur magni dolores. Ab illo inventore veritatis et quasi architecto. Quisquam est, omnis voluptas nulla. Obcaecati cupiditate non numquam eius modi tempora. Corporis suscipit laboriosam, nisi ut labore et aut reiciendis."
+  }
+]
