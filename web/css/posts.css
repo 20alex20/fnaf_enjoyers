@@ -1,5 +1,6 @@
 .posts {
     margin-left: 30px;
+    width: 100%;
 }
 .filter_sort {
     display: flex;
@@ -47,6 +48,7 @@
     position: relative;
 }
 .pagination li .page-link{
+    cursor: pointer;
     color: #2980b9;
     background-color: transparent;
     font-size: 20px;

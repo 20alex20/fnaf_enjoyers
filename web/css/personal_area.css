@@ -211,22 +211,22 @@ a:hover {
     font-size: 16px;
 }
 
-#filters2 {
+.filters2 {
     text-align: left;
     flex-wrap: wrap;
     font-size: 18px;
     font-weight: bold;
     margin: 0 0 10px 0;
 }
-#filters2 label {
+.filters2 label {
     display: flex;
     font-weight: normal;
     margin: 0;
 }
-#filters2 input {
+.filters2 input {
     margin: 10px 10px 10px 20px;
 }
-#filters2 p {
+.filters2 p {
     margin: auto 0;
 }
 
@@ -342,4 +342,18 @@ a:hover {
 .read a:focus {
     text-decoration: none;
     color: initial;
+}
+
+#message {
+    position: fixed;
+    right: 100px;
+    bottom: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 30px;
+    border-radius: 15px;
+    transition: background-color 1s ease, color 1s ease;
+}
+#message p  {
+    margin: 0;
 }

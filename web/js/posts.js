@@ -72,7 +72,7 @@ function numbers() {
     let current = parseInt(params["page"])
     var max, min
     if (current == 1 || current == 2) {
-        min = current
+        min = 1
         max = 5 <= max_page ? 5 : max_page;
     } else if (current == max_page - 1 || current == max_page) {
         min = (max_page - 4) >= 1 ? (max_page - 4) : 1;
