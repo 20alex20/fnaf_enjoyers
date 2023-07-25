@@ -8,8 +8,8 @@ function truncate(str, maxlength) {
 function ajax() {
     document.getElementById("post_20").innerHTML = '';
     $.ajax({
-        url: 'json/posts_20.json', // 'http://localhost:3001/main/posts',
-        method: 'get',
+        url: 'json/posts_20.json',  // 'http://localhost:3001/main/posts'
+        method: 'post',
         dataType: 'json',
         data: params,
         success: function (data) {
@@ -163,8 +163,8 @@ ajax();
 var max_page;
 var flag1, flag2;
 $.ajax({
-    url: 'json/max_page.json', // 'http://localhost:3001/main/max_pages',
-    method: 'get',
+    url: 'json/max_page.json',  // 'http://localhost:3001/main/max_pages'
+    method: 'post',
     dataType: 'json',
     data: params,
     success: function (data) {

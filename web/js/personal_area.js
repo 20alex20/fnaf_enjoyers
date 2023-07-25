@@ -1,3 +1,18 @@
+function info() {
+    document.getElementById("message").style.display = "block";
+    setTimeout(function () {
+        document.getElementById("message").style.backgroundColor = "#4cae4c";
+        document.getElementById("message").style.color = "white";
+        setTimeout(function () {
+            document.getElementById("message").style.backgroundColor = "transparent";
+            document.getElementById("message").style.color = "transparent";
+            setTimeout(function () {
+                document.getElementById("message").style.display = "none";
+            }, 1100);
+        }, 2000);
+    }, 100);
+}
+
 document.getElementById("btn").addEventListener("click", function () {
     var selects = document.getElementById("selects").children;
     var faculties = document.getElementById("faculties").children;
@@ -28,7 +43,7 @@ document.getElementById("btn").addEventListener("click", function () {
     var text = document.getElementById("text").value;
 
     $.ajax({
-        url: 'json/server_accept.json',
+        url: 'json/server_accept.json',  // 'http://localhost:3001/main/create_post'
         method: 'post',
         dataType: 'json',
         data: {"categories[]": categories, "filters[]": filters, "text": text}
@@ -46,18 +61,7 @@ document.getElementById("btn").addEventListener("click", function () {
     }
     document.getElementById("text").value = "";
 
-    document.getElementById("message").style.display = "block";
-    setTimeout(function () {
-        document.getElementById("message").style.backgroundColor = "#4cae4c";
-        document.getElementById("message").style.color = "white";
-        setTimeout(function () {
-            document.getElementById("message").style.backgroundColor = "transparent";
-            document.getElementById("message").style.color = "transparent";
-            setTimeout(function () {
-                document.getElementById("message").style.display = "none";
-            }, 1100);
-        }, 2000);
-    }, 100);
+    info();
 });
 
 function truncate(str, maxlength) {
@@ -68,7 +72,7 @@ function truncate(str, maxlength) {
 }
 
 $.ajax({
-    url: 'json/posts_20.json', // 'http://localhost:3001/main/my_posts',
+    url: 'json/posts_20.json',  // 'http://localhost:3001/main/my_posts',
     method: 'post',
     dataType: 'json',
     data: {id: '3490589089389489', what: "my"},
@@ -97,7 +101,7 @@ $.ajax({
 });
 
 $.ajax({
-    url: 'json/posts_20.json', // 'http://localhost:3001/main/my_posts',
+    url: 'json/posts_20.json',  // 'http://localhost:3001/main/my_posts'
     method: 'post',
     dataType: 'json',
     data: {id: '3490589089389489', what: "liked"},
@@ -125,33 +129,35 @@ $.ajax({
     }
 });
 
-var dict = {funny: "Смешные", instructive: "Поучительные", condemning: "Осуждающие"}
-$.ajax({
-    url: 'json/posts_from_moder.json', // 'http://localhost:3001/main/my_posts',
-    method: 'post',
-    dataType: 'json',
-    data: {id: '3490589089389489', what: "rejected"},
-    success: function (data) {
-        for (var j = 0; j < data.length; j++) {
-            let obj = data[j];
-            let arr = [];
-            for (var i = 0; i < obj["filters"].length; i++)
-                arr.push(dict[obj["filters"][i]])
-            $("#content-5").append("<div>\n" +
-                "                    <div class=\"post\">\n" +
-                "                        <div class=\"post-header\">\n" +
-                "                            <span>Автор: Boba</span>\n" +
-                "                            <span>Категории: " + obj["categories"].join(', ') + "</span>\n" +
-                "                        </div>\n" +
-                "                        <div class=\"post-header\">\n" +
-                "                            <span>Время: " + obj["date_time"] + "</span>\n" +
-                "                            <span>Подкатегории: " + arr.join(', ') + "</span>\n" +
-                "                        </div>\n" +
-                "                        <p style=\"font-size: 14px;\">" + obj["text"] + "</p>\n" +
-                "                        <div><p style=\"font-size: 16px;font-weight: bold;margin: 0;\">Сообщение модератора:</p></div>\n" +
-                "                        <div id=\"moder_message\"><p>" + obj["moder_text"] + "</p></div>\n" +
-                "                    </div>\n" +
-                "                </div>");
+function after_nick() {
+    var dict = {funny: "Смешные", instructive: "Поучительные", condemning: "Осуждающие"}
+    $.ajax({
+        url: 'json/posts_from_moder.json',  // 'http://localhost:3001/main/my_posts'
+        method: 'post',
+        dataType: 'json',
+        data: {id: '3490589089389489', what: "rejected"},
+        success: function (data) {
+            for (var j = 0; j < data.length; j++) {
+                let obj = data[j];
+                let arr = [];
+                for (var i = 0; i < obj["filters"].length; i++)
+                    arr.push(dict[obj["filters"][i]])
+                $("#content-5").append("<div>\n" +
+                    "                    <div class=\"post\">\n" +
+                    "                        <div class=\"post-header\">\n" +
+                    "                            <span>Автор: " + nickname + "</span>\n" +
+                    "                            <span>Категории: " + obj["categories"].join(', ') + "</span>\n" +
+                    "                        </div>\n" +
+                    "                        <div class=\"post-header\">\n" +
+                    "                            <span>Время: " + obj["date_time"] + "</span>\n" +
+                    "                            <span>Подкатегории: " + arr.join(', ') + "</span>\n" +
+                    "                        </div>\n" +
+                    "                        <p style=\"font-size: 14px;\">" + obj["text"] + "</p>\n" +
+                    "                        <div><p style=\"font-size: 16px;font-weight: bold;margin: 0;\">Сообщение модератора:</p></div>\n" +
+                    "                        <div id=\"moder_message\"><p>" + obj["moder_text"] + "</p></div>\n" +
+                    "                    </div>\n" +
+                    "                </div>");
+            }
         }
-    }
-});
+    });
+}
