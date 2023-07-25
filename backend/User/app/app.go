@@ -1,22 +1,23 @@
-package cmd
+package app
 
 import (
 	"fmt"
-	"github.com/fnaf-enjoyers/post-service/pkg/config"
-	"github.com/fnaf-enjoyers/post-service/pkg/repository"
-	"github.com/fnaf-enjoyers/post-service/pkg/route"
-	"github.com/fnaf-enjoyers/post-service/pkg/usecase"
+	"github.com/fnaf-enjoyers/user/config"
+	"github.com/fnaf-enjoyers/user/repository"
+	"github.com/fnaf-enjoyers/user/route"
+	"github.com/fnaf-enjoyers/user/usecase"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
-	_ "github.com/jackc/pgx/v5/stdlib"
+	"github.com/gofiber/fiber/v2/middleware/session"
+	"github.com/gofiber/storage/postgres/v2"
 	"github.com/jmoiron/sqlx"
-	"log"
+	"github.com/sirupsen/logrus"
 	"os"
 )
 
 func Run() {
 	app := fiber.New(fiber.Config{
-		AppName: "Post Service",
+		AppName: "User Service",
 	})
 
 	app.Use(cors.New(cors.Config{
@@ -28,17 +29,17 @@ func Run() {
 
 	err := os.Setenv("CONFIG_PATH", "./config.yml")
 	if err != nil {
-		log.Fatal(err)
+		logrus.Fatal(err)
 	}
 
-	err = os.Setenv("PORT", ":3001")
+	err = os.Setenv("PORT", ":3002")
 	if err != nil {
-		log.Fatal(err)
+		logrus.Fatal(err)
 	}
 
 	cfg, err := config.ReadConfig(os.Getenv("CONFIG_PATH"))
 	if err != nil {
-		log.Fatalf("Cannot read config file: %s", err)
+		logrus.Fatalf("Cannot read config file: %s", err)
 	}
 
 	username := cfg.Repository.DB.Username
@@ -55,7 +56,7 @@ func Run() {
 
 	db, err := sqlx.Connect("pgx", connStr)
 	if err != nil {
-		log.Fatal(err)
+		logrus.Fatal(err)
 	}
 	defer func(db *sqlx.DB) {
 		err = db.Close()
@@ -63,6 +64,11 @@ func Run() {
 			fmt.Printf("Connection is not closed: %s", err)
 		}
 	}(db)
+
+	config.Store = session.New(session.Config{
+		Storage: postgres.New(postgres.Config{
+			ConnectionURI: connStr}),
+	})
 
 	uc := usecase.NewService(cfg)
 	repo := repository.NewRepository(db)
@@ -72,6 +78,6 @@ func Run() {
 
 	err = app.Listen(os.Getenv("PORT"))
 	if err != nil {
-		log.Fatal(err)
+		logrus.Fatal(err)
 	}
 }

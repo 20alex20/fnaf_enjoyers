@@ -1,0 +1,304 @@
+.tabs {
+    font-size: 0;
+    width: 100%;
+}
+
+.tabs > input[type="radio"] {
+    display: none;
+}
+
+.tabs > div {
+    /* скрыть контент по умолчанию */
+    display: none;
+    font-size: 14px;
+}
+
+#tab-btn-1:checked ~ #content-1,
+#tab-btn-2:checked ~ #content-2,
+#tab-btn-3:checked ~ #content-3,
+#tab-btn-4:checked ~ #content-4,
+#tab-btn-5:checked ~ #content-5{
+    display: block;
+    width: 100%;
+}
+
+.tabs > label {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    background-color: #ecf0f1;
+    border: 1px solid #2980b9;
+    border-width: 5px 1px 5px 0;
+    padding: 10px 15px;
+    font-size: 16px;
+    line-height: 1.5;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+    cursor: pointer;
+    position: relative;
+}
+
+.tabs > label:first-of-type {
+    border-width: 5px 1px 5px 5px;
+    border-radius: 25px 0 0 25px;
+}
+
+.tabs > label:last-of-type {
+    border-width: 5px 5px 5px 0;
+    border-radius: 0 25px 25px 0;
+}
+
+.tabs > input[type="radio"]:checked + label {
+    background-color: #71C2FF;
+    color: #ecf0f1;
+}
+
+.read > div {
+    margin-top: 30px;
+}
+
+@media (min-width: 768px) {
+    .container3 {
+        width: 700px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container3 {
+        width: 800px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container3 {
+        width: 800px;
+    }
+}
+
+.comment {
+    background-color: #ecf0f1;
+    border: 5px solid #2980b9;
+    border-radius: 25px;
+    padding: 10px 15px;
+    margin-top: 30px;
+    text-align: right;
+}
+
+
+.comment button {
+    margin: 5px 0 0 0;
+}
+.comment textarea {
+    border-radius: 5px;
+    width: 100%;
+}
+
+.comment > div:first-child > * {
+    font-size: 16px;
+}
+
+.btn-primary:hover {
+    background-color: #357ebd;
+    border-color: #357ebd;
+}
+
+.btn-primary {
+    border-radius: 5px;
+    margin: auto 0 0 0;
+}
+
+.btn-primary {
+    color: #ecf0f1;
+    background-color: #71C2FF;
+    border-color: #71C2FF;
+}
+
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    background-color: #ccc;
+    background-size: cover;
+    background-position: center;
+    margin: 20px auto 0 auto;
+    border: 5px solid #2980b9;
+}
+
+.nickname {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+.level {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.edit-form {
+    margin-top: 20px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    padding: 10px 15px;
+    border-radius: 0 0 21px 21px;
+    text-align: right;
+}
+
+.edit-form > div > div {
+    width: 100%;
+    display: flex;
+    margin: 0 0 10px 0;
+}
+.edit-form > div > div > div {
+    width: 50%;
+    text-align: left;
+}
+
+.edit-form > div > div > div > * {
+    margin: 0;
+}
+
+
+.about_me {
+    background-color: #ecf0f1;
+    border: 5px solid #2980b9;
+    border-radius: 25px;
+    margin-top: 30px;
+    text-align: center;
+}
+.footer a {
+    color: #ecf0f1;
+}
+a:hover {
+    text-decoration: none;
+}
+.read a:hover {
+    color: initial;
+}
+
+.comment > div {
+    display: flex;
+}
+
+
+#categories > div {
+    display: flex;
+    font-size: 18px;
+    width: 50%;
+}
+#categories > div  p {
+    margin: 0 10px 0 0;
+    font-weight: bold;
+}
+#categories > div:first-of-type {
+    margin: 0 0 10px 0;
+}
+#faculties {
+    margin: 0 30px auto 0;
+    border-radius: 5px;
+}
+#selects {
+    display: flex;
+    flex-wrap: wrap;
+}
+#selects select {
+    display: none;
+    margin: 0 0 10px 10px;
+    border-radius: 5px;
+}
+.comment textarea {
+    resize: vertical;
+    font-size: 16px;
+}
+
+#filters2 {
+    text-align: left;
+    flex-wrap: wrap;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+#filters2 label {
+    display: flex;
+    font-weight: normal;
+    margin: 0;
+}
+#filters2 input {
+    margin: 10px 10px 10px 20px;
+}
+#filters2 p {
+    margin: auto 0;
+}
+
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 5px 0;
+}
+.post-header:first-child {
+    margin: 5px 0;
+}
+
+.post-header span {
+    font-size: 16px;
+    color: #777;
+}
+
+.reason-box {
+    display: none;
+    font-size: 14px;
+    margin: 0;
+    width: 100%;
+}
+
+.reject-btn {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    margin: 0 0 5px 0;
+    cursor: pointer;
+}
+
+.accept-btn {
+    background-color: #228B22;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin: 0 5px 5px 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.cancel-reject-btn {
+    background-color: #808080;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin: 5px 5px 5px 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.confirm-reject-btn {
+    margin: 5px 0 5px 0;
+    background-color: #dc3545;
+    color: #fff;
+    font-size: 14px;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.reason-form{
+ 	width: 100%;
+    border-radius: 5px;
+    resize: vertical;
+}
+

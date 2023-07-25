@@ -10,7 +10,7 @@ import (
 //
 // - filter: faculty to search from
 //
-// - order: type of post sorting (date_time, likes, views)
+// - order: type of post sorting (date, likes, views)
 //
 // - number: total number of posts (defining max page)
 //

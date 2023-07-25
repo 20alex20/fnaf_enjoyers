@@ -1,0 +1,6 @@
+repository:
+  db:
+    username: "admin"
+    password: "760gWdrU:Rwn438"
+    host: "localhost:5432"
+    name: "stories.bmstu"

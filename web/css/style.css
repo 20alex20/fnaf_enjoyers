@@ -1000,7 +1000,9 @@ ul.contact-grids li{
 	 list-style: none;
 	 display:inline-block;
 	 margin-left:64px;
-}
+}ul.contact-grids li:first-child{
+	 margin-left:0;
+ }
 li.contact-grid{
 	cursor: pointer;
 	transition: 0.5s ease;
@@ -2100,14 +2102,14 @@ form{
 
 .post > p {
 	font-size: 1.2em;
-	border: 3px dashed #0f3d5a8a;
+	border: 3px dashed #71c2ff;
 	border-radius: 16px;
 	padding: 5px;
+	text-align: justify;
 }
 
-.post div {
+.post > div:last-child {
 	display: flex;
-	justify-content: end;
 	font-size: 20px;
 	font-weight: 600;
 }
@@ -2162,3 +2164,32 @@ form{
 	align-items: center;
 }
 
+body {
+	min-height: 100vh;
+}
+
+
+.btn {
+      transition: transform 0.5s ease;
+    }
+
+.btn.move-right {
+ transform: translateX(60%);
+}
+
+#contact .contact-grid {
+	display: block;
+	margin: 10px 0 0 0;
+}
+
+#contact .contact-grid h4 {
+	font-size: 2em;
+}
+#contact .contact-grid h5 {
+	font-size: 1.5em;
+	margin: 0 0 40px 0;
+}
+
+.hide_class {
+	display: none !important;
+}
