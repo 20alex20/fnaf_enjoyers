@@ -197,4 +197,6 @@
     font-size: 20px;
     font-weight: 600;
 }
-
+.media-list .media-list {
+    margin-left: 40px;
+}
