@@ -1,4 +1,28 @@
-// GET запрос для поста
+function setButtonClass(data) {
+    var button = document.getElementById("like");
+    if (data["state"] === "clicked") {
+        button.classList.add("clicked");
+        button.classList.remove("not_clicked");
+    } else {
+        button.classList.add("not_clicked");
+        button.classList.remove("clicked");
+    }
+}
+
+function sendButtonState(state) {
+    $.ajax({
+        type: "POST",
+        url: "json/like.json",
+        data: { state: state },
+        success: function (data) {
+            console.log("Status successfully updated on the server:", data);
+        },
+        error: function (error) {
+            console.error("Error occurred during the AJAX request:", error);
+        }
+    });
+}
+
 $.ajax({
     url: 'json/post.json',
     method: 'get',
@@ -13,11 +37,24 @@ $.ajax({
             '<button id="like" class="not_clicked">' +
             '<img src="images/icons8-палец-вверх-64-3.png" width="40px" height="40px"/>' +
             '</button></div>');
-        document.getElementById('like').addEventListener('click', function () {
-            var element = document.getElementById('like');
-            if (element.classList.contains("not_clicked")) {
-                element.classList.remove("not_clicked");
-                element.classList.add("clicked");
+
+        $.ajax({
+            type: "GET",
+            url: "json/like.json",
+            dataType: "json",
+            success: function (data) {
+                setButtonClass(data);
+                document.getElementById('like').addEventListener('click', function () {
+                    var element = document.getElementById('like');
+                    if (element.classList.contains("not_clicked")) {
+                        element.classList.remove("not_clicked");
+                        element.classList.add("clicked");
+                        sendButtonState("clicked");
+                    }
+                });
+            },
+            error: function (error) {
+                console.error("Error occurred during the AJAX request:", error);
             }
         });
     },
@@ -58,7 +95,7 @@ function displayComments(comments, container) {
             `;
         container.append(commentElement);
 
-        // Check if there are replies for the comment
+
         if (comment["replies"] && comment["replies"].length > 0) {
             const repliesContainer = $('<ul class="media-list"></ul>');
             container.append(repliesContainer);
@@ -71,7 +108,9 @@ function displayComments(comments, container) {
         classes[i].addEventListener('click', function () {
             element_global = this.parentElement.firstElementChild;
             element_global.classList.add("comment_input_js_2");
-            setTimeout(function () { element_global.style.transition = 'revert'; }, 800);
+            setTimeout(function () {
+                element_global.style.transition = 'revert';
+            }, 800);
         })
     }
 }
@@ -118,8 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
         $.ajax({
             url: 'json/comments.json',
             method: 'POST',
-            data: JSON.stringify(commentData),
-            contentType: 'application/json',
+            data: commentData,
             dataType: 'json',
             success: function (response) {
                 console.log("Comment posted successfully:", response);
@@ -129,6 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
 //Функция для преобразования даты и времени
     function getFormattedDateTime() {
         const currentDate = new Date();
@@ -170,3 +209,4 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 });
+
