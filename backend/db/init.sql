@@ -5,7 +5,6 @@ create table if not exists profile_picture
 (
     id    uuid not null default uuid_generate_v4(),
     link  text not null,
-    title text not null,
     primary key (id)
 );
 
@@ -15,7 +14,7 @@ create or replace function default_picture()
 $$
 select id
 from profile_picture
-where title = 'default'
+where link = 'default.png'
 $$;
 
 drop table if exists "info";
