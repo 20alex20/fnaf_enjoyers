@@ -15,7 +15,7 @@ func (uc *useCase) RegisterUser(req model.RegisterUserRequest, repo repository.R
 
 	if exist {
 		return errors.Errorf(
-			"Пользователь с ником \"%s\" уже существует!",
+			"Пользователь с ником %s уже существует!",
 			req.Nickname)
 	}
 
