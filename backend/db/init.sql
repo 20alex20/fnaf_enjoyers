@@ -1,5 +1,14 @@
 create extension if not exists "uuid-ossp";
 
+drop table if exists profile_picture cascade;
+create table if not exists profile_picture
+(
+    id    uuid not null default uuid_generate_v4(),
+    link  text not null,
+    title text not null,
+    primary key (id)
+);
+
 create or replace function default_picture()
     returns uuid
     language sql as
@@ -15,15 +24,6 @@ create table if not exists "info"
     total_posts int not null default 0,
     total_likes int not null default 0,
     total_views int not null default 0
-);
-
-drop table if exists profile_picture cascade;
-create table if not exists profile_picture
-(
-    id    uuid not null default uuid_generate_v4(),
-    link  text not null,
-    title text not null,
-    primary key (id)
 );
 
 drop table if exists "user" cascade;
