@@ -1,6 +1,6 @@
 module github.com/fnaf-enjoyers/user
 
-go 1.21rc2
+go 1.21
 
 require (
 	github.com/KyleBanks/depth v1.2.1 // indirect
