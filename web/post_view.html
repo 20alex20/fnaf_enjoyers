@@ -373,17 +373,7 @@
         </div>
         <div class="post_comments">
             <div id="postsContainer" class="post"></div>
-            <script type="text/javascript">
-                document.getElementById('like').addEventListener('click', function () {
-                    var element = document.getElementById('like');
-                    if (element.classList.contains("not_clicked")) {
-                        element.classList.remove("not_clicked");
-                        element.classList.add("clicked");
-                    }
-                });
 
-
-            </script>
             <div class="comment">
                 <div><p style="margin: auto auto auto 0;">Комментарии</p><button id="open_comment" class="btn btn-primary">Оставить комментарий</button></div>
                 <div style="margin: 0;height: 0;display: flex;">
@@ -392,25 +382,7 @@
                 </div>
             </div>
             <script type="text/javascript">
-                var element_global
-                document.getElementById('open_comment').addEventListener('click', function () {
-                    element_global = this.parentElement.parentElement.lastElementChild.firstElementChild
-                    let btn = this.parentElement.parentElement.lastElementChild.lastElementChild;
-                    if (element_global.classList.contains("comment_input_js_1")) {
-                        element_global.classList.remove("comment_input_js_1");
-                        element_global.classList.add("comment_input_js_0");
-                        btn.classList.add("comment_input_js_btn_0")
-                        btn.innerHTML = '';
-                        this.parentElement.parentElement.lastElementChild.style.height = "0";
-                    }
-                    else {
-                        element_global.classList.remove("comment_input_js_0");
-                        element_global.classList.add("comment_input_js_1");
-                        btn.classList.remove("comment_input_js_btn_0")
-                        btn.innerHTML = 'Отправить';
-                        this.parentElement.parentElement.lastElementChild.style.height = "130px";
-                    }
-                })
+
             </script>
 
             <div class="comments">
@@ -418,14 +390,7 @@
             </div>
 
             <script type="text/javascript">
-                 var classes = document.getElementsByClassName('btn_js')
-                 for (var i = 0; i < classes.length; i++) {
-                     classes[i].addEventListener('click', function () {
-                         element_global = this.parentElement.firstElementChild;
-                         element_global.classList.add("comment_input_js_2");
-                         setTimeout(function () { element_global.style.transition = 'revert'; }, 800);
-                     })
-                 }
+
                  </script>
         </div>
 
