@@ -18,7 +18,7 @@ func GetNickname() fiber.Handler {
 			return ctx.Status(fiber.StatusUnauthorized).JSON("Unauthorized")
 		}
 
-		res := model.NicknameResponse{Nickname: nickname.(string)}
+		res := model.NicknameJSON{Nickname: nickname.(string)}
 
 		return ctx.Status(fiber.StatusOK).JSON(res)
 	}

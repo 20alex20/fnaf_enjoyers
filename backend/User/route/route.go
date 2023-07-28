@@ -10,11 +10,11 @@ import (
 
 func SetupRoutes(app fiber.Router, uc usecase.UseCase, repo repository.Repository) {
 	user := app.Group("user")
+	user.Get("nickname", handler.GetNickname())
+	user.Post("nickname", handler.ChangeNickname(uc, repo))
 	user.Post("register", handler.RegisterUser(uc, repo))
 	user.Post("auth", handler.AuthUser(uc, repo))
 	user.Post("logout", handler.LogOut())
-	user.Get("whoami", handler.WhoAmI())
-	user.Get("nickname", handler.GetNickname())
 }
 
 func SetupSwagger(app fiber.Router) {

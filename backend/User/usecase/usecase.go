@@ -9,6 +9,7 @@ import (
 type UseCase interface {
 	RegisterUser(req model.RegisterUserRequest, repo repository.Repository) error
 	AuthUser(req model.RegisterUserRequest, repo repository.Repository) error
+	ChangeNickname(old, new string, repo repository.Repository) error
 }
 
 type useCase struct {
