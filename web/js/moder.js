@@ -26,7 +26,6 @@ $.ajax({
     url: 'json/posts_for_moder.json',  // 'http://localhost:3001/moder/posts',
     method: 'get',
     dataType: 'json',
-    data: {id: '3490589089389489'},
     success: function (data) {
         for (var j = 0; j < data.length; j++) {
             var obj = data[j];
@@ -71,33 +70,31 @@ $.ajax({
                 $.ajax({
                     url: 'json/server_accept.json',  // 'http://localhost:3001/moder/posts_verified'
                     method: 'post',
-                    data: {id: '3490589089389489', id_post: id, accept: true},
+                    data: {id_post: id, accept: true},
                     success: function (data) {
                         info();
+                        var parent = document.getElementById("content-1");
+                        parent.removeChild(parent.firstElementChild);
                     }
                 });
-
-                var parent = document.getElementById("content-1");
-                parent.removeChild(parent.firstElementChild);
             });
         }
 
         elems = document.getElementsByClassName("confirm-reject-btn");
         for (i = 0; i < data.length; i++) {
             elems[i].addEventListener("click", function () {
-                var id = parseInt(this.parentElement.parentElement.lastElementChild.innerHTML);
+                var id_post = parseInt(this.parentElement.parentElement.lastElementChild.innerHTML);
                 var text = this.parentElement.firstElementChild.value;
                 $.ajax({
                     url: 'json/server_accept.json',  // 'http://localhost:3001/moder/posts_verified'
                     method: 'post',
-                    data: {id: '3490589089389489', id_post: id, accept: true, text: text},
+                    data: {id_post: id_post, accept: true, text: text},
                     success: function (data) {
                         info();
+                        var parent = document.getElementById("content-1");
+                        parent.removeChild(parent.firstElementChild);
                     }
                 });
-
-                var parent = document.getElementById("content-1");
-                parent.removeChild(parent.firstElementChild);
             });
         }
 

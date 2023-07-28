@@ -1,26 +1,18 @@
-function setButtonClass(data) {
-    var button = document.getElementById("like");
-    if (data["state"] === "clicked") {
-        button.classList.add("clicked");
-        button.classList.remove("not_clicked");
-    } else {
-        button.classList.add("not_clicked");
-        button.classList.remove("clicked");
-    }
-}
-
-function sendButtonState(state) {
-    $.ajax({
-        type: "POST",
-        url: "json/like.json",
-        data: { state: state },
-        success: function (data) {
-            console.log("Status successfully updated on the server:", data);
-        },
-        error: function (error) {
-            console.error("Error occurred during the AJAX request:", error);
-        }
-    });
+function info() {
+    if (document.getElementById("message").style.display == "block")
+        return;
+    document.getElementById("message").style.display = "block";
+    setTimeout(function () {
+        document.getElementById("message").style.backgroundColor = "#4cae4c";
+        document.getElementById("message").style.color = "white";
+        setTimeout(function () {
+            document.getElementById("message").style.backgroundColor = "transparent";
+            document.getElementById("message").style.color = "transparent";
+            setTimeout(function () {
+                document.getElementById("message").style.display = "none";
+            }, 1100);
+        }, 2000);
+    }, 100);
 }
 
 $.ajax({
@@ -28,7 +20,8 @@ $.ajax({
     method: 'get',
     dataType: 'json',
     success: function (data) {
-        $("#postsContainer").append('<div><p>' + data["text"] + '</p></div>' +
+        $("#postsContainer").append('<div><p>' + data["text"] + '</p>' +
+            '<div style="display: none;">' + data["id"] + '</div></div>' +
             '<div><p style="margin-right: auto;">' + data["date_time"] + '</p>' +
             '<img src="images/icons8-удивление-64.png" width="40px" height="40px"/>' +
             '<p>' + data["views"] + '</p>' +
@@ -39,19 +32,32 @@ $.ajax({
             '</button></div>');
 
         $.ajax({
-            type: "GET",
             url: "json/like.json",
+            method: "get",
             dataType: "json",
             success: function (data) {
-                setButtonClass(data);
-                document.getElementById('like').addEventListener('click', function () {
-                    var element = document.getElementById('like');
-                    if (element.classList.contains("not_clicked")) {
-                        element.classList.remove("not_clicked");
-                        element.classList.add("clicked");
-                        sendButtonState("clicked");
-                    }
-                });
+                var button = document.getElementById("like");
+                if (data["state"] === "clicked") {
+                    button.classList.add("clicked");
+                    button.classList.remove("not_clicked");
+                }
+                else {
+                    button.addEventListener('click', function () {
+                        this.classList.add("clicked");
+                        this.classList.remove("not_clicked");
+                        $.ajax({
+                            url: "json/server_accept.json",
+                            method: "post",
+                            data: { state: "clicked" },
+                            success: function (data) {
+                                console.log("Status successfully updated on the server:", data);
+                            },
+                            error: function (error) {
+                                console.error("Error occurred during the AJAX request:", error);
+                            }
+                        });
+                    });
+                }
             },
             error: function (error) {
                 console.error("Error occurred during the AJAX request:", error);
@@ -63,11 +69,9 @@ $.ajax({
     }
 });
 
-
-
 function displayComments(comments, container) {
     comments.forEach(comment => {
-        const commentElement = `
+        var commentElement = `
                 <li class="media">
                     <div class="media-left">
                         <a href="#">
@@ -88,6 +92,7 @@ function displayComments(comments, container) {
                             <div class="panel-footer">
                                 <textarea class="comment_input comment_input_js" rows="3" placeholder="Введите ваш комментарий"></textarea>
                                 <button class="btn btn-primary btn_js">Ответить</button>
+                                <div style="display: none;">${comment["id"]}</div>
                             </div>
                         </div>
                     </div>
@@ -97,9 +102,8 @@ function displayComments(comments, container) {
 
 
         if (comment["replies"] && comment["replies"].length > 0) {
-            const repliesContainer = $('<ul class="media-list"></ul>');
+            var repliesContainer = $('<ul class="media-list"></ul>');
             container.append(repliesContainer);
-            // Recursive call to display nested comments (replies)
             displayComments(comment["replies"], repliesContainer);
         }
     });
@@ -115,20 +119,24 @@ function displayComments(comments, container) {
     }
 }
 
+function get_comments() {
 // GET запрос для комментариев
-$.ajax({
-    url: 'json/comments.json',
-    method: 'GET',
-    dataType: 'json',
-    success: function (data) {
-        const commentsContainer = $('.media-list');
-        displayComments(data, commentsContainer);
-    },
-    error: function (error) {
-        console.error('Error fetching data:', error);
-    }
-});
+    $.ajax({
+        url: 'json/comments.json',
+        method: 'get',
+        dataType: 'json',
+        success: function (data) {
+            var commentsContainer = $('#first-media-list');
+            commentsContainer.empty();
+            displayComments(data, commentsContainer);
+        },
+        error: function (error) {
+            console.error('Error fetching data:', error);
+        }
+    });
+}
 
+get_comments();
 
 //POST запрос с содержимым комментариев(нужно добавить отправку запроса после отправки каждого ответа на комментарий)
 document.addEventListener('DOMContentLoaded', function () {
@@ -153,55 +161,23 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    function sendCommentWithReplies(commentData) {
-        $.ajax({
-            url: 'json/comments.json',
-            method: 'POST',
-            data: commentData,
-            dataType: 'json',
-            success: function (response) {
-                console.log("Comment posted successfully:", response);
-            },
-            error: function (error) {
-                console.error('Error posting comment:', error);
-            }
-        });
-    }
-
-//Функция для преобразования даты и времени
-    function getFormattedDateTime() {
-        const currentDate = new Date();
-        const day = String(currentDate.getDate()).padStart(2, '0');
-        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-        const year = currentDate.getFullYear();
-        const hours = String(currentDate.getHours()).padStart(2, '0');
-        const minutes = String(currentDate.getMinutes()).padStart(2, '0');
-        return `${day}.${month}.${year}, ${hours}:${minutes}`;
-    }
-
-    document.querySelector('.comment_input_js_btn_0').addEventListener('click', function () {
-        const commentText = element_global.value.trim();
+    document.getElementById("comment_send").addEventListener('click', function () {
+        var commentText = element_global.value.trim();
         if (commentText !== "") {
-            const commentData = {
-                text: commentText,
-                author: "user id",
-                datetime: getFormattedDateTime(),
-                replies: []
-            };
-
-            //Ответ по умолчанию
-            const replyText = "This is a reply.";
-            const replyAuthor = "user id";
-            const replyDatetime = getFormattedDateTime();
-            const replyData = {
-                text: replyText,
-                author: replyAuthor,
-                datetime: replyDatetime
-            };
-
-            commentData["replies"].push(replyData);
-
-            sendCommentWithReplies(commentData);
+            var id_post = parseInt(document.getElementById("postsContainer").firstElementChild.lastElementChild.innerHTML);
+            $.ajax({
+                url: 'json/server_accept.json',
+                method: 'post',
+                data: {text: commentText, id_post: id_post},
+                success: function (data) {
+                    info();
+                    console.log("Comment posted successfully:", data);
+                    get_comments();
+                },
+                error: function (error) {
+                    console.error('Error posting comment:', error);
+                }
+            });
 
             //исчезновение текста из textarea после отправки
             element_global.value = "";

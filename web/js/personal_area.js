@@ -52,23 +52,23 @@ document.getElementById("btn").addEventListener("click", function () {
     $.ajax({
         url: 'json/server_accept.json',  // 'http://localhost:3001/main/create_post'
         method: 'post',
-        data: {"categories[]": categories, "filters[]": filters, "text": text}
+        data: {"categories[]": categories, "filters[]": filters, "text": text},
+        success: function (data) {
+            info();
+            for (i = 0; i < 11; i++) {
+                faculties[i].selected = false;
+                for (var j = 0; j < selects[i + 1].children.length; j++)
+                    selects[i + 1].children[j].selected = false;
+                selects[i + 1].style.display = "none";
+            }
+            faculties[11].selected = false;
+            selects[0].style.display = "none";
+            for (i = 0; i < 3; i++) {
+                document.getElementById("filter" + String(i + 1)).checked = false;
+            }
+            document.getElementById("text").value = "";
+        }
     });
-
-    for (i = 0; i < 11; i++) {
-        faculties[i].selected = false;
-        for (var j = 0; j < selects[i + 1].children.length; j++)
-            selects[i + 1].children[j].selected = false;
-        selects[i + 1].style.display = "none";
-    }
-    faculties[11].selected = false;
-    selects[0].style.display = "none";
-    for (i = 0; i < 3; i++) {
-        document.getElementById("filter" + String(i + 1)).checked = false;
-    }
-    document.getElementById("text").value = "";
-
-    info();
 });
 
 function truncate(str, maxlength) {
@@ -82,7 +82,7 @@ $.ajax({
     url: 'json/posts_20.json',  // 'http://localhost:3001/main/my_posts',
     method: 'get',
     dataType: 'json',
-    data: {id: '3490589089389489', what: "my"},
+    data: {what: "my"},
     success: function (data) {
         for (var j = 0; j < data.length; j++) {
             var obj = data[j];
@@ -111,7 +111,7 @@ $.ajax({
     url: 'json/posts_20.json',  // 'http://localhost:3001/main/my_posts'
     method: 'get',
     dataType: 'json',
-    data: {id: '3490589089389489', what: "liked"},
+    data: {what: "liked"},
     success: function (data) {
         for (var j = 0; j < data.length; j++) {
             var obj = data[j];
@@ -144,7 +144,7 @@ function after_nick() {
         url: 'json/posts_from_moder.json',  // 'http://localhost:3001/main/my_posts'
         method: 'get',
         dataType: 'json',
-        data: {id: '3490589089389489', what: "rejected"},
+        data: {what: "rejected"},
         success: function (data) {
             for (var j = 0; j < data.length; j++) {
                 var obj = data[j];
