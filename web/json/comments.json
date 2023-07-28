@@ -7,14 +7,14 @@
     "id": 1,
     "replies": [
       {
-        "img":"https://itchief.ru/examples/images/avatar1.jpg",
+        "img":"https://itchief.ru/examples/images/avatar2.jpg",
         "author": "Анна",
         "date": "11.01.2023, 14:00",
         "text": "Thank you for your comment, Дима!",
         "id": 2
       },
       {
-        "img":"https://itchief.ru/examples/images/avatar1.jpg",
+        "img":"https://itchief.ru/examples/images/avatar3.jpg",
         "author": "Иван",
         "date": "11.01.2023, 15:30",
         "text": "I agree with you, Дима!",
@@ -23,7 +23,7 @@
     ]
   },
   {
-    "img":"https://itchief.ru/examples/images/avatar1.jpg",
+    "img":"https://itchief.ru/examples/images/avatar4.jpg",
     "author": "Пётр",
     "date": "10.01.2023, 12:00",
     "text": "Dolor sit, amet, consectetur, adipisci velit. Aperiam eaque ipsa, quae. Amet, consectetur, adipisci velit, sed quia consequuntur magni dolores. Ab illo inventore veritatis et quasi architecto. Quisquam est, omnis voluptas nulla. Obcaecati cupiditate non numquam eius modi tempora. Corporis suscipit laboriosam, nisi ut labore et aut reiciendis.",

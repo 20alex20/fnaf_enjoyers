@@ -35,9 +35,6 @@
     margin-left: 30px;
 }
 
-.post div {
-    margin-bottom: 10px;
-}
 .post > div > * {
     margin-top: auto !important;
     margin-bottom: auto !important;
@@ -72,6 +69,7 @@
     display: block;
     color: #fff;
     font-size: 1.2em;
+    padding-left: 10px;
 }
 .comments {
     margin-top: 30px;
@@ -198,7 +196,7 @@
     font-weight: 600;
 }
 .media-list .media-list {
-    margin-left: 40px;
+    margin-left: 60px;
 }
 
 #message {
@@ -219,4 +217,8 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+.post > div:last-child {
+    margin: 4px 0 0 0;
 }

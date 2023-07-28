@@ -1,6 +1,6 @@
 document.getElementById('updateData').addEventListener('click', function () {
     var newAvatar = document.getElementById('newAvatar').files[0];
-    var newNickname = document.getElementById('newNickname').value;
+    var newNickname = document.getElementById('newNickname').value.trim();
 
     if (newNickname) {
         $.ajax({
@@ -53,7 +53,7 @@ $.ajax({
     method: 'get',
     dataType: 'json',
     success: function (data) {
-        var avatarUrl = data.img;
+        var avatarUrl = data["img"];
         if (avatarUrl) {
             document.getElementById('avatar').style.backgroundImage = 'url(' + avatarUrl + ')';
         }

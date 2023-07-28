@@ -67,6 +67,7 @@ $.ajax({
         for (i = 0; i < data.length; i++) {
             elems[i].addEventListener("click", function () {
                 var id = parseInt(this.parentElement.lastElementChild.innerHTML);
+                var element_parent = this;
                 $.ajax({
                     url: 'json/server_accept.json',  // 'http://localhost:3001/moder/posts_verified'
                     method: 'post',
@@ -74,7 +75,7 @@ $.ajax({
                     success: function (data) {
                         info();
                         var parent = document.getElementById("content-1");
-                        parent.removeChild(parent.firstElementChild);
+                        parent.removeChild(element_parent.parentElement.parentElement.parentElement);
                     }
                 });
             });
@@ -84,7 +85,10 @@ $.ajax({
         for (i = 0; i < data.length; i++) {
             elems[i].addEventListener("click", function () {
                 var id_post = parseInt(this.parentElement.parentElement.lastElementChild.innerHTML);
-                var text = this.parentElement.firstElementChild.value;
+                var text = this.parentElement.firstElementChild.value.trim();
+                var element_parent_2 = this;
+                if (text.length === 0)
+                    return;
                 $.ajax({
                     url: 'json/server_accept.json',  // 'http://localhost:3001/moder/posts_verified'
                     method: 'post',
@@ -92,7 +96,7 @@ $.ajax({
                     success: function (data) {
                         info();
                         var parent = document.getElementById("content-1");
-                        parent.removeChild(parent.firstElementChild);
+                        parent.removeChild(element_parent_2.parentElement.parentElement.parentElement.parentElement);
                     }
                 });
             });
@@ -116,13 +120,6 @@ $.ajax({
                 reasonBox.style.display = 'none';
                 rejectBtn.style.display = 'block';
                 acceptBtn.style.display = 'block';
-            });
-
-            confirmRejectBtn.addEventListener('click', () => {
-                const rejectionReason = post.querySelector('textarea').value;
-                console.log('Rejection Reason:', rejectionReason);
-
-                post.remove();
             });
         });
     }

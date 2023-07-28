@@ -206,7 +206,7 @@
             <script>
                 document.getElementById("faculties").addEventListener("change", function () {
                     var selects = document.getElementById("selects").children;
-                    var faculties = document.getElementById("faculties").children;
+                    var faculties = this.children;
                     var flag = false;
                     for (var i = 0; i < 11; i++) {
                         if (faculties[i].selected) {
@@ -224,7 +224,7 @@
                 })
             </script>
             <div class="about_me" id="content-4">
-                <div class="avatar" id="avatar" style="background-image: url('placeholder_avatar.jpg')"></div>
+                <div class="avatar" id="avatar" style="background-image: url('images/icons8-аватар-100.png')"></div>
                 <div class="nickname" id="nickname">JohnDoe</div>
                 <div class="level" id="level">&#9734 Уровень: 1205</div>
 

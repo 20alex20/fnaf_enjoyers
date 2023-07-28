@@ -44,7 +44,7 @@ document.getElementById("btn").addEventListener("click", function () {
             filters.push(elem.value);
     }
 
-    var text = document.getElementById("text").value;
+    var text = document.getElementById("text").value.trim();
 
     if (categories.length == 0 || text == "")
         return;
