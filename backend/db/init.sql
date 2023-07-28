@@ -1,4 +1,5 @@
 create extension if not exists "uuid-ossp";
+create extension if not exists pgcrypto;
 
 drop table if exists profile_picture cascade;
 create table if not exists profile_picture

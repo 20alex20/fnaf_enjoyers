@@ -1,19 +1,18 @@
 insert into profile_picture
-    (link, title)
-values ('default.png',
-        'default');
+    (link)
+values ('default.png');
 
 insert into "user"
     (profile_picture_id, nickname, password)
-values ((select id from profile_picture where title = 'default'),
+values ((select id from profile_picture where link = 'default.png'),
         'John Doe',
-        'qwerty-asdf-zxcvb');
+        crypt('john-qwerty', gen_salt('bf', 8)));
 
 insert into "user"
     (profile_picture_id, nickname, password)
-values ((select id from profile_picture where title = 'default'),
+values ((select id from profile_picture where link = 'default.png'),
         'Mary Jane',
-        'yuiop-hjkl-cvbnm');
+        crypt('mary-qwerty', gen_salt('bf', 8)));
 
 insert into post
     (user_id, text, likes, views, accepted)
