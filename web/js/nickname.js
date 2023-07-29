@@ -30,6 +30,7 @@ document.getElementById('updateData').addEventListener('click', function () {
             url: 'json/new_nickname.json',  // 'http://localhost:3001/main/new_nickname'
             method: 'get',
             dataType: 'json',
+            data: {nickname: newNickname},
             success: function (data) {
                 if (!data["there_is"]) {
                     $.ajax({

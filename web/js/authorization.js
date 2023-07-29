@@ -59,6 +59,7 @@ function register() {
         url: 'json/new_nickname.json',  // 'http://localhost:3001/main/new_nickname'
         method: 'get',
         dataType: 'json',
+        data: {nickname: nickname},
         success: function (data) {
             if (!data["there_is"]) {
                 ajax = true;
