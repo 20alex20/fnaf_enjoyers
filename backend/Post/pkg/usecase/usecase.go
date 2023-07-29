@@ -7,16 +7,16 @@ import (
 )
 
 type UseCase interface {
-	UserPost(userID string, repo repository.Repository) ([]model.Post, error)
 	MainPosts(category, filter, sort string, number, page int, repo repository.Repository) ([]model.PostMain, error)
+	CreatePost(categories, filters []string, text, nickname string, repo repository.Repository) error
 }
 
-type service struct {
+type useCase struct {
 	cfg config.Config
 }
 
 func NewService(cfg *config.Config) UseCase {
-	return &service{
+	return &useCase{
 		cfg: *cfg,
 	}
 }

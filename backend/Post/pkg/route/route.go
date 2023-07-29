@@ -11,6 +11,9 @@ import (
 func SetupRoutes(app fiber.Router, uc usecase.UseCase, repo repository.Repository) {
 	main := app.Group("main")
 	main.Get("posts", handler.MainPosts(uc, repo))
+
+	post := app.Group("post")
+	post.Post("create", handler.CreatePost(uc, repo))
 }
 
 func SetupSwagger(app fiber.Router) {

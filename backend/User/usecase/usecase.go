@@ -10,6 +10,7 @@ type UseCase interface {
 	RegisterUser(req model.RegisterUserRequest, repo repository.Repository) error
 	AuthUser(req model.RegisterUserRequest, repo repository.Repository) error
 	ChangeNickname(old, new string, repo repository.Repository) error
+	CreatePost(nickname, text string, categories, filters []string, repo repository.Repository) error
 }
 
 type useCase struct {

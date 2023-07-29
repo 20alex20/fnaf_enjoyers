@@ -15,6 +15,9 @@ func SetupRoutes(app fiber.Router, uc usecase.UseCase, repo repository.Repositor
 	user.Post("register", handler.RegisterUser(uc, repo))
 	user.Post("auth", handler.AuthUser(uc, repo))
 	user.Post("logout", handler.LogOut())
+
+	post := app.Group("post")
+	post.Post("create", handler.CreatePost(uc, repo))
 }
 
 func SetupSwagger(app fiber.Router) {
