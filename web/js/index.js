@@ -12,16 +12,16 @@ my();
 
 function my() {
     $.ajax({
-        url: 'http://localhost:3001/main/posts',         /* Куда пойдет запрос */
-        method: 'get',             /* Метод передачи (post или get) */
-        dataType: 'json',          /* Тип данных в ответе (xml, json, script, html). */
-        data: {category: 'all', filter: "without", sort: array[my_index], number: 2, page: 1},     /* Параметры передаваемые в запросе. */
-        success: function (data) {   /* функция, которая будет выполнена после успешного запроса.  */
+        url: 'json/posts_' + array[my_index] + '.json',  // 'http://localhost:3001/main/posts'
+        method: 'get',
+        dataType: 'json',
+        data: {category: 'all', filter: "without", sort: array[my_index], number: 2, page: 1},
+        success: function (data) {
             for (var j = 0; j < data.length; j++) {
                 var obj = data[j];
                 $("#portfoliolist").append("<div class='portfolio " + dict[array[my_index]] + " mix_all" + (my_index === 0 ? "" : " hide_class") + "' data-cat='" + dict[array[my_index]] + "'" + (my_index === 0 ? " style=' display: inline-block; opacity: 1;'" : "") + ">\n" +
                     "                    <div class='portfolio-wrapper'>\n" +
-                    "                        <a href='#small-dialog' class='b-link-stripe b-animate-go thickbox'>\n" +
+                    "                        <a href=\"http://localhost:3001/main/post_view?id=" + String(obj["id"]) + "\" class='b-link-stripe b-animate-go thickbox'>\n" +
                     "                            <div class='post'>\n" +
                     "                                <p>" + truncate(obj["text"], 500) + "</p>\n" +
                     "                                <div><p style='margin-right: auto;'>" + obj["date_time"] + "</p>\n" +

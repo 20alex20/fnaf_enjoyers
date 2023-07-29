@@ -29,3 +29,17 @@ div#authorization {
         min-height: 650px;
     }
 }
+
+#message {
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 30px;
+    border-radius: 15px;
+    transition: background-color 1s ease, color 1s ease;
+}
+#message p  {
+    margin: 0;
+}
