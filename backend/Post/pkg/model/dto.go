@@ -9,6 +9,7 @@ type PostDTO struct {
 	Text     string    `db:"text"`
 	Views    int       `db:"views"`
 	Likes    int       `db:"likes"`
+	Checked  bool      `db:"checked"`
 	Accepted bool      `db:"accepted"`
 }
 

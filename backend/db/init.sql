@@ -1,10 +1,11 @@
 create extension if not exists "uuid-ossp";
+create extension if not exists pgcrypto;
 
 drop table if exists profile_picture cascade;
 create table if not exists profile_picture
 (
-    id    uuid not null default uuid_generate_v4(),
-    link  text not null,
+    id   uuid not null default uuid_generate_v4(),
+    link text not null,
     primary key (id)
 );
 
@@ -65,6 +66,7 @@ create table if not exists post
     "text"   text      not null,
     views    int       not null default 0,
     likes    int       not null default 0,
+    checked  boolean   not null default false,
     accepted boolean   not null default false,
     primary key (id)
 );

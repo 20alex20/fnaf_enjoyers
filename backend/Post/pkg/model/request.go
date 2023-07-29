@@ -7,3 +7,9 @@ type MainPostRequest struct {
 	Number   int    `json:"number" example:"2"`
 	Page     int    `json:"page" example:"1"`
 }
+
+type CreatePostRequest struct {
+	Categories []string `json:"categories"`
+	Filters    []string `json:"filters"`
+	Text       string   `json:"text"`
+}

@@ -6,11 +6,13 @@ import (
 )
 
 type Repository interface {
-	GetPostByUserID(userID string) ([]model.PostDTO, error)
+	GetPostByNickname(userID string) ([]model.PostDTO, error)
 	GetMainPosts(order string, number, page int) ([]model.PostDTO, error)
 	GetMainPostsFiltered(filter, order string, number, page int) ([]model.PostDTO, error)
 	GetMainPostsCategorized(category, order string, number, page int) ([]model.PostDTO, error)
 	GetMainPostsCF(category, filter, order string, number, page int) ([]model.PostDTO, error)
+	CreatePost(categories, filters []string, text, nickname string) error
+	GetPostsByIDs(IDs []string) ([]model.PostDTO, error)
 }
 
 type repository struct {

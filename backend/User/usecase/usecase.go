@@ -1,14 +1,18 @@
 package usecase
 
 import (
-	"github.com/fnaf-enjoyers/user/config"
-	"github.com/fnaf-enjoyers/user/model"
-	"github.com/fnaf-enjoyers/user/repository"
+	"github.com/fnaf-enjoyers/user-service/config"
+	"github.com/fnaf-enjoyers/user-service/model"
+	"github.com/fnaf-enjoyers/user-service/repository"
 )
 
 type UseCase interface {
 	RegisterUser(req model.RegisterUserRequest, repo repository.Repository) error
 	AuthUser(req model.RegisterUserRequest, repo repository.Repository) error
+	ChangeNickname(old, new string, repo repository.Repository) error
+	CreatePost(nickname, text string, categories, filters []string, repo repository.Repository) error
+	GetUserPosts(nickname string) ([]model.PostUser, error)
+	GetLikedPosts(nickname string, repo repository.Repository) ([]model.PostUser, error)
 }
 
 type useCase struct {

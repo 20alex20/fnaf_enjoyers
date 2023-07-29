@@ -1,13 +1,24 @@
 package handler
 
 import (
-	"github.com/fnaf-enjoyers/user/config"
-	"github.com/fnaf-enjoyers/user/model"
-	"github.com/fnaf-enjoyers/user/repository"
-	"github.com/fnaf-enjoyers/user/usecase"
+	"github.com/fnaf-enjoyers/user-service/config"
+	"github.com/fnaf-enjoyers/user-service/model"
+	"github.com/fnaf-enjoyers/user-service/repository"
+	"github.com/fnaf-enjoyers/user-service/usecase"
 	"github.com/gofiber/fiber/v2"
 )
 
+// AuthUser godoc
+// @Summary Authenticate user
+// @Description Checks user credentials and logs in if successful.
+// @Tags user
+// @Accept json
+// @Param req body model.RegisterUserRequest true "request body"
+// @Failure 500 {string} string
+// @Failure 401 {string} string
+// @Failure 400 {string} string
+// @Success 200 {string} string
+// @Router /user/auth [post]
 func AuthUser(uc usecase.UseCase, repo repository.Repository) fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
 		var req model.RegisterUserRequest

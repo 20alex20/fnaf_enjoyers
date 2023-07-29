@@ -6,10 +6,15 @@ import (
 	_ "github.com/jackc/pgx"
 )
 
-func (r *repository) GetPostByUserID(userID string) ([]model.PostDTO, error) {
+func (r *repository) GetPostByNickname(nickname string) ([]model.PostDTO, error) {
 	var posts []model.PostDTO
 
-	err := r.DB.Select(&posts, "select * from post where user_id = $1", userID)
+	query := `
+		select * from post where user_id = (select id from "user" where nickname=$1)
+		order by date desc;
+`
+
+	err := r.DB.Select(&posts, query, nickname)
 	if err != nil {
 		log.Errorf("Unable to receive user posts: %s", err)
 		return nil, err
