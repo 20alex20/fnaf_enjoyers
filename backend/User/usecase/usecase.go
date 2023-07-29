@@ -12,6 +12,7 @@ type UseCase interface {
 	ChangeNickname(old, new string, repo repository.Repository) error
 	CreatePost(nickname, text string, categories, filters []string, repo repository.Repository) error
 	GetUserPosts(nickname string) ([]model.PostUser, error)
+	GetLikedPosts(nickname string, repo repository.Repository) ([]model.PostUser, error)
 }
 
 type useCase struct {

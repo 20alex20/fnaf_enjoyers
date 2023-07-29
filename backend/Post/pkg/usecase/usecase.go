@@ -10,6 +10,7 @@ type UseCase interface {
 	MainPosts(category, filter, sort string, number, page int, repo repository.Repository) ([]model.PostMain, error)
 	CreatePost(categories, filters []string, text, nickname string, repo repository.Repository) error
 	GetUserPosts(nickname string, repo repository.Repository) ([]model.PostUser, error)
+	GetPostsByIDs(IDs []string, repo repository.Repository) ([]model.PostUser, error)
 }
 
 type useCase struct {

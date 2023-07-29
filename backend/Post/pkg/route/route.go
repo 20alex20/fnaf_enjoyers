@@ -15,6 +15,7 @@ func SetupRoutes(app fiber.Router, uc usecase.UseCase, repo repository.Repositor
 	post := app.Group("post")
 	post.Post("create", handler.CreatePost(uc, repo))
 	post.Get("get", handler.GetUserPosts(uc, repo))
+	post.Post("ids", handler.GetPostsByIDs(uc, repo))
 }
 
 func SetupSwagger(app fiber.Router) {

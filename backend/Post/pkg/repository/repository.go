@@ -12,6 +12,7 @@ type Repository interface {
 	GetMainPostsCategorized(category, order string, number, page int) ([]model.PostDTO, error)
 	GetMainPostsCF(category, filter, order string, number, page int) ([]model.PostDTO, error)
 	CreatePost(categories, filters []string, text, nickname string) error
+	GetPostsByIDs(IDs []string) ([]model.PostDTO, error)
 }
 
 type repository struct {
