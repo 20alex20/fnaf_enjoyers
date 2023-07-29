@@ -1,4 +1,4 @@
-module github.com/fnaf-enjoyers/user
+module github.com/fnaf-enjoyers/user-service
 
 go 1.21
 

@@ -17,7 +17,7 @@ import (
 // - number: total number of posts (defining max page)
 //
 // - page: defines an offset for sql scrolling
-func (s *service) MainPosts(category, filter, sort string, number, page int, repo repository.Repository) ([]model.PostMain, error) {
+func (uc *useCase) MainPosts(category, filter, sort string, number, page int, repo repository.Repository) ([]model.PostMain, error) {
 	filtered := filter != "without"
 	categorized := category != "all"
 

@@ -6,6 +6,9 @@ type Repository interface {
 	CheckUser(nickname string) (bool, error)
 	CreateUser(nickname, password string) error
 	GetPasswordHash(nickname string) (string, error)
+	ChangeNickname(old, new string) error
+	IncrPosts(nickname string) error
+	GetLikedPostsIDs(nickname string) ([]string, error)
 }
 
 type repository struct {
