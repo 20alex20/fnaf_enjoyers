@@ -75,29 +75,167 @@
                 }
             }
         },
-        "/user-post": {
-            "get": {
-                "summary": "Return all user posts",
+        "/post/create": {
+            "post": {
+                "description": "Creates post from current user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "post"
+                ],
+                "summary": "Create post",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "user id",
-                        "name": "user_id",
+                        "example": "\"John Doe\"",
+                        "description": "username",
+                        "name": "nickname",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "request body",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.CreatePostRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.PostUser"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/post/get": {
+            "get": {
+                "description": "Gets current user's posts",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "post"
+                ],
+                "summary": "User posts",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "example": "\"John Doe\"",
+                        "description": "username",
+                        "name": "nickname",
                         "in": "query",
                         "required": true
                     }
                 ],
-                "responses": {}
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.PostUser"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
             }
         }
     },
     "definitions": {
+        "model.CreatePostRequest": {
+            "type": "object",
+            "properties": {
+                "categories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "filters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "text": {
+                    "type": "string"
+                }
+            }
+        },
         "model.PostMain": {
             "type": "object",
             "properties": {
                 "date_time": {
                     "type": "string",
                     "example": "2023.07.20 12:00"
+                },
+                "likes": {
+                    "type": "integer",
+                    "example": 50
+                },
+                "text": {
+                    "type": "string",
+                    "example": "Lorem ipsum"
+                },
+                "views": {
+                    "type": "integer",
+                    "example": 100
+                }
+            }
+        },
+        "model.PostUser": {
+            "type": "object",
+            "properties": {
+                "date_time": {
+                    "type": "string",
+                    "example": "2023.07.20 12:00"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
                 },
                 "likes": {
                     "type": "integer",

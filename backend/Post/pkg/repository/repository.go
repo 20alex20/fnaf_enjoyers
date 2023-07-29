@@ -6,7 +6,7 @@ import (
 )
 
 type Repository interface {
-	GetPostByUserID(userID string) ([]model.PostDTO, error)
+	GetPostByNickname(userID string) ([]model.PostDTO, error)
 	GetMainPosts(order string, number, page int) ([]model.PostDTO, error)
 	GetMainPostsFiltered(filter, order string, number, page int) ([]model.PostDTO, error)
 	GetMainPostsCategorized(category, order string, number, page int) ([]model.PostDTO, error)

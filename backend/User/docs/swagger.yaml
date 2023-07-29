@@ -1,0 +1,244 @@
+definitions:
+  model.CreatePost:
+    properties:
+      categories:
+        items:
+          type: string
+        type: array
+      filters:
+        items:
+          type: string
+        type: array
+      text:
+        example: Lorem ipsum
+        type: string
+    type: object
+  model.NicknameJSON:
+    properties:
+      nickname:
+        example: John Doe
+        type: string
+    type: object
+  model.PostUser:
+    properties:
+      date_time:
+        example: 2023.07.20 12:00
+        type: string
+      id:
+        example: 1
+        type: integer
+      likes:
+        example: 50
+        type: integer
+      text:
+        example: Lorem ipsum
+        type: string
+      views:
+        example: 100
+        type: integer
+    type: object
+  model.RegisterUserRequest:
+    properties:
+      nickname:
+        example: John Doe
+        type: string
+      password:
+        example: john-qwerty
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /post/create:
+    post:
+      consumes:
+      - application/json
+      description: Creates post from current user
+      parameters:
+      - description: request body
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/model.CreatePost'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.PostUser'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Create post
+      tags:
+      - post
+  /post/get:
+    get:
+      description: Gets posts from current user
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.PostUser'
+            type: array
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get user posts
+      tags:
+      - post
+  /user/auth:
+    post:
+      consumes:
+      - application/json
+      description: Checks user credentials and logs in if successful.
+      parameters:
+      - description: request body
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/model.RegisterUserRequest'
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Authenticate user
+      tags:
+      - user
+  /user/logout:
+    post:
+      description: Destroys current session.
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Logs out user
+      tags:
+      - user
+  /user/nickname:
+    get:
+      description: Gets current user's nickname.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.NicknameJSON'
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get current username
+      tags:
+      - user
+    post:
+      consumes:
+      - application/json
+      description: Change nickname for current user
+      parameters:
+      - description: request body
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/model.NicknameJSON'
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Change nickname
+      tags:
+      - user
+  /user/register:
+    post:
+      consumes:
+      - application/json
+      description: Creates new user and processes authentication.
+      parameters:
+      - description: request body
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/model.RegisterUserRequest'
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Register new user
+      tags:
+      - user
+swagger: "2.0"

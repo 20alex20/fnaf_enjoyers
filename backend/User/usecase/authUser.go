@@ -1,8 +1,8 @@
 package usecase
 
 import (
-	"github.com/fnaf-enjoyers/user/model"
-	"github.com/fnaf-enjoyers/user/repository"
+	"github.com/fnaf-enjoyers/user-service/model"
+	"github.com/fnaf-enjoyers/user-service/repository"
 	"github.com/gofiber/fiber/v2"
 	"golang.org/x/crypto/bcrypt"
 )

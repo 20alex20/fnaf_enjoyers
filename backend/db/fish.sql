@@ -68,6 +68,422 @@ values ((select id from "user" where nickname = 'John Doe'),
         true,
         true);
 
+insert into filter
+(title)
+values ('funny');
+
+insert into filter
+(title)
+values ('instructive');
+
+insert into filter
+(title)
+values ('condemning');
+
+insert into category
+(title)
+values ('IU');
+
+insert into category
+(title)
+values ('IU-1');
+
+insert into category
+(title)
+values ('IU-2');
+
+insert into category
+(title)
+values ('IU-3');
+
+insert into category
+(title)
+values ('IU-4');
+
+insert into category
+(title)
+values ('IU-5');
+
+insert into category
+(title)
+values ('IU-6');
+
+insert into category
+(title)
+values ('IU-7');
+
+insert into category
+(title)
+values ('IU-8');
+
+insert into category
+(title)
+values ('IU-9');
+
+insert into category
+(title)
+values ('IU-10');
+
+insert into category
+(title)
+values ('IU-11');
+
+insert into category
+(title)
+values ('IU-12');
+
+insert into category
+(title)
+values ('IBM');
+
+insert into category
+(title)
+values ('IBM-1');
+
+insert into category
+(title)
+values ('IBM-2');
+
+insert into category
+(title)
+values ('IBM-3');
+
+insert into category
+(title)
+values ('IBM-4');
+
+insert into category
+(title)
+values ('IBM-5');
+
+insert into category
+(title)
+values ('IBM-6');
+
+insert into category
+(title)
+values ('IBM-7');
+
+insert into category
+(title)
+values ('SM');
+
+insert into category
+(title)
+values ('SM-1');
+
+insert into category
+(title)
+values ('SM-2');
+
+insert into category
+(title)
+values ('SM-3');
+
+insert into category
+(title)
+values ('SM-4');
+
+insert into category
+(title)
+values ('SM-5');
+
+insert into category
+(title)
+values ('SM-6');
+
+insert into category
+(title)
+values ('SM-7');
+
+insert into category
+(title)
+values ('SM-8');
+
+insert into category
+(title)
+values ('SM-9');
+
+insert into category
+(title)
+values ('SM-10');
+
+insert into category
+(title)
+values ('SM-11');
+
+insert into category
+(title)
+values ('SM-12');
+
+insert into category
+(title)
+values ('SM-13');
+
+insert into category
+(title)
+values ('E');
+
+insert into category
+(title)
+values ('E-1');
+
+insert into category
+(title)
+values ('E-2');
+
+insert into category
+(title)
+values ('E-3');
+
+insert into category
+(title)
+values ('E-4');
+
+insert into category
+(title)
+values ('E-5');
+
+insert into category
+(title)
+values ('E-6');
+
+insert into category
+(title)
+values ('E-7');
+
+insert into category
+(title)
+values ('E-8');
+
+insert into category
+(title)
+values ('E-9');
+
+insert into category
+(title)
+values ('E-10');
+
+insert into category
+(title)
+values ('MT');
+
+insert into category
+(title)
+values ('MT-1');
+
+insert into category
+(title)
+values ('MT-2');
+
+insert into category
+(title)
+values ('MT-3');
+
+insert into category
+(title)
+values ('MT-4');
+
+insert into category
+(title)
+values ('MT-5');
+
+insert into category
+(title)
+values ('MT-6');
+
+insert into category
+(title)
+values ('MT-7');
+
+insert into category
+(title)
+values ('MT-8');
+
+insert into category
+(title)
+values ('MT-9');
+
+insert into category
+(title)
+values ('MT-10');
+
+insert into category
+(title)
+values ('MT-11');
+
+insert into category
+(title)
+values ('MT-12');
+
+insert into category
+(title)
+values ('MT-13');
+
+insert into category
+(title)
+values ('RL');
+
+insert into category
+(title)
+values ('RL-1');
+
+insert into category
+(title)
+values ('RL-2');
+
+insert into category
+(title)
+values ('RL-3');
+
+insert into category
+(title)
+values ('RL-4');
+
+insert into category
+(title)
+values ('RL-5');
+
+insert into category
+(title)
+values ('RL-6');
+
+insert into category
+(title)
+values ('BMT');
+
+insert into category
+(title)
+values ('BMT-1');
+
+insert into category
+(title)
+values ('BMT-2');
+
+insert into category
+(title)
+values ('BMT-3');
+
+insert into category
+(title)
+values ('BMT-4');
+
+insert into category
+(title)
+values ('BMT-5');
+
+insert into category
+(title)
+values ('RK');
+
+insert into category
+(title)
+values ('RK-1');
+
+insert into category
+(title)
+values ('RK-2');
+
+insert into category
+(title)
+values ('RK-3');
+
+insert into category
+(title)
+values ('RK-4');
+
+insert into category
+(title)
+values ('RK-5');
+
+insert into category
+(title)
+values ('RK-6');
+
+insert into category
+(title)
+values ('RK-9');
+
+insert into category
+(title)
+values ('FN');
+
+insert into category
+(title)
+values ('FN-1');
+
+insert into category
+(title)
+values ('FN-2');
+
+insert into category
+(title)
+values ('FN-3');
+
+insert into category
+(title)
+values ('FN-4');
+
+insert into category
+(title)
+values ('FN-5');
+
+insert into category
+(title)
+values ('FN-7');
+
+insert into category
+(title)
+values ('FN-11');
+
+insert into category
+(title)
+values ('FN-12');
+
+insert into category
+(title)
+values ('L');
+
+insert into category
+(title)
+values ('L-1');
+
+insert into category
+(title)
+values ('L-2');
+
+insert into category
+(title)
+values ('L-3');
+
+insert into category
+(title)
+values ('L-4');
+
+insert into category
+(title)
+values ('SGN');
+
+insert into category
+(title)
+values ('SGN-1');
+
+insert into category
+(title)
+values ('SGN-2');
+
+insert into category
+(title)
+values ('SGN-3');
+
+insert into category
+(title)
+values ('SGN-4');
+
+insert into category
+(title)
+values ('UR');
+
 insert into info
     (total_posts, total_likes, total_views)
 values (

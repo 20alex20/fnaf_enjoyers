@@ -1,9 +1,40 @@
 definitions:
+  model.CreatePostRequest:
+    properties:
+      categories:
+        items:
+          type: string
+        type: array
+      filters:
+        items:
+          type: string
+        type: array
+      text:
+        type: string
+    type: object
   model.PostMain:
     properties:
       date_time:
         example: 2023.07.20 12:00
         type: string
+      likes:
+        example: 50
+        type: integer
+      text:
+        example: Lorem ipsum
+        type: string
+      views:
+        example: 100
+        type: integer
+    type: object
+  model.PostUser:
+    properties:
+      date_time:
+        example: 2023.07.20 12:00
+        type: string
+      id:
+        example: 1
+        type: integer
       likes:
         example: 50
         type: integer
@@ -67,14 +98,76 @@ paths:
       summary: Main page posts
       tags:
       - main
-  /user-post:
-    get:
+  /post/create:
+    post:
+      consumes:
+      - application/json
+      description: Creates post from current user
       parameters:
-      - description: user id
+      - description: username
+        example: '"John Doe"'
         in: query
-        name: user_id
+        name: nickname
         required: true
         type: string
-      responses: {}
-      summary: Return all user posts
+      - description: request body
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/model.CreatePostRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.PostUser'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Create post
+      tags:
+      - post
+  /post/get:
+    get:
+      description: Gets current user's posts
+      parameters:
+      - description: username
+        example: '"John Doe"'
+        in: query
+        name: nickname
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.PostUser'
+            type: array
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: User posts
+      tags:
+      - post
 swagger: "2.0"

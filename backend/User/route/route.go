@@ -1,9 +1,9 @@
 package route
 
 import (
-	"github.com/fnaf-enjoyers/user/handler"
-	"github.com/fnaf-enjoyers/user/repository"
-	"github.com/fnaf-enjoyers/user/usecase"
+	"github.com/fnaf-enjoyers/user-service/handler"
+	"github.com/fnaf-enjoyers/user-service/repository"
+	"github.com/fnaf-enjoyers/user-service/usecase"
 	"github.com/gofiber/fiber/v2"
 	fiberSwagger "github.com/swaggo/fiber-swagger"
 )
@@ -18,6 +18,7 @@ func SetupRoutes(app fiber.Router, uc usecase.UseCase, repo repository.Repositor
 
 	post := app.Group("post")
 	post.Post("create", handler.CreatePost(uc, repo))
+	post.Get("get", handler.GetUserPosts(uc))
 }
 
 func SetupSwagger(app fiber.Router) {

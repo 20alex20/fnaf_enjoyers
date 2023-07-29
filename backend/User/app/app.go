@@ -2,10 +2,10 @@ package app
 
 import (
 	"fmt"
-	"github.com/fnaf-enjoyers/user/config"
-	"github.com/fnaf-enjoyers/user/repository"
-	"github.com/fnaf-enjoyers/user/route"
-	"github.com/fnaf-enjoyers/user/usecase"
+	"github.com/fnaf-enjoyers/user-service/config"
+	"github.com/fnaf-enjoyers/user-service/repository"
+	"github.com/fnaf-enjoyers/user-service/route"
+	"github.com/fnaf-enjoyers/user-service/usecase"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/session"

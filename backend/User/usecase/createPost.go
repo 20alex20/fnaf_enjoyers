@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/fnaf-enjoyers/user/model"
-	"github.com/fnaf-enjoyers/user/repository"
+	"github.com/fnaf-enjoyers/user-service/model"
+	"github.com/fnaf-enjoyers/user-service/repository"
 	"net/http"
 )
 
