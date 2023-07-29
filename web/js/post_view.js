@@ -1,22 +1,23 @@
 function info() {
-    if (document.getElementById("message").style.display == "block")
+    var massage_box = document.getElementById("message");
+    if (massage_box.style.display == "block")
         return;
-    document.getElementById("message").style.display = "block";
+    massage_box.style.display = "block";
     setTimeout(function () {
-        document.getElementById("message").style.backgroundColor = "#4cae4c";
-        document.getElementById("message").style.color = "white";
+        massage_box.style.backgroundColor = "#4cae4c";
+        massage_box.style.color = "white";
         setTimeout(function () {
-            document.getElementById("message").style.backgroundColor = "transparent";
-            document.getElementById("message").style.color = "transparent";
+            massage_box.style.backgroundColor = "transparent";
+            massage_box.style.color = "transparent";
             setTimeout(function () {
-                document.getElementById("message").style.display = "none";
+                massage_box.style.display = "none";
             }, 1100);
         }, 2000);
     }, 100);
 }
 
 $.ajax({
-    url: 'json/post.json',
+    url: 'json/post.json',  // 'http://localhost:3001/main/post'
     method: 'get',
     dataType: 'json',
     success: function (data) {
@@ -32,7 +33,7 @@ $.ajax({
             '</button></div>');
 
         $.ajax({
-            url: "json/like.json",
+            url: "json/like.json",  // 'http://localhost:3001/main/like'
             method: "get",
             dataType: "json",
             success: function (data) {
@@ -45,7 +46,7 @@ $.ajax({
                         this.classList.add("clicked");
                         this.classList.remove("not_clicked");
                         $.ajax({
-                            url: "json/server_accept.json",
+                            url: "json/server_accept.json",  // 'http://localhost:3001/main/set_like'
                             method: "post",
                             data: {state: "clicked"},
                             success: function (data) {
@@ -113,7 +114,7 @@ function displayComments(comments, container) {
 function get_comments() {
 // GET запрос для комментариев
     $.ajax({
-        url: 'json/comments.json',
+        url: 'json/comments.json',  // 'http://localhost:3001/main/comments'
         method: 'get',
         dataType: 'json',
         success: function (data) {
@@ -131,7 +132,7 @@ function get_comments() {
                             return;
                         var id_comment = parseInt(this.parentElement.lastElementChild.innerHTML);
                         $.ajax({
-                            url: 'json/server_accept.json',
+                            url: 'json/server_accept.json',  // 'http://localhost:3001/main/comment_comment'
                             method: 'post',
                             data: {text: text, id_comment: id_comment},
                             success: function (data) {
@@ -185,7 +186,7 @@ document.getElementById("comment_send").addEventListener('click', function () {
     if (commentText !== "") {
         var id_post = parseInt(document.getElementById("postsContainer").firstElementChild.lastElementChild.innerHTML);
         $.ajax({
-            url: 'json/server_accept.json',
+            url: 'json/server_accept.json',  // 'http://localhost:3001/main/post_comment'
             method: 'post',
             data: {text: commentText, id_post: id_post},
             success: function (data) {

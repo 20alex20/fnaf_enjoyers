@@ -1,15 +1,53 @@
+function info(flag=false, message="Отправлено") {
+    var massage_box = document.getElementById("message");
+    if (massage_box.style.display == "block")
+        return;
+    var mode_flag = flag;
+    massage_box.firstElementChild.innerHTML = message;
+    massage_box.style.display = "block";
+    setTimeout(function () {
+        if (!mode_flag)
+            massage_box.style.backgroundColor = "#4cae4c";
+        else
+            massage_box.style.backgroundColor = "#dc3545";
+        massage_box.style.color = "white";
+        setTimeout(function () {
+            massage_box.style.backgroundColor = "transparent";
+            massage_box.style.color = "transparent";
+            setTimeout(function () {
+                massage_box.style.display = "none";
+            }, 1100);
+        }, 2000);
+    }, 100);
+}
+
 document.getElementById('updateData').addEventListener('click', function () {
     var newAvatar = document.getElementById('newAvatar').files[0];
     var newNickname = document.getElementById('newNickname').value.trim();
 
     if (newNickname) {
         $.ajax({
-            url: 'json/server_accept.json',  // 'http://localhost:3001/main/update_nickname'
-            method: 'post',
-            data: {nickname: newNickname },
+            url: 'json/new_nickname.json',  // 'http://localhost:3001/main/new_nickname'
+            method: 'get',
+            dataType: 'json',
             success: function (data) {
-                info();
-                document.getElementById('nickname').textContent = newNickname;
+                if (!data["there_is"]) {
+                    $.ajax({
+                        url: 'json/server_accept.json',  // 'http://localhost:3001/main/update_nickname'
+                        method: 'post',
+                        data: {nickname: newNickname},
+                        success: function (data) {
+                            info();
+                            document.getElementById('nickname').textContent = newNickname;
+                            nickname = newNickname;
+                            after_nick();
+                        }
+                    });
+                }
+                else {
+                    info(true, "Этот никнейм уже занят");
+                }
+
             }
         });
     }
@@ -42,7 +80,7 @@ $.ajax({
     method: 'get',
     dataType: 'json',
     success: function (data) {
-        nickname = data["nickname"]
+        nickname = data["nickname"];
         document.getElementById('nickname').textContent = nickname;
         after_nick();
     }

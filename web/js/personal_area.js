@@ -1,20 +1,3 @@
-function info() {
-    if (document.getElementById("message").style.display == "block")
-        return;
-    document.getElementById("message").style.display = "block";
-    setTimeout(function () {
-        document.getElementById("message").style.backgroundColor = "#4cae4c";
-        document.getElementById("message").style.color = "white";
-        setTimeout(function () {
-            document.getElementById("message").style.backgroundColor = "transparent";
-            document.getElementById("message").style.color = "transparent";
-            setTimeout(function () {
-                document.getElementById("message").style.display = "none";
-            }, 1100);
-        }, 2000);
-    }, 100);
-}
-
 document.getElementById("btn").addEventListener("click", function () {
     var selects = document.getElementById("selects").children;
     var faculties = document.getElementById("faculties").children;
@@ -146,6 +129,7 @@ function after_nick() {
         dataType: 'json',
         data: {what: "rejected"},
         success: function (data) {
+            $("#content-5").empty();
             for (var j = 0; j < data.length; j++) {
                 var obj = data[j];
                 var arr = [];

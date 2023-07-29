@@ -1,20 +1,3 @@
-function info() {
-    if (document.getElementById("message").style.display == "block")
-        return;
-    document.getElementById("message").style.display = "block";
-    setTimeout(function () {
-        document.getElementById("message").style.backgroundColor = "#4cae4c";
-        document.getElementById("message").style.color = "white";
-        setTimeout(function () {
-            document.getElementById("message").style.backgroundColor = "transparent";
-            document.getElementById("message").style.color = "transparent";
-            setTimeout(function () {
-                document.getElementById("message").style.display = "none";
-            }, 1100);
-        }, 2000);
-    }, 100);
-}
-
 function after_nick() {
 
 }
