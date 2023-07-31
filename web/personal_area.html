@@ -13,6 +13,16 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 
     <script src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/move-top.js"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
+            });
+        });
+    </script>
 </head>
 <body style="background:url(images/img_posts.png); background-repeat: repeat;">
 <div class="header-top">
@@ -32,223 +42,10 @@
     </div>
 </div>
 <div style="width: 100%; text-align: center;">
-    <div class="container container3" style="display: flex; margin-top: 20px;">
-        <div class="tabs">
-            <input type="radio" name="tab-btn" id="tab-btn-1" value="" checked>
-            <label for="tab-btn-1">Понравившиеся</label>
-            <input type="radio" name="tab-btn" id="tab-btn-2" value="">
-            <label for="tab-btn-2">Мои посты</label>
-            <input type="radio" name="tab-btn" id="tab-btn-5" value="">
-            <label for="tab-btn-5">Отклоненные</label>
-            <input type="radio" name="tab-btn" id="tab-btn-3" value="">
-            <label for="tab-btn-3">Создать пост</label>
-            <input type="radio" name="tab-btn" id="tab-btn-4" value="">
-            <label for="tab-btn-4">Мои данные</label>
+    <div class="container container3" id= "user-block" style="display: flex; margin-top: 20px;">
 
-            <div class="read" id="content-1">
-
-            </div>
-            <div class="read" id="content-2">
-
-            </div>
-            <div class="read" id="content-5">
-
-
-            </div>
-            <div class="comment" id="content-3">
-                <div id="categories">
-                    <div>
-                        <p>Выберите факультеты:</p>
-                        <select id="faculties" multiple size="4">
-                            <option value="IU">ИУ</option>
-                            <option value="IBM">ИБМ</option>
-                            <option value="SM">СМ</option>
-                            <option value="E">Э</option>
-                            <option value="MT">МТ</option>
-                            <option value="RL">РЛ</option>
-                            <option value="BMT">БМТ</option>
-                            <option value="RK">РК</option>
-                            <option value="FN">ФН</option>
-                            <option value="L">Л</option>
-                            <option value="SGN">СГН</option>
-                            <option value="UR">ЮР</option>
-                        </select>
-                    </div>
-                    <div id="selects">
-                        <p style="display: none;">Выберите кафедру: </p>
-                        <select id="IU" multiple size="4">
-                            <option value="IU-1">ИУ-1</option>
-                            <option value="IU-2">ИУ-2</option>
-                            <option value="IU-3">ИУ-3</option>
-                            <option value="IU-4">ИУ-4</option>
-                            <option value="IU-5">ИУ-5</option>
-                            <option value="IU-6">ИУ-6</option>
-                            <option value="IU-7">ИУ-7</option>
-                            <option value="IU-8">ИУ-8</option>
-                            <option value="IU-9">ИУ-9</option>
-                            <option value="IU-10">ИУ-10</option>
-                            <option value="IU-11">ИУ-11</option>
-                            <option value="IU-12">ИУ-12</option>
-                        </select>
-                        <select id="IBM" multiple size="4">
-                            <option value="IBM-1">ИБМ-1</option>
-                            <option value="IBM-2">ИБМ-2</option>
-                            <option value="IBM-3">ИБМ-3</option>
-                            <option value="IBM-4">ИБМ-4</option>
-                            <option value="IBM-5">ИБМ-5</option>
-                            <option value="IBM-6">ИБМ-6</option>
-                            <option value="IBM-7">ИБМ-7</option>
-                        </select>
-                        <select id="SM" multiple size="4">
-                            <option value="SM-1">СМ-1</option>
-                            <option value="SM-2">СМ-2</option>
-                            <option value="SM-3">СМ-3</option>
-                            <option value="SM-4">СМ-4</option>
-                            <option value="SM-5">СМ-5</option>
-                            <option value="SM-6">СМ-6</option>
-                            <option value="SM-7">СМ-7</option>
-                            <option value="SM-8">СМ-8</option>
-                            <option value="SM-9">СМ-9</option>
-                            <option value="SM-10">СМ-10</option>
-                            <option value="SM-11">СМ-11</option>
-                            <option value="SM-12">СМ-12</option>
-                            <option value="SM-13">СМ-13</option>
-                        </select>
-                        <select id="E" multiple size="4">
-                            <option value="E-1">Э-1</option>
-                            <option value="E-2">Э-2</option>
-                            <option value="E-3">Э-3</option>
-                            <option value="E-4">Э-4</option>
-                            <option value="E-5">Э-5</option>
-                            <option value="E-6">Э-6</option>
-                            <option value="E-7">Э-7</option>
-                            <option value="E-8">Э-8</option>
-                            <option value="E-9">Э-9</option>
-                            <option value="E-10">Э-10</option>
-                        </select>
-                        <select id="MT" multiple size="4">
-                            <option value="MT-1">МТ-1</option>
-                            <option value="MT-2">МТ-2</option>
-                            <option value="MT-3">МТ-3</option>
-                            <option value="MT-4">МТ-4</option>
-                            <option value="MT-5">МТ-5</option>
-                            <option value="MT-6">МТ-6</option>
-                            <option value="MT-7">МТ-7</option>
-                            <option value="MT-8">МТ-8</option>
-                            <option value="MT-9">МТ-9</option>
-                            <option value="MT-10">МТ-10</option>
-                            <option value="MT-11">МТ-11</option>
-                            <option value="MT-12">МТ-12</option>
-                            <option value="MT-13">МТ-13</option>
-                        </select>
-                        <select id="RL" multiple size="4">
-                            <option value="RL-1">РЛ-1</option>
-                            <option value="RL-2">РЛ-2</option>
-                            <option value="RL-3">РЛ-3</option>
-                            <option value="RL-4">РЛ-4</option>
-                            <option value="RL-5">РЛ-5</option>
-                            <option value="RL-6">РЛ-6</option>
-                        </select>
-                        <select id="BMT" multiple size="4">
-                            <option value="BMT-1">БМТ-1</option>
-                            <option value="BMT-2">БМТ-2</option>
-                            <option value="BMT-3">БМТ-3</option>
-                            <option value="BMT-4">БМТ-4</option>
-                            <option value="BMT-5">БМТ-5</option>
-                        </select>
-                        <select id="RK" multiple size="4">
-                            <option value="RK-1">РК-1</option>
-                            <option value="RK-2">РК-2</option>
-                            <option value="RK-3">ИУ-3</option>
-                            <option value="RK-4">ИУ-4</option>
-                            <option value="RK-5">ИУ-5</option>
-                            <option value="RK-6">ИУ-6</option>
-                            <option value="RK-9">ИУ-9</option>
-                        </select>
-                        <select id="FN" multiple size="4">
-                            <option value="FN-1">ФН-1</option>
-                            <option value="FN-2">ФН-2</option>
-                            <option value="FN-3">ФН-3</option>
-                            <option value="FN-4">ФН-4</option>
-                            <option value="FN-5">ФН-5</option>
-                            <option value="FN-6">ФН-6</option>
-                            <option value="FN-7">ФН-7</option>
-                            <option value="FN-11">ФН-11</option>
-                            <option value="FN-12">ФН-12</option>
-                        </select>
-                        <select id="L" multiple size="4">
-                            <option value="L-1">Л-1</option>
-                            <option value="L-2">Л-2</option>
-                            <option value="L-3">Л-3</option>
-                            <option value="L-4">Л-4</option>
-                        </select>
-                        <select id="SGN" multiple size="4">
-                            <option value="SGN-1">СГН-1</option>
-                            <option value="SGN-2">СГН-2</option>
-                            <option value="SGN-3">СГН-3</option>
-                            <option value="SGN-4">СГН-4</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="filters2">
-                    <p>Выберите подкатегории:</p>
-                    <label><input type="checkbox" id="filter1" value="funny">
-                        <p>Смешные</p></label>
-                    <label><input type="checkbox" id="filter2" value="instructive">
-                        <p>Поучительные</p></label>
-                    <label><input type="checkbox" id="filter3" value="condemning">
-                        <p>Осуждающие</p></label>
-                </div>
-                <textarea id="text" class="comment_input" rows="6" placeholder="Введите ваш комментарий"></textarea>
-                <button id="btn" class="btn btn-primary">Отправить</button>
-            </div>
-            <script type="text/javascript" src="js/personal_area.js"></script>
-            <script>
-                document.getElementById("faculties").addEventListener("change", function () {
-                    var selects = document.getElementById("selects").children;
-                    var faculties = this.children;
-                    var flag = false;
-                    for (var i = 0; i < 11; i++) {
-                        if (faculties[i].selected) {
-                            selects[i + 1].style.display = "block";
-                            for (var j = 0; j < selects[i + 1].children.length; j++)
-                                selects[i + 1].children[j].selected = true;
-                            flag = true;
-                        } else
-                            selects[i + 1].style.display = "none";
-                    }
-                    if (flag)
-                        selects[0].style.display = "block";
-                    else
-                        selects[0].style.display = "none";
-                })
-            </script>
-            <div class="about_me" id="content-4">
-                <div class="avatar" id="avatar" style="background-image: url('images/icons8-аватар-100.png')"></div>
-                <div class="nickname" id="nickname">JohnDoe</div>
-                <div class="level" id="level">&#9734 Уровень: 1205</div>
-
-                <div class="edit-form">
-                    <div>
-                        <div>
-                            <div><label for="newAvatar" style="font-size: 18px">Сменить аватарку:</label></div>
-                            <div><input type="file" style="font-size: 18px; font-weight: 100;" id="newAvatar"
-                                        accept="image/*"></div>
-                        </div>
-                        <div>
-                            <div><label for="newNickname" style="font-size: 18px">Сменить ник:</label></div>
-                            <div><input type="text" id="newNickname"></div>
-                        </div>
-                    </div>
-                    <button id="updateData" class="btn btn-primary" style="margin:0 0 0 auto;">Сохранить изменения
-                    </button>
-                </div>
-
-
-            </div>
-            <script type="text/javascript" src="js/nickname.js"></script>
-        </div>
     </div>
+    <script type="text/javascript" src="js/lk.js"></script>
 </div>
 <div id="message" style="display:none; background-color: transparent; color:transparent;">
     <p>Отправлено</p>
@@ -268,5 +65,6 @@
         </div>
     </div>
 </div>
+<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"></span></a>
 </body>
 </html>
