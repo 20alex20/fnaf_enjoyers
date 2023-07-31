@@ -3,6 +3,7 @@ $.ajax({
     url: 'json/user_status.json',  // 'http://localhost:3001/main/get_nickname'
     method: 'get',
     dataType: 'json',
+    data: {status: status},
     success: function (data) {
         status = data["status"];
         if (status == "user") {
