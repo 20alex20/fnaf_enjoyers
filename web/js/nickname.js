@@ -1,4 +1,4 @@
-function info(flag=false, message="Отправлено") {
+function info(flag = false, message = "Отправлено") {
     var massage_box = document.getElementById("message");
     if (massage_box.style.display == "block")
         return;
@@ -44,8 +44,7 @@ document.getElementById('updateData').addEventListener('click', function () {
                             after_nick();
                         }
                     });
-                }
-                else {
+                } else {
                     info(true, "Этот никнейм уже занят");
                 }
 
@@ -98,4 +97,20 @@ $.ajax({
         }
     }
 });
-
+$(document).ready(function () {
+    // Add a click event listener to the button with the ID "logout"
+    $("#logout").click(function () {
+        // Send an AJAX POST request to the server
+        $.ajax({
+            url: 'json/server_accept.json',
+            method: 'post',
+            data: {exit: true},
+            success: function (data) {
+                console.log("Exit was requested successfully:", data);
+            },
+            error: function (xhr, status, error) {
+                console.error("Error occurred:", error);
+            }
+        });
+    });
+});

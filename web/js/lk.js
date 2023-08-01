@@ -216,7 +216,7 @@ $.ajax({
             "                        </div>\n" +
             "                    </div>\n" +
             "                    <button id=\"updateData\" class=\"btn btn-primary\" style=\"margin:0 0 0 auto;\">Сохранить изменения</button>\n" +
-            "                    <button id=\"logout\" class=\"btn btn-primary\" style=\"margin:0 0 0 auto; background-color: #ac2925;\">Выйти</button>\n" +
+            "                    <button id=\"logout\" class=\"btn btn-primary2\" style=\"margin:0 0 0 auto;\">Выйти</button>\n" +
             "                </div>\n" +
             "\n" +
             "\n" +
@@ -254,6 +254,7 @@ $.ajax({
                 "                        </div>\n" +
                 "                    </div>\n" +
                 "                    <button id=\"updateData\" class=\"btn btn-primary\" style=\"margin:0 0 0 auto;\">Сохранить изменения\n" +
+                "                    <button id=\"logout\" class=\"btn btn-primary2\" style=\"margin:0 0 0 auto;\">Выйти</button>\n" +
                 "                    </button>\n" +
                 "                </div>\n" +
                 "\n" +

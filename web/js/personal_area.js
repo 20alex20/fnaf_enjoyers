@@ -118,7 +118,6 @@ $.ajax({
         }
     }
 });
-
 function after_nick() {
     var dict = {funny: "Смешные", instructive: "Поучительные", condemning: "Осуждающие"}
     var dict2 = {IU: "ИУ", IBM: "ИБМ", SM: "СМ", E: "Э", MT: "МТ", RL: "РЛ", BMT: "БМТ", RK: "РК", FN: "ФН", L: "Л",
