@@ -47,14 +47,16 @@
                         <h4>Регистрация</h4>
                     </li>
                 </ul>
-                <form method="post" action="authorization" id="login" class="active" onsubmit="return login();">
+
+                <form method="post" action="personal_area.html" id="login" class="active" onsubmit="return login();">
+
                     <input name="nickname" type="text" class="textbox" placeholder="Никнейм">
                     <input name="password" type="password" class="textbox" placeholder="Пароль">
                     <div class="submit">
                         <input type="submit" value="Войти "/>
                     </div>
                 </form>
-                <form method="post" action="authorization" id="register" onsubmit="return register();">
+                <form method="post" onsubmit="return register();" action="personal_area.html" id="register" >
                     <input name="nickname" type="text" class="textbox" placeholder="Никнейм">
                     <input name="password" type="password" class="textbox" placeholder="Пароль">
                     <input type="password" class="textbox" placeholder="Подтвердите пароль">

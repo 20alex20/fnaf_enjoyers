@@ -41,13 +41,24 @@ function check(nickname, password, password_2) {
 function login() {
     var nickname = document.getElementById("login").children[0].value.trim();
     var password = document.getElementById("login").children[1].value.trim();
-    return check(nickname, password, password);
+
+    if (check(nickname, password, password)){
+        $.ajax({
+            url: 'json/new_nickname.json',  // 'http://localhost:3001/main/new_nickname'
+            method: 'post',
+            dataType: 'json',
+            data: {nickname: nickname, password:password},
+            success: function (data) {
+                console.log("login worked successfully");
+            }
+        });
+
+    }
 }
 
 var ajax = false;
+
 function register() {
-    if (ajax)
-        return ajax;
     var regist = document.getElementById("register");
     var nickname = regist.children[0].value.trim();
     var password = regist.children[1].value.trim();
@@ -55,6 +66,9 @@ function register() {
     var answer = check(nickname, password, password_2);
     if (!answer)
         return answer;
+    if (ajax)
+        return ajax;
+
     $.ajax({
         url: 'json/new_nickname.json',  // 'http://localhost:3001/main/new_nickname'
         method: 'get',
@@ -68,6 +82,15 @@ function register() {
             else {
                 info("Этот никнейм уже занят");
             }
+        }
+    });
+    $.ajax({
+        url: 'json/new_nickname.json',  // 'http://localhost:3001/main/new_nickname'
+        method: 'post',
+        dataType: 'json',
+        data: {nickname:nickname, password:password},
+        success: function (data) {
+            console.log("register worked successfully");
         }
     });
     return false;
