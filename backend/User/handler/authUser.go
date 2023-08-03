@@ -43,6 +43,8 @@ func AuthUser(uc usecase.UseCase, repo repository.Repository) fiber.Handler {
 			return ctx.Status(fiber.StatusUnauthorized).JSON(err.Error())
 		}
 
-		return ctx.Status(fiber.StatusOK).JSON("success")
+		ctx.Status(fiber.StatusOK)
+
+		return nil
 	}
 }
