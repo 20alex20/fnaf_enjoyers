@@ -13,6 +13,7 @@ type UseCase interface {
 	CreatePost(nickname, text string, categories, filters []string, repo repository.Repository) error
 	GetUserPosts(nickname string) ([]model.PostUser, error)
 	GetLikedPosts(nickname string, repo repository.Repository) ([]model.PostUser, error)
+	GetUserRole(nickname string, repo repository.Repository) (string, error)
 }
 
 type useCase struct {

@@ -9,6 +9,7 @@ type Repository interface {
 	ChangeNickname(old, new string) error
 	IncrPosts(nickname string) error
 	GetLikedPostsIDs(nickname string) ([]string, error)
+	GetUserRole(nickname string) (*bool, error)
 }
 
 type repository struct {
