@@ -16,7 +16,7 @@ function ajax() {
             for (j = 0; j < data.length; j++) {
                 var obj = data[j];
                 $("#post_20").append("<div>\n" +
-                    "                    <a href=\"http://localhost:3001/main/post_view?id=" + String(obj["id"]) + "\" class=\"b-link-stripe b-animate-go\">\n" +
+                    "                    <a href=\"http://localhost:3001/main/post_view?id=" + obj["id"] + "\" class=\"b-link-stripe b-animate-go\">\n" +
                     "                        <div class=\"post\">\n" +
                     "                            <p>" + truncate(obj["text"], 500) + "</p>\n" +
                     "                            <div><p style=\"margin-right: auto;\">" + obj["date_time"] + "</p>\n" +

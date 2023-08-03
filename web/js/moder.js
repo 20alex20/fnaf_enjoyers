@@ -40,7 +40,7 @@ $.ajax({
                 "                                <button class=\"cancel-reject-btn\">Отмена</button>\n" +
                 "                                <button class=\"confirm-reject-btn\">Удалить окончательно</button>\n" +
                 "                            </div>\n" +
-                "                            <div style='display: none;'>" + String(obj["id"]) + "</div>\n" +
+                "                            <div style='display: none;'>" + obj["id"] + "</div>\n" +
                 "                        </div>\n" +
                 "                    </div>\n" +
                 "                </div>");
