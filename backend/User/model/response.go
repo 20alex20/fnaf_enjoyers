@@ -7,3 +7,7 @@ type PostUser struct {
 	Views    int    `json:"views" example:"100"`
 	Likes    int    `json:"likes" example:"50"`
 }
+
+type CheckUsernameResponse struct {
+	ThereIs bool `json:"there_is"`
+}

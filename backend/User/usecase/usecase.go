@@ -14,6 +14,7 @@ type UseCase interface {
 	GetUserPosts(nickname string) ([]model.PostUser, error)
 	GetLikedPosts(nickname string, repo repository.Repository) ([]model.PostUser, error)
 	GetUserRole(nickname string, repo repository.Repository) (string, error)
+	CheckNickname(nickname string, repo repository.Repository) (bool, error)
 }
 
 type useCase struct {

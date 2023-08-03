@@ -15,6 +15,8 @@ func SetupRoutes(app fiber.Router, uc usecase.UseCase, repo repository.Repositor
 	user.Post("register", handler.RegisterUser(uc, repo))
 	user.Post("auth", handler.AuthUser(uc, repo))
 	user.Post("logout", handler.LogOut())
+	user.Get("role", handler.GetUserRole(uc, repo))
+	user.Post("exist", handler.CheckNickname(uc, repo))
 
 	post := app.Group("post")
 	post.Post("create", handler.CreatePost(uc, repo))

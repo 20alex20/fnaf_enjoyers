@@ -43,11 +43,6 @@ func AuthUser(uc usecase.UseCase, repo repository.Repository) fiber.Handler {
 			return ctx.Status(fiber.StatusUnauthorized).JSON(err.Error())
 		}
 
-		role, err := uc.GetUserRole(req.Nickname, repo)
-		if err != nil {
-			return ctx.Status(fiber.StatusInternalServerError).JSON(err.Error())
-		}
-
-		return ctx.Status(fiber.StatusOK).JSON(model.UserRole{Status: role})
+		return ctx.Status(fiber.StatusOK).JSON("success")
 	}
 }
