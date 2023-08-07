@@ -70,7 +70,7 @@ $.ajax({
         for (var j = 0; j < data.length; j++) {
             var obj = data[j];
             $("#content-1").append("<div>\n" +
-                "                    <a href=\"http://localhost:3001/main/post_view?id=" + obj["id"] + "\" class=\"b-link-stripe b-animate-go\">\n" +
+                "                    <a href=\"post_view.html?id=" + obj["id"] + "\" class=\"b-link-stripe b-animate-go\">\n" +
                 "                        <div class=\"post\">\n" +
                 "                            <p>" + truncate(obj["text"], 500) + "</p>\n" +
                 "                            <div><p style=\"margin-right: auto;\">" + obj["date_time"] + "</p>\n" +
@@ -99,7 +99,7 @@ $.ajax({
         for (var j = 0; j < data.length; j++) {
             var obj = data[j];
             $("#content-2").append("<div>\n" +
-                "                    <a href=\"http://localhost:3001/main/post_view?id=" + obj["id"] + "\" class=\"b-link-stripe b-animate-go\">\n" +
+                "                    <a href=\"post_view.html?id=" + obj["id"] + "\" class=\"b-link-stripe b-animate-go\">\n" +
                 "                        <div class=\"post\">\n" +
                 "                            <p>" + truncate(obj["text"], 500) + "</p>\n" +
                 "                            <div><p style=\"margin-right: auto;\">" + obj["date_time"] + "</p>\n" +
