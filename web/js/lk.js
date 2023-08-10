@@ -3,7 +3,6 @@ $.ajax({
     url: 'json/user_status.json',  // 'http://localhost:3001/main/get_nickname'
     method: 'get',
     dataType: 'json',
-    data: {status: status},
     success: function (data) {
         status = data["status"];
         if (status == "user") {
@@ -216,7 +215,7 @@ $.ajax({
             "                        </div>\n" +
             "                    </div>\n" +
             "                    <button id=\"updateData\" class=\"btn btn-primary\" style=\"margin:0 0 0 auto;\">Сохранить изменения</button>\n" +
-            "                    <button id=\"logout\" class=\"btn btn-primary2\" style=\"margin:0 0 0 auto;\">Выйти</button>\n" +
+            "                    <button id=\"logout\" class=\"btn btn-primary2\" style=\"border: 1px solid;margin-left: 7px;\">Выйти</button>\n" +
             "                </div>\n" +
             "\n" +
             "\n" +
@@ -254,7 +253,7 @@ $.ajax({
                 "                        </div>\n" +
                 "                    </div>\n" +
                 "                    <button id=\"updateData\" class=\"btn btn-primary\" style=\"margin:0 0 0 auto;\">Сохранить изменения\n" +
-                "                    <button id=\"logout\" class=\"btn btn-primary2\" style=\"margin:0 0 0 auto;\">Выйти</button>\n" +
+                "                    <button id=\"logout\" class=\"btn btn-primary2\" style=\"border: 1px solid;margin-left: 7px;\">Выйти</button>\n" +
                 "                    </button>\n" +
                 "                </div>\n" +
                 "\n" +

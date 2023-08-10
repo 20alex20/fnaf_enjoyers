@@ -32,16 +32,48 @@
             <a href="index.html"><img src="images/head-logo.png"/></a>
         </div>
         <div class="top-nav">
-            <span class="menu"> </span>
-            <ul>
-                <li><a href="categories.html">Категории</a></li>
-                <li><a href="index.html#main">О нас</a></li>
-                <li><a href="index.html#contact" class="scroll">Контакты</a></li>
-                <li><a href="authorization.html">Регистрация/Вход</a></li>
-            </ul>
-        </div>
+               </div>
     </div>
 </div>
+<script>
+    function getCookie(name) {
+        const cookies = document.cookie.split('; ');
+        for (const cookie of cookies) {
+            const [cookieName, cookieValue] = cookie.split('=');
+            if (cookieName === name) {
+                return decodeURIComponent(cookieValue);
+            }
+        }
+        return null;
+    }
+
+    function checkAuthorization() {
+        const authToken = getCookie('auth_token');
+        if (authToken) {
+            $(".top-nav").append("<span className=\"menu\"> </span>\n" +
+                "<ul>\n" +
+                "    <li><a href=\"categories.html\">Категории</a></li>\n" +
+                "    <li><a href=\"#main\">О нас</a></li>\n" +
+                "    <li><a href=\"#contact\" className=\"scroll\">Контакты</a></li>\n" +
+                "    <li><a href=\"authorization.html\">Личный кабинет</a></li>\n" +
+                "\n" +
+                "</ul>")
+            console.log('User is authorized!');
+        } else {
+            $(".top-nav").append("<span className=\"menu\"> </span>\n" +
+                "<ul>\n" +
+                "    <li><a href=\"categories.html\">Категории</a></li>\n" +
+                "    <li><a href=\"#main\">О нас</a></li>\n" +
+                "    <li><a href=\"#contact\" className=\"scroll\">Контакты</a></li>\n" +
+                "    <li><a href=\"authorization.html\">Регистрация/Вход</a></li>\n" +
+                "\n" +
+                "</ul>")
+            console.log('User is not authorized.');
+
+        }
+    }
+    checkAuthorization();
+</script>
 <div>
     <div class="container" style="display: flex; margin-top: 20px;">
         <div class="categories">
@@ -417,19 +449,39 @@
 <script type="text/javascript" src="js/posts.js"></script>
 <div class="footer" style="background-color: inherit;">
     <div class="container">
-        <div class="contact-content">
-            <ul class="contact-grids">
-                <li class="contact-grid"><img src="images/logo.png"></li>
-                <li class="contact-grid"><a href="index.html">На главную</a></li>
-                <li class="contact-grid"><a href="categories.html">Категории</a></li>
-                <li class="contact-grid"><a href="index.html#main">О нас</a></li>
-                <li class="contact-grid"><a href="index.html#contact">Контакты</a></li>
-                <li class="contact-grid"><a href="authorization.html">Регистрация/Вход</a></li>
-                <li class="contact-grid"><a href="personal_area.html">Личный кабинет</a></li>
-            </ul>
-        </div>
+        <div class="contact-content" id="footer-ul"></div>
     </div>
 </div>
+<script>
+    function check_footer() {
+        const authToken = getCookie('auth_token');
+        if (authToken) {
+            $("#footer-ul").append("<ul class=\"contact-grids\">\n" +
+                "                <li class=\"contact-grid\"><img src=\"images/logo.png\"></li>\n" +
+                "                <li class=\"contact-grid\"><a href=\"index.html\">На главную</a></li>\n" +
+                "                <li class=\"contact-grid\"><a href=\"categories.html\">Категории</a></li>\n" +
+                "                <li class=\"contact-grid\"><a href=\"#main\">О нас</a></li>\n" +
+                "                <li class=\"contact-grid\"><a href=\"index.html#contact\">Контакты</a></li>\n" +
+                "                <li class=\"contact-grid\"><a href=\"personal_area.html\">Личный кабинет</a></li>\n" +
+                "\n" +
+                "            </ul>")
+            console.log('User is authorized!');
+        } else {
+            $("#footer-ul").append("<ul class=\"contact-grids\">\n" +
+                "                <li class=\"contact-grid\"><img src=\"images/logo.png\"></li>\n" +
+                "                <li class=\"contact-grid\"><a href=\"index.html\">На главную</a></li>\n" +
+                "                <li class=\"contact-grid\"><a href=\"categories.html\">Категории</a></li>\n" +
+                "                <li class=\"contact-grid\"><a href=\"#main\">О нас</a></li>\n" +
+                "                <li class=\"contact-grid\"><a href=\"index.html#contact\">Контакты</a></li>\n" +
+                "                <li class=\"contact-grid\"><a href=\"authorization.html\">Регистрация/Вход</a></li>\n" +
+                "\n" +
+                "            </ul>")
+            console.log('User is not authorized.');
+
+        }
+    }
+    check_footer();
+</script>
 <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"></span></a>
 </body>
 </html>

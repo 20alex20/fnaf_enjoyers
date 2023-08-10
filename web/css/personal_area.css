@@ -205,12 +205,16 @@ a:hover {
     margin: 0 10px 0 0;
     font-weight: bold;
 }
+#categories > div:last-of-type  p {
+    margin: 0;
+}
 #categories > div:first-of-type {
     margin: 0 0 10px 0;
 }
 #faculties {
     margin: 0 30px auto 0;
     border-radius: 5px;
+    width: 80px;
 }
 #selects {
     display: flex;
@@ -220,6 +224,7 @@ a:hover {
     display: none;
     margin: 0 0 10px 10px;
     border-radius: 5px;
+    width: 80px;
 }
 .comment textarea {
     resize: vertical;
