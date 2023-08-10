@@ -7,10 +7,13 @@ import (
 )
 
 type UseCase interface {
-	MainPosts(category, filter, sort string, number, page int, repo repository.Repository) ([]model.PostMain, error)
-	CreatePost(categories, filters []string, text, nickname string, repo repository.Repository) error
-	GetUserPosts(nickname string, repo repository.Repository) ([]model.PostUser, error)
-	GetPostsByIDs(IDs []string, repo repository.Repository) ([]model.PostUser, error)
+	MainPosts(category, filter, sort string, number, page int, repo repository.Repository) ([]model.PostResponse, error)
+	ProcessPostDTO(postsDTO []model.PostDTO) (posts []model.PostResponse)
+	GetUserPosts(nickname string, repo repository.Repository) ([]model.PostResponse, error)
+	GetRejectedPosts(userID string, repo repository.Repository) ([]model.RejectedPostResponse, error)
+	GetLikedPosts(userID string, repo repository.Repository) ([]model.PostResponse, error)
+	GetCheckingPosts(userID string, repo repository.Repository) ([]model.CheckingPostResponse, error)
+	GetPost(postID string, repo repository.Repository) (model.PostResponse, error)
 }
 
 type useCase struct {

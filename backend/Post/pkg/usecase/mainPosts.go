@@ -17,7 +17,7 @@ import (
 // - number: total number of posts (defining max page)
 //
 // - page: defines an offset for sql scrolling
-func (uc *useCase) MainPosts(category, filter, sort string, number, page int, repo repository.Repository) ([]model.PostMain, error) {
+func (uc *useCase) MainPosts(category, filter, sort string, number, page int, repo repository.Repository) ([]model.PostResponse, error) {
 	filtered := filter != "without"
 	categorized := category != "all"
 
@@ -68,18 +68,7 @@ func (uc *useCase) MainPosts(category, filter, sort string, number, page int, re
 		return nil, err
 	}
 
-	var posts []model.PostMain
-
-	for _, postDTO := range postsDTO {
-		post := model.PostMain{
-			Text:     postDTO.Text,
-			DateTime: postDTO.Date.Format("2006.01.02 15:04"),
-			Views:    postDTO.Views,
-			Likes:    postDTO.Likes,
-		}
-
-		posts = append(posts, post)
-	}
+	posts := uc.ProcessPostDTO(postsDTO)
 
 	return posts, nil
 }
