@@ -7,12 +7,9 @@ import (
 )
 
 type UseCase interface {
-	RegisterUser(req model.RegisterUserRequest, repo repository.Repository) error
-	AuthUser(req model.RegisterUserRequest, repo repository.Repository) error
+	RegisterUser(req model.UserRequest, repo repository.Repository) error
+	AuthUser(req model.UserRequest, repo repository.Repository) error
 	ChangeNickname(old, new string, repo repository.Repository) error
-	CreatePost(nickname, text string, categories, filters []string, repo repository.Repository) error
-	GetUserPosts(nickname string) ([]model.PostUser, error)
-	GetLikedPosts(nickname string, repo repository.Repository) ([]model.PostUser, error)
 	GetUserRole(nickname string, repo repository.Repository) (string, error)
 	CheckNickname(nickname string, repo repository.Repository) (bool, error)
 }

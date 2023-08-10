@@ -1,9 +1,13 @@
 package handler
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/fnaf-enjoyers/user-service/config"
-	"github.com/fnaf-enjoyers/user-service/usecase"
+	"github.com/fnaf-enjoyers/user-service/model"
+	"github.com/fnaf-enjoyers/user-service/repository"
 	"github.com/gofiber/fiber/v2"
+	"net/http"
 )
 
 // GetUserPosts godoc
@@ -14,7 +18,7 @@ import (
 // @Failure 401 {string} string
 // @Success 200 {array} model.PostUser
 // @Router /post/get [get]
-func GetUserPosts(uc usecase.UseCase) fiber.Handler {
+func GetUserPosts(repo repository.Repository) fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
 		session, err := config.Store.Get(ctx)
 		if err != nil {
@@ -26,8 +30,24 @@ func GetUserPosts(uc usecase.UseCase) fiber.Handler {
 			return ctx.Status(fiber.StatusUnauthorized).JSON("Unauthorized")
 		}
 
-		posts, err := uc.GetUserPosts(nickname.(string))
+		userID, err := repo.GetUserID(nickname.(string))
 		if err != nil {
+			return ctx.Status(fiber.StatusInternalServerError).JSON(err.Error())
+		}
+
+		postReqUrl := fmt.Sprintf("http://localhost:3001/posts?id=%s", userID)
+		postReq, err := http.NewRequest("GET", postReqUrl, nil)
+		if err != nil {
+			return ctx.Status(fiber.StatusInternalServerError).JSON(err.Error())
+		}
+
+		res, err := http.DefaultClient.Do(postReq)
+		if err != nil {
+			return ctx.Status(fiber.StatusInternalServerError).JSON(err.Error())
+		}
+
+		var posts []model.PostResponse
+		if err = json.NewDecoder(res.Body).Decode(&posts); err != nil {
 			return ctx.Status(fiber.StatusInternalServerError).JSON(err.Error())
 		}
 

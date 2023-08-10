@@ -13,7 +13,7 @@ import (
 // @Description Checks user credentials and logs in if successful.
 // @Tags user
 // @Accept json
-// @Param req body model.RegisterUserRequest true "request body"
+// @Param req body model.UserRequest true "request body"
 // @Failure 500 {string} string
 // @Failure 401 {string} string
 // @Failure 400 {string} string
@@ -21,7 +21,7 @@ import (
 // @Router /user/auth [post]
 func AuthUser(uc usecase.UseCase, repo repository.Repository) fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
-		var req model.RegisterUserRequest
+		var req model.UserRequest
 		err := ctx.BodyParser(&req)
 		if err != nil {
 			return ctx.Status(fiber.StatusBadRequest).JSON(err.Error())
@@ -44,7 +44,6 @@ func AuthUser(uc usecase.UseCase, repo repository.Repository) fiber.Handler {
 		}
 
 		ctx.Status(fiber.StatusOK)
-
 		return nil
 	}
 }

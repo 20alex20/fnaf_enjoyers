@@ -7,7 +7,7 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-func (uc *useCase) AuthUser(req model.RegisterUserRequest, repo repository.Repository) error {
+func (uc *useCase) AuthUser(req model.UserRequest, repo repository.Repository) error {
 	exist, err := repo.CheckUser(req.Nickname)
 	if err != nil {
 		return err

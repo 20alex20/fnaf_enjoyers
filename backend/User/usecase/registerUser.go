@@ -7,7 +7,7 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-func (uc *useCase) RegisterUser(req model.RegisterUserRequest, repo repository.Repository) error {
+func (uc *useCase) RegisterUser(req model.UserRequest, repo repository.Repository) error {
 	exist, err := repo.CheckUser(req.Nickname)
 	if err != nil {
 		return errors.Errorf("Не удалось проверить уникальность имени пользователя")

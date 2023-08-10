@@ -8,8 +8,8 @@ type Repository interface {
 	GetPasswordHash(nickname string) (string, error)
 	ChangeNickname(old, new string) error
 	IncrPosts(nickname string) error
-	GetLikedPostsIDs(nickname string) ([]string, error)
 	GetUserRole(nickname string) (*bool, error)
+	GetUserID(nickname string) (string, error)
 }
 
 type repository struct {
