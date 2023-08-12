@@ -21,6 +21,54 @@ function info(flag = false, message = "Отправлено") {
     }, 100);
 }
 
+function unset_like() {
+    this.classList.add("not_clicked");
+    this.classList.remove("clicked");
+    $.ajax({
+        url: "http://localhost:3002/post/unset-like",  // 'http://localhost:3001/main/set_like'
+        method: "post",
+        crossDomain: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        data: {post_id: this.id_post},
+        success: function (data) {
+            console.log("Status successfully updated on the server:", data);
+            var likes = document.getElementById("likes");
+            likes.innerHTML = String(parseInt(likes.innerHTML) - 1);
+        },
+        error: function (error) {
+            console.error("Error occurred during the AJAX request:", error);
+        }
+    });
+    this.removeEventListener('click', unset_like);
+    this.addEventListener('click', set_like);
+}
+
+function set_like() {
+    this.classList.add("clicked");
+    this.classList.remove("not_clicked");
+    $.ajax({
+        url: "http://localhost:3002/post/set-like",  // 'http://localhost:3001/main/set_like'
+        method: "post",
+        crossDomain: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        data: {post_id: this.id_post},
+        success: function (data) {
+            console.log("Status successfully updated on the server:", data);
+            var likes = document.getElementById("likes");
+            likes.innerHTML = String(parseInt(likes.innerHTML) + 1);
+        },
+        error: function (error) {
+            console.error("Error occurred during the AJAX request:", error);
+        }
+    });
+    this.removeEventListener('click', set_like);
+    this.addEventListener('click', unset_like);
+}
+
 $(document).ready(function () {
     urlParams = new URLSearchParams(window.location.search);
     if (!urlParams.has("id")) {
@@ -39,7 +87,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (data) {
                 $("#postsContainer").append('<div><p>' + data["text"].replace(/\n/g, "</p><p>") + '</p></div>' +
-                    '<div><p style="margin-right: auto;">' + data["date_time"] + '</p>' +
+                    '<div><p style="margin-right: auto; margin-left: 10px;">' + data["date_time"] + '</p>' +
                     '<img src="images/icons8-удивление-64.png" width="40px" height="40px"/>' +
                     '<p>' + data["views"] + '</p>' +
                     '<img src="images/icons8-палец-вверх-64.png" width="40px" height="40px"/>' +
@@ -62,55 +110,13 @@ $(document).ready(function () {
                         if (data["state"] === "clicked") {
                             button.classList.add("clicked");
                             button.classList.remove("not_clicked");
-                            button.addEventListener('click', function () {
-                                if (this.classList.contains("not_clicked"))
-                                    return;
-                                this.classList.add("not_clicked");
-                                this.classList.remove("clicked");
-                                $.ajax({
-                                    url: "http://localhost:3002/post/unset-like",  // 'http://localhost:3001/main/set_like'
-                                    method: "post",
-                                    crossDomain: true,
-                                    xhrFields: {
-                                        withCredentials: true
-                                    },
-                                    data: {post_id: id_post},
-                                    success: function (data) {
-                                        console.log("Status successfully updated on the server:", data);
-                                        var likes = document.getElementById("likes");
-                                        likes.innerHTML = String(parseInt(likes.innerHTML) - 1);
-                                    },
-                                    error: function (error) {
-                                        console.error("Error occurred during the AJAX request:", error);
-                                    }
-                                });
-                            });
+                            button.id_post = id_post;
+                            button.addEventListener('click', unset_like);
                         } else {
                             button.classList.add("not_clicked");
                             button.classList.remove("clicked");
-                            button.addEventListener('click', function () {
-                                if (this.classList.contains("clicked"))
-                                    return;
-                                this.classList.add("clicked");
-                                this.classList.remove("not_clicked");
-                                $.ajax({
-                                    url: "http://localhost:3002/post/set-like",  // 'http://localhost:3001/main/set_like'
-                                    method: "post",
-                                    crossDomain: true,
-                                    xhrFields: {
-                                        withCredentials: true
-                                    },
-                                    data: {post_id: id_post},
-                                    success: function (data) {
-                                        console.log("Status successfully updated on the server:", data);
-                                        var likes = document.getElementById("likes");
-                                        likes.innerHTML = String(parseInt(likes.innerHTML) + 1);
-                                    },
-                                    error: function (error) {
-                                        console.error("Error occurred during the AJAX request:", error);
-                                    }
-                                });
-                            });
+                            button.id_post = id_post;
+                            button.addEventListener('click', set_like);
                         }
                     },
                     error: function (error) {

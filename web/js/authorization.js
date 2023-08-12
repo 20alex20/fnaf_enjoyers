@@ -47,6 +47,7 @@ function login() {
             url: 'http://localhost:3002/user/auth',  // 'http://localhost:3001/main/new_nickname'
             method: 'post',
             crossDomain: true,
+            async: false,
             xhrFields: {
                 withCredentials: true
             },
@@ -76,6 +77,10 @@ function register() {
     $.ajax({
         url: 'http://localhost:3002/user/exist',  // 'http://localhost:3001/main/new_nickname'
         method: 'get',
+        crossDomain: true,
+        xhrFields: {
+            withCredentials: true
+        },
         dataType: 'json',
         data: {nickname: nickname},
         success: function (data) {
@@ -89,6 +94,7 @@ function register() {
                     xhrFields: {
                         withCredentials: true
                     },
+                    async: false,
                     data: {nickname:nickname, password:password},
                     success: function (data) {
                         console.log("register worked successfully");

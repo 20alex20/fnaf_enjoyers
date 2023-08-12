@@ -24,7 +24,7 @@ function my() {
                     "                        <a href=\"post_view.html?id=" + obj["id"] + "\" class='b-link-stripe b-animate-go thickbox'>\n" +
                     "                            <div class='post'>\n" +
                     "                                <p>" + truncate(obj["text"], 500) + "</p>\n" +
-                    "                                <div><p style='margin-right: auto;'>" + obj["date_time"] + "</p>\n" +
+                    "                                <div><p style='margin-right: auto; margin-left: 10px;'>" + obj["date_time"] + "</p>\n" +
                     "                                    <img src='images/icons8-удивление-64.png' width='40px' height='40px'/>\n" +
                     "                                    <p>" + String(obj["views"]) + "</p>\n" +
                     "                                    <img src='images/icons8-палец-вверх-64.png' width='40px' height='40px'/>\n" +
