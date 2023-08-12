@@ -3,7 +3,6 @@ package handler
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/fnaf-enjoyers/user-service/config"
 	"github.com/fnaf-enjoyers/user-service/model"
 	"github.com/fnaf-enjoyers/user-service/repository"
 	"github.com/fnaf-enjoyers/user-service/usecase"
@@ -21,16 +20,6 @@ import (
 // @Router /post [get]
 func GetPost(uc usecase.UseCase, repo repository.Repository) fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
-		session, err := config.Store.Get(ctx)
-		if err != nil {
-			return ctx.Status(fiber.StatusInternalServerError).JSON(err.Error())
-		}
-
-		nickname := session.Get("name")
-		if nickname == nil {
-			return ctx.Status(fiber.StatusUnauthorized).JSON("Unauthorized")
-		}
-
 		postID := ctx.Query("post_id", "")
 		if postID == "" {
 			return ctx.Status(fiber.StatusBadRequest).JSON("post_id is empty")

@@ -40,9 +40,24 @@ func (r *repository) GetMainPostsCF(category, filter, order string, number, page
 	var posts []model.PostDTO
 
 	offset := number * (page - 1)
-	query = fmt.Sprintf("select * from post where id in $1 and checked=true and accepted=true order by %s desc limit 2 offset $2;", order)
+	query = fmt.Sprintf(`
+		select * from post 
+		        where id in (
+		            select pf.post_id 
+				from post_filter pf 
+					inner join post_category pc 
+						on pc.post_id = pf.post_id 
+				where 
+					pf.filter_id in
+					(select id from filter where title = $1)
+				and 
+					pc.category_id in
+					(select id from category where title = $2)
+		        ) 
+			 	and checked=true and accepted=true order by %s desc limit $3 offset $4;
+`, order)
 
-	err = r.DB.Select(&posts, query, postIDs, offset)
+	err = r.DB.Select(&posts, query, filter, category, number, offset)
 	if err != nil {
 		return nil, err
 	}

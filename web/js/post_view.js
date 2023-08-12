@@ -22,6 +22,7 @@ function info(flag = false, message = "Отправлено") {
 }
 
 function unset_like() {
+    this.removeEventListener('click', unauthorized_button);
     this.classList.add("not_clicked");
     this.classList.remove("clicked");
     $.ajax({
@@ -46,6 +47,7 @@ function unset_like() {
 }
 
 function set_like() {
+    this.removeEventListener('click', unauthorized_button);
     this.classList.add("clicked");
     this.classList.remove("not_clicked");
     $.ajax({
@@ -63,10 +65,15 @@ function set_like() {
         },
         error: function (error) {
             console.error("Error occurred during the AJAX request:", error);
+            info(true, 'Вы не авторизованы');
         }
     });
     this.removeEventListener('click', set_like);
     this.addEventListener('click', unset_like);
+}
+
+function unauthorized_button() {
+    info(true, 'Вы не авторизованы');
 }
 
 $(document).ready(function () {
@@ -87,7 +94,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (data) {
                 $("#postsContainer").append('<div><p>' + data["text"].replace(/\n/g, "</p><p>") + '</p></div>' +
-                    '<div><p style="margin-right: auto; margin-left: 10px;">' + data["date_time"] + '</p>' +
+                    '<div><p style="margin-right: auto; padding-right: 10px;">' + data["date_time"] + '</p>' +
                     '<img src="images/icons8-удивление-64.png" width="40px" height="40px"/>' +
                     '<p>' + data["views"] + '</p>' +
                     '<img src="images/icons8-палец-вверх-64.png" width="40px" height="40px"/>' +
@@ -111,16 +118,20 @@ $(document).ready(function () {
                             button.classList.add("clicked");
                             button.classList.remove("not_clicked");
                             button.id_post = id_post;
+                            button.removeEventListener('click', unauthorized_button);
                             button.addEventListener('click', unset_like);
                         } else {
                             button.classList.add("not_clicked");
                             button.classList.remove("clicked");
                             button.id_post = id_post;
+                            button.removeEventListener('click', unauthorized_button);
                             button.addEventListener('click', set_like);
                         }
                     },
                     error: function (error) {
                         console.error("Error occurred during the AJAX request:", error);
+                        var button = document.getElementById("like");
+                        button.addEventListener('click', unauthorized_button);
                     }
                 });
             },
@@ -204,6 +215,7 @@ $(document).ready(function () {
                                         get_comments();
                                     },
                                     error: function (error) {
+                                        info(true, 'Вы не авторизованы');
                                         console.error('Error posting comment:', error);
                                     }
                                 });
@@ -264,6 +276,7 @@ $(document).ready(function () {
                     },
                     error: function (error) {
                         console.error('Error posting comment:', error);
+                        info(true, 'Вы не авторизованы');
                     }
                 });
             }
