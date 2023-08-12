@@ -42,6 +42,8 @@ function login() {
     var nickname = document.getElementById("login").children[0].value.trim();
     var password = document.getElementById("login").children[1].value.trim();
 
+    let res = false;
+
     if (check(nickname, password, password)){
         $.ajax({
             url: 'http://localhost:3002/user/auth',  // 'http://localhost:3001/main/new_nickname'
@@ -51,14 +53,21 @@ function login() {
             xhrFields: {
                 withCredentials: true
             },
-            dataType: 'json',
             data: {nickname: nickname, password:password},
-            success: function (data) {
-                console.log("login worked successfully");
-            }
+            statusCode: {
+                200: function () {
+                    console.log("login worked successfully");
+                    res = true
+                }
+            },
         });
-
     }
+
+    if (!res) {
+        info("Не удалось выполнить вход: неверный логин/пароль");
+    }
+
+    return res;
 }
 
 var ajax = false;
@@ -95,10 +104,12 @@ function register() {
                         withCredentials: true
                     },
                     async: false,
+                    statusCode: {
+                        200: function () {
+                            console.log("register worked successfully");
+                        }
+                    },
                     data: {nickname:nickname, password:password},
-                    success: function (data) {
-                        console.log("register worked successfully");
-                    }
                 });
 
                 regist.submit();
