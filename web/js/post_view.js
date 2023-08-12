@@ -27,11 +27,15 @@ $(document).ready(function () {
         info(true, "Не указан id поста")
     } else {
         document.getElementsByClassName("post_comments")[0].style.display = "block";
-        var id_post = parseInt(urlParams.get("id"));
+        var id_post = urlParams.get("id");
         $.ajax({
-            url: 'json/post.json',  // 'http://localhost:3001/main/post'
+            url: 'http://localhost:3002/post',  // 'http://localhost:3001/main/post'
             method: 'get',
-            data: {id_post: id_post},
+            crossDomain: true,
+            xhrFields: {
+                withCredentials: true
+            },
+            data: {post_id: id_post},
             dataType: 'json',
             success: function (data) {
                 $("#postsContainer").append('<div><p>' + data["text"].replace(/\n/g, "</p><p>") + '</p></div>' +
@@ -45,25 +49,58 @@ $(document).ready(function () {
                     '</button></div>');
 
                 $.ajax({
-                    url: "json/like.json",  // 'http://localhost:3001/main/like'
+                    url: "http://localhost:3002/post/check-like",  // 'http://localhost:3001/main/like'
                     method: "get",
-                    data: {id_post: id_post},
+                    crossDomain: true,
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    data: {post_id: id_post},
                     dataType: "json",
                     success: function (data) {
                         var button = document.getElementById("like");
                         if (data["state"] === "clicked") {
                             button.classList.add("clicked");
                             button.classList.remove("not_clicked");
+                            button.addEventListener('click', function () {
+                                if (this.classList.contains("not_clicked"))
+                                    return;
+                                this.classList.add("not_clicked");
+                                this.classList.remove("clicked");
+                                $.ajax({
+                                    url: "http://localhost:3002/post/unset-like",  // 'http://localhost:3001/main/set_like'
+                                    method: "post",
+                                    crossDomain: true,
+                                    xhrFields: {
+                                        withCredentials: true
+                                    },
+                                    data: {post_id: id_post},
+                                    success: function (data) {
+                                        console.log("Status successfully updated on the server:", data);
+                                        var likes = document.getElementById("likes");
+                                        likes.innerHTML = String(parseInt(likes.innerHTML) - 1);
+                                    },
+                                    error: function (error) {
+                                        console.error("Error occurred during the AJAX request:", error);
+                                    }
+                                });
+                            });
                         } else {
+                            button.classList.add("not_clicked");
+                            button.classList.remove("clicked");
                             button.addEventListener('click', function () {
                                 if (this.classList.contains("clicked"))
                                     return;
                                 this.classList.add("clicked");
                                 this.classList.remove("not_clicked");
                                 $.ajax({
-                                    url: "json/server_accept.json",  // 'http://localhost:3001/main/set_like'
+                                    url: "http://localhost:3002/post/set-like",  // 'http://localhost:3001/main/set_like'
                                     method: "post",
-                                    data: {id_post: id_post},
+                                    crossDomain: true,
+                                    xhrFields: {
+                                        withCredentials: true
+                                    },
+                                    data: {post_id: id_post},
                                     success: function (data) {
                                         console.log("Status successfully updated on the server:", data);
                                         var likes = document.getElementById("likes");
@@ -129,9 +166,9 @@ $(document).ready(function () {
         function get_comments() {
 // GET запрос для комментариев
             $.ajax({
-                url: 'json/comments.json',  // 'http://localhost:3001/main/comments'
+                url: 'http://localhost:3001/post/comments',  // 'http://localhost:3001/main/comments'
                 method: 'get',
-                data: {id_post: id_post},
+                data: {post_id: id_post},
                 dataType: 'json',
                 success: function (data) {
                     var commentsContainer = $('#first-media-list');
@@ -146,11 +183,15 @@ $(document).ready(function () {
                                 var text = element.value.trim();
                                 if (text.length === 0)
                                     return;
-                                var id_comment = parseInt(this.parentElement.lastElementChild.innerHTML);
+                                var id_comment = this.parentElement.lastElementChild.innerHTML;
                                 $.ajax({
-                                    url: 'json/server_accept.json',  // 'http://localhost:3001/main/comment_comment'
+                                    url: 'http://localhost:3002/post/comment',  // 'http://localhost:3001/main/comment_comment'
                                     method: 'post',
-                                    data: {text: text, id_comment: id_comment},
+                                    crossDomain: true,
+                                    xhrFields: {
+                                        withCredentials: true
+                                    },
+                                    data: {text: text, reference_id: id_comment},
                                     success: function (data) {
                                         info();
                                         console.log("Comment posted successfully:", data);
@@ -201,9 +242,13 @@ $(document).ready(function () {
             var element_text = this.parentElement.firstElementChild;
             if (commentText !== "") {
                 $.ajax({
-                    url: 'json/server_accept.json',  // 'http://localhost:3001/main/post_comment'
+                    url: 'http://localhost:3002/post/comment',  // 'http://localhost:3001/main/post_comment'
                     method: 'post',
-                    data: {text: commentText, id_post: id_post},
+                    crossDomain: true,
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    data: {text: commentText, reference_id: id_post},
                     success: function (data) {
                         info();
                         console.log("Comment posted successfully:", data);

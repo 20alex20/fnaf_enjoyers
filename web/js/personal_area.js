@@ -33,9 +33,13 @@ document.getElementById("btn").addEventListener("click", function () {
         return;
 
     $.ajax({
-        url: 'json/server_accept.json',  // 'http://localhost:3001/main/create_post'
+        url: 'http://localhost:3002/post/create',  // 'http://localhost:3001/main/create_post'
         method: 'post',
-        data: {"categories[]": categories, "filters[]": filters, "text": text},
+        crossDomain: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        data: {"categories": categories, "filters": filters, "text": text},
         success: function (data) {
             info();
             for (i = 0; i < 11; i++) {
@@ -62,10 +66,12 @@ function truncate(str, maxlength) {
 }
 
 $.ajax({
-    url: 'json/posts_20.json',  // 'http://localhost:3001/main/my_posts',
+    url: 'http://localhost:3002/posts/liked',  // 'http://localhost:3001/main/my_posts',
     method: 'get',
-    dataType: 'json',
-    data: {what: "my"},
+    crossDomain: true,
+    xhrFields: {
+        withCredentials: true
+    },
     success: function (data) {
         for (var j = 0; j < data.length; j++) {
             var obj = data[j];
@@ -91,10 +97,12 @@ $.ajax({
 });
 
 $.ajax({
-    url: 'json/posts_20.json',  // 'http://localhost:3001/main/my_posts'
+    url: 'http://localhost:3002/posts',  // 'http://localhost:3001/main/my_posts'
     method: 'get',
-    dataType: 'json',
-    data: {what: "liked"},
+    crossDomain: true,
+    xhrFields: {
+        withCredentials: true
+    },
     success: function (data) {
         for (var j = 0; j < data.length; j++) {
             var obj = data[j];
@@ -123,10 +131,12 @@ function after_nick() {
     var dict2 = {IU: "ИУ", IBM: "ИБМ", SM: "СМ", E: "Э", MT: "МТ", RL: "РЛ", BMT: "БМТ", RK: "РК", FN: "ФН", L: "Л",
         SGN: "СГН", UR: "ЮР"}
     $.ajax({
-        url: 'json/posts_from_moder.json',  // 'http://localhost:3001/main/my_posts'
+        url: 'http://localhost:3002/posts/rejected',  // 'http://localhost:3001/main/my_posts'
         method: 'get',
-        dataType: 'json',
-        data: {what: "rejected"},
+        crossDomain: true,
+        xhrFields: {
+            withCredentials: true
+        },
         success: function (data) {
             $("#content-5").empty();
             for (var j = 0; j < data.length; j++) {

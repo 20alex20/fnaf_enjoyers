@@ -39,10 +39,8 @@ func (r *repository) GetMainPostsCF(category, filter, order string, number, page
 
 	var posts []model.PostDTO
 
-	r.PageCorrection(&page, number, 2)
-
-	offset := 2 * (page - 1)
-	query = fmt.Sprintf("select * from post where id in $1 order by %s desc limit 2 offset $2", order)
+	offset := number * (page - 1)
+	query = fmt.Sprintf("select * from post where id in $1 and checked=true and accepted=true order by %s desc limit 2 offset $2;", order)
 
 	err = r.DB.Select(&posts, query, postIDs, offset)
 	if err != nil {

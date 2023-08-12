@@ -2,7 +2,6 @@ package handler
 
 import (
 	"github.com/fnaf-enjoyers/user-service/config"
-	"github.com/fnaf-enjoyers/user-service/model"
 	"github.com/fnaf-enjoyers/user-service/repository"
 	"github.com/fnaf-enjoyers/user-service/usecase"
 	"github.com/gofiber/fiber/v2"
@@ -31,18 +30,17 @@ func ChangeNickname(uc usecase.UseCase, repo repository.Repository) fiber.Handle
 			return ctx.Status(fiber.StatusUnauthorized).JSON("Unauthorized")
 		}
 
-		var req model.NicknameJSON
-		err = ctx.BodyParser(&req)
-		if err != nil {
-			return ctx.Status(fiber.StatusBadRequest).JSON(err.Error())
+		newNickname := ctx.FormValue("nickname", "")
+		if newNickname == "" {
+			return ctx.Status(fiber.StatusBadRequest).JSON("new nickname is empty")
 		}
 
-		err = uc.ChangeNickname(nickname.(string), req.Nickname, repo)
+		err = uc.ChangeNickname(nickname.(string), newNickname, repo)
 		if err != nil {
 			return ctx.Status(fiber.StatusInternalServerError).JSON(err.Error())
 		}
 
-		session.Set("name", req.Nickname)
+		session.Set("name", newNickname)
 		err = session.Save()
 		if err != nil {
 			return ctx.Status(fiber.StatusInternalServerError).JSON(err.Error())

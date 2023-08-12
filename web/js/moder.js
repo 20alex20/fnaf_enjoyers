@@ -6,9 +6,12 @@ var dict = {funny: "Смешные", instructive: "Поучительные", co
 var dict2 = {IU: "ИУ", IBM: "ИБМ", SM: "СМ", E: "Э", MT: "МТ", RL: "РЛ", BMT: "БМТ", RK: "РК", FN: "ФН", L: "Л",
     SGN: "СГН", UR: "ЮР"}
 $.ajax({
-    url: 'json/posts_for_moder.json',  // 'http://localhost:3001/moder/posts',
+    url: 'http://localhost:3002/posts/moder',  // 'http://localhost:3001/moder/posts',
     method: 'get',
-    dataType: 'json',
+    crossDomain: true,
+    xhrFields: {
+        withCredentials: true
+    },
     success: function (data) {
         for (var j = 0; j < data.length; j++) {
             var obj = data[j];
@@ -49,12 +52,16 @@ $.ajax({
         var elems = document.getElementsByClassName("accept-btn");
         for (i = 0; i < data.length; i++) {
             elems[i].addEventListener("click", function () {
-                var id = parseInt(this.parentElement.lastElementChild.innerHTML);
+                var id = this.parentElement.lastElementChild.innerHTML;
                 var element_parent = this;
                 $.ajax({
-                    url: 'json/server_accept.json',  // 'http://localhost:3001/moder/posts_verified'
+                    url: 'http://localhost:3002/post/verify',  // 'http://localhost:3001/moder/posts_verified'
                     method: 'post',
-                    data: {id_post: id, accept: true},
+                    crossDomain: true,
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    data: {post_id: id},
                     success: function (data) {
                         info();
                         var parent = document.getElementById("content-1");
@@ -67,15 +74,19 @@ $.ajax({
         elems = document.getElementsByClassName("confirm-reject-btn");
         for (i = 0; i < data.length; i++) {
             elems[i].addEventListener("click", function () {
-                var id_post = parseInt(this.parentElement.parentElement.lastElementChild.innerHTML);
+                var id_post = this.parentElement.parentElement.lastElementChild.innerHTML;
                 var text = this.parentElement.firstElementChild.value.trim();
                 var element_parent_2 = this;
                 if (text.length === 0)
                     return;
                 $.ajax({
-                    url: 'json/server_accept.json',  // 'http://localhost:3001/moder/posts_verified'
+                    url: 'http://localhost:3002/post/reject',  // 'http://localhost:3001/moder/posts_verified'
                     method: 'post',
-                    data: {id_post: id_post, accept: true, text: text},
+                    crossDomain: true,
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    data: {post_id: id_post, text: text},
                     success: function (data) {
                         info();
                         var parent = document.getElementById("content-1");

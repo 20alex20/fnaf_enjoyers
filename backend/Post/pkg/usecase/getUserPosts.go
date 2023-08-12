@@ -5,8 +5,8 @@ import (
 	"github.com/fnaf-enjoyers/post-service/pkg/repository"
 )
 
-func (uc *useCase) GetUserPosts(nickname string, repo repository.Repository) ([]model.PostResponse, error) {
-	postsDTO, err := repo.GetPostByUserID(nickname)
+func (uc *useCase) GetUserPosts(userID string, repo repository.Repository) ([]model.PostResponse, error) {
+	postsDTO, err := repo.GetPostByUserID(userID)
 	if err != nil {
 		return nil, err
 	}

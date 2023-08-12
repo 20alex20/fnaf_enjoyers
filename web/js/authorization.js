@@ -44,8 +44,12 @@ function login() {
 
     if (check(nickname, password, password)){
         $.ajax({
-            url: 'json/new_nickname.json',  // 'http://localhost:3001/main/new_nickname'
+            url: 'http://localhost:3002/user/auth',  // 'http://localhost:3001/main/new_nickname'
             method: 'post',
+            crossDomain: true,
+            xhrFields: {
+                withCredentials: true
+            },
             dataType: 'json',
             data: {nickname: nickname, password:password},
             success: function (data) {
@@ -70,27 +74,32 @@ function register() {
         return ajax;
 
     $.ajax({
-        url: 'json/new_nickname.json',  // 'http://localhost:3001/main/new_nickname'
+        url: 'http://localhost:3002/user/exist',  // 'http://localhost:3001/main/new_nickname'
         method: 'get',
         dataType: 'json',
         data: {nickname: nickname},
         success: function (data) {
             if (!data["there_is"]) {
                 ajax = true;
+
+                $.ajax({
+                    url: 'http://localhost:3002/user/register',  // 'http://localhost:3001/main/new_nickname'
+                    method: 'post',
+                    crossDomain: true,
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    data: {nickname:nickname, password:password},
+                    success: function (data) {
+                        console.log("register worked successfully");
+                    }
+                });
+
                 regist.submit();
             }
             else {
                 info("Этот никнейм уже занят");
             }
-        }
-    });
-    $.ajax({
-        url: 'json/new_nickname.json',  // 'http://localhost:3001/main/new_nickname'
-        method: 'post',
-        dataType: 'json',
-        data: {nickname:nickname, password:password},
-        success: function (data) {
-            console.log("register worked successfully");
         }
     });
     return false;

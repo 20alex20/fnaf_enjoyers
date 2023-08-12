@@ -17,7 +17,7 @@ import (
 // @Failure 500 {string} string
 // @Failure 401 {string} string
 // @Success 200 {array} model.PostUser
-// @Router /post/get [get]
+// @Router /posts [get]
 func GetUserPosts(repo repository.Repository) fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
 		session, err := config.Store.Get(ctx)
@@ -46,7 +46,7 @@ func GetUserPosts(repo repository.Repository) fiber.Handler {
 			return ctx.Status(fiber.StatusInternalServerError).JSON(err.Error())
 		}
 
-		var posts []model.PostResponse
+		posts := make([]model.PostResponse, 0)
 		if err = json.NewDecoder(res.Body).Decode(&posts); err != nil {
 			return ctx.Status(fiber.StatusInternalServerError).JSON(err.Error())
 		}

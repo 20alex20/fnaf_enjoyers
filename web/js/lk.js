@@ -1,8 +1,11 @@
 var status
 $.ajax({
-    url: 'json/user_status.json',  // 'http://localhost:3001/main/get_nickname'
+    url: 'http://localhost:3002/user/role',  // 'http://localhost:3001/main/get_nickname'
     method: 'get',
-    dataType: 'json',
+    crossDomain: true,
+    xhrFields: {
+        withCredentials: true
+    },
     success: function (data) {
         status = data["status"];
         if (status == "user") {

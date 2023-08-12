@@ -7,9 +7,19 @@ type Repository interface {
 	CreateUser(nickname, password string) error
 	GetPasswordHash(nickname string) (string, error)
 	ChangeNickname(old, new string) error
-	IncrPosts(nickname string) error
+	IncrPosts(userID string) error
 	GetUserRole(nickname string) (*bool, error)
 	GetUserID(nickname string) (string, error)
+	GetNicknameByID(userID string) (string, error)
+	CheckIfModerator(nickname string) (bool, error)
+	CheckLike(userID, postID string) (bool, error)
+	SetLike(userID, postID string) error
+	IncrLikes(userID string) error
+	IncrViews(userID string) error
+	UnsetLike(userID, postID string) error
+	DecrLikes(userID string) error
+	GetProfilePicByID(userID string) (string, error)
+	ChangeProfilePic(userID, link string) error
 }
 
 type repository struct {

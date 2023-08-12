@@ -9,14 +9,12 @@ import (
 
 func CheckNickname(uc usecase.UseCase, repo repository.Repository) fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
-		var req model.NicknameJSON
-
-		err := ctx.BodyParser(&req)
-		if err != nil {
-			return ctx.Status(fiber.StatusBadRequest).JSON(err.Error())
+		nickname := ctx.Query("nickname", "")
+		if nickname == "" {
+			return ctx.Status(fiber.StatusBadRequest).JSON("nickname is empty")
 		}
 
-		thereIs, err := uc.CheckNickname(req.Nickname, repo)
+		thereIs, err := uc.CheckNickname(nickname, repo)
 		if err != nil {
 			return ctx.Status(fiber.StatusInternalServerError).JSON(err.Error())
 		}

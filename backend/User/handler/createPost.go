@@ -68,11 +68,6 @@ func CreatePost(repo repository.Repository) fiber.Handler {
 			return ctx.Status(fiber.StatusInternalServerError).JSON(res.Body)
 		}
 
-		err = repo.IncrPosts(nickname.(string))
-		if err != nil {
-			return ctx.Status(fiber.StatusInternalServerError).JSON(err.Error())
-		}
-
 		return ctx.Status(fiber.StatusOK).JSON("success")
 	}
 }

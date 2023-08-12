@@ -19,9 +19,10 @@ type RejectedPostDTO struct {
 	Text string    `db:"text"`
 }
 
-type CheckingPostDTO struct {
-	ID     string    `db:"id"`
-	UserID string    `db:"user_id"`
-	Date   time.Time `db:"date"`
-	Text   string    `db:"text"`
+type CommentDTO struct {
+	ID          string    `db:"id"`
+	ReferenceID string    `db:"reference_id"`
+	UserID      string    `db:"user_id"`
+	Date        time.Time `db:"date"`
+	Text        string    `db:"text"`
 }

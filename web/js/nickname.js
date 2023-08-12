@@ -27,15 +27,23 @@ document.getElementById('updateData').addEventListener('click', function () {
 
     if (newNickname) {
         $.ajax({
-            url: 'json/new_nickname.json',  // 'http://localhost:3001/main/new_nickname'
+            url: 'http://localhost:3002/user/exist',  // 'http://localhost:3001/main/new_nickname'
             method: 'get',
+            crossDomain: true,
+            xhrFields: {
+                withCredentials: true
+            },
             dataType: 'json',
             data: {nickname: newNickname},
             success: function (data) {
                 if (!data["there_is"]) {
                     $.ajax({
-                        url: 'json/server_accept.json',  // 'http://localhost:3001/main/update_nickname'
+                        url: 'http://localhost:3002/user/nickname',  // 'http://localhost:3001/main/update_nickname'
                         method: 'post',
+                        crossDomain: true,
+                        xhrFields: {
+                            withCredentials: true
+                        },
                         data: {nickname: newNickname},
                         success: function (data) {
                             info();
@@ -56,8 +64,12 @@ document.getElementById('updateData').addEventListener('click', function () {
         var formData = new FormData();
         formData.append('avatar', newAvatar);
         $.ajax({
-            url: 'json/server_accept.json',  // 'http://localhost:3001/main/update_avatar'
+            url: 'http://localhost:3002/user/profile-pic',  // 'http://localhost:3001/main/update_avatar'
             method: 'post',
+            crossDomain: true,
+            xhrFields: {
+                withCredentials: true
+            },
             data: formData,
             processData: false,
             contentType: false,
@@ -76,8 +88,12 @@ document.getElementById('updateData').addEventListener('click', function () {
 
 var nickname
 $.ajax({
-    url: 'json/nickname.json',  // 'http://localhost:3001/main/get_nickname'
+    url: 'http://localhost:3002/user/nickname',  // 'http://localhost:3001/main/get_nickname'
     method: 'get',
+    crossDomain: true,
+    xhrFields: {
+        withCredentials: true
+    },
     dataType: 'json',
     success: function (data) {
         nickname = data["nickname"];
@@ -87,8 +103,12 @@ $.ajax({
 });
 
 $.ajax({
-    url: 'json/img.json',  // 'http://localhost:3001/main/get_nickname'
+    url: 'http://localhost:3002/user/profile-pic',  // 'http://localhost:3001/main/get_nickname'
     method: 'get',
+    crossDomain: true,
+    xhrFields: {
+        withCredentials: true
+    },
     dataType: 'json',
     success: function (data) {
         var avatarUrl = data["img"];
@@ -113,8 +133,12 @@ $(document).ready(function () {
     $("#logout").click(function () {
         // Send an AJAX POST request to the server
         $.ajax({
-            url: 'json/server_accept.json',  // 'http://localhost:3001/main/exit'
+            url: 'http://localhost:3002/user/logout',  // 'http://localhost:3001/main/exit'
             method: 'post',
+            crossDomain: true,
+            xhrFields: {
+                withCredentials: true
+            },
             success: function (data) {
                 console.log("Exit was requested successfully:", data);
                 CookiesDelete();

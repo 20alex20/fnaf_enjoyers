@@ -15,12 +15,10 @@ import (
 func (r *repository) GetMainPosts(order string, number, page int) ([]model.PostDTO, error) {
 	var posts []model.PostDTO
 
-	r.PageCorrection(&page, number, 2)
+	offset := number * (page - 1)
+	query := fmt.Sprintf("select * from post where checked = true and accepted = true order by %s desc limit $1 offset $2;", order)
 
-	offset := 2 * (page - 1)
-	query := fmt.Sprintf("select * from post order by %s desc limit 2 offset $1", order)
-
-	err := r.DB.Select(&posts, query, offset)
+	err := r.DB.Select(&posts, query, number, offset)
 	if err != nil {
 		return nil, err
 	}

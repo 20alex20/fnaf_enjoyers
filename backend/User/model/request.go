@@ -6,7 +6,7 @@ type UserRequest struct {
 }
 
 type CreatePostRequest struct {
-	Categories []string `json:"categories[]"`
-	Filters    []string `json:"filters[]"`
+	Categories []string `json:"categories"`
+	Filters    []string `json:"filters"`
 	Text       string   `json:"text" example:"Lorem ipsum"`
 }

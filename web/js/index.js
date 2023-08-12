@@ -12,7 +12,7 @@ my();
 
 function my() {
     $.ajax({
-        url: 'json/posts_' + array[my_index] + '.json',  // 'http://localhost:3001/main/posts'
+        url: 'http://localhost:3001/main/posts',  // 'http://localhost:3001/main/posts'
         method: 'get',
         dataType: 'json',
         data: {category: 'all', filter: "without", sort: array[my_index], number: 2, page: 1},

@@ -16,25 +16,22 @@ import (
 //
 // - page: defines an offset for sql scrolling
 func (r *repository) GetMainPostsFiltered(filter, order string, number, page int) ([]model.PostDTO, error) {
-	filterIDs, err := r.GetIDsByTitles("filter", []string{filter})
-	if err != nil {
-		return nil, err
-	}
-
 	var posts []model.PostDTO
 
-	r.PageCorrection(&page, number, 2)
-
-	offset := 2 * (page - 1)
+	offset := number * (page - 1)
 	query := fmt.Sprintf(`
 		select * from post 
 			where id in 
-				(select post_id from post_filter where filter_id in $1) 
-			order by %s desc 
-			limit 2 offset $2
+				(select post_id from post_filter where filter_id in (
+		                   select id from filter where title = $1
+		               )) 
+			and checked = true
+			and accepted = true
+		order by %s desc 
+		limit $2 offset $3;
 	`, order)
 
-	err = r.DB.Select(&posts, query, filterIDs, offset)
+	err := r.DB.Select(&posts, query, filter, number, offset)
 	if err != nil {
 		return nil, err
 	}

@@ -21,7 +21,5 @@ func (r *repository) CreatePost(categories, filters []string, text, userID strin
 		}
 	}
 
-	_, err = r.DB.Exec(UpdateInfoTotalPosts)
-
-	return err
+	return nil
 }

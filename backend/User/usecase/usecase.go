@@ -12,6 +12,8 @@ type UseCase interface {
 	ChangeNickname(old, new string, repo repository.Repository) error
 	GetUserRole(nickname string, repo repository.Repository) (string, error)
 	CheckNickname(nickname string, repo repository.Repository) (bool, error)
+	GetPostAuthor(postID string) (string, error)
+	SendComment(text, userID, referenceID string) error
 }
 
 type useCase struct {

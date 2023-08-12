@@ -27,7 +27,7 @@ func GetLikedPosts(repo repository.Repository) fiber.Handler {
 			return ctx.Status(fiber.StatusInternalServerError).JSON(err.Error())
 		}
 
-		postReqUrl := fmt.Sprintf("http://localhost:3001/post/liked?id=%s", userID)
+		postReqUrl := fmt.Sprintf("http://localhost:3001/posts/liked?id=%s", userID)
 		postReq, err := http.NewRequest("GET", postReqUrl, nil)
 		if err != nil {
 			return ctx.Status(fiber.StatusInternalServerError).JSON(err.Error())
@@ -38,7 +38,7 @@ func GetLikedPosts(repo repository.Repository) fiber.Handler {
 			return ctx.Status(fiber.StatusInternalServerError).JSON(err.Error())
 		}
 
-		var posts []model.PostResponse
+		posts := make([]model.PostResponse, 0)
 		if err = json.NewDecoder(res.Body).Decode(&posts); err != nil {
 			return ctx.Status(fiber.StatusInternalServerError).JSON(err.Error())
 		}

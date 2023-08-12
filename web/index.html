@@ -47,7 +47,7 @@
                 }
 
                 function checkAuthorization() {
-                    const authToken = getCookie('auth_token');
+                    const authToken = getCookie('session_id');
                     if (authToken) {
                         $(".top-nav").append("<span className=\"menu\"> </span>\n" +
                             "<ul>\n" +
@@ -352,7 +352,7 @@
     }
 
     function checkAuthorization() {
-        const authToken = getCookie('auth_token');
+        const authToken = getCookie('session_id');
         if (authToken) {
             $("#footer-ul").append("<ul class=\"contact-grids\">\n" +
                 "                <li class=\"contact-grid\"><img src=\"images/logo.png\"></li>\n" +

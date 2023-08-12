@@ -12,8 +12,12 @@ type UseCase interface {
 	GetUserPosts(nickname string, repo repository.Repository) ([]model.PostResponse, error)
 	GetRejectedPosts(userID string, repo repository.Repository) ([]model.RejectedPostResponse, error)
 	GetLikedPosts(userID string, repo repository.Repository) ([]model.PostResponse, error)
-	GetCheckingPosts(userID string, repo repository.Repository) ([]model.CheckingPostResponse, error)
+	GetModerPosts(repo repository.Repository) ([]model.ModerPostResponse, error)
 	GetPost(postID string, repo repository.Repository) (model.PostResponse, error)
+	GetNickname(userID string) (string, error)
+	GetProfilePic(userID string) (string, error)
+	GetCommentsRecursive(referenceID string, repo repository.Repository) []model.CommentResponse
+	MaxPage(category, filter string, number int, repo repository.Repository) (int, error)
 }
 
 type useCase struct {

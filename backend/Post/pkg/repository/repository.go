@@ -17,8 +17,20 @@ type Repository interface {
 	GetPostCategories(postID string) ([]string, error)
 	GetPostFilters(postID string) ([]string, error)
 	GetRejectedMessage(postID string) (string, error)
-	GetCheckingPosts(userID string) ([]model.CheckingPostDTO, error)
+	GetPostsForModerator() ([]model.PostDTO, error)
 	GetPost(postID string) (model.PostDTO, error)
+	VerifyPost(postID string) error
+	RejectPost(postID, text string) error
+	SetLike(postID string) error
+	IncrView(postID string) error
+	GetPostAuthor(postID string) (string, error)
+	UnsetLike(postID string) error
+	GetComments(referenceID string) ([]model.CommentDTO, error)
+	LeftComment(text, userID, referenceID string) error
+	GetMaxPage(number int) (int, error)
+	GetMaxPageCategorized(number int, category string) (int, error)
+	GetMaxPageFiltered(number int, filter string) (int, error)
+	GetMaxPageCF(number int, filter, category string) (int, error)
 }
 
 type repository struct {
